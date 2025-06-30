@@ -3,7 +3,7 @@ import React from 'react';
 
 function HeroSection() {
   return (
-    <div className="flex items-center justify-between p-16">
+    <div className="flex items-center justify-between p-16 bg-black">
       <div className="w-1/2 pr-8">
         <h1 className="text-white text-6xl font-bold leading-tight heading">Where every music scene lives.</h1>
         <p className="text-white text-lg mt-6 max-w-lg">

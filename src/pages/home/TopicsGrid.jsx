@@ -102,44 +102,38 @@ const topicsData = [
 
 const TopicsGrid = () => {
   return (
-    <div className="bg-gray-900 min-h-screen p-8">
-      <div className="mb-8 flex justify-end">
-        <button className="text-white px-4 py-2 rounded-md border border-gray-600 flex items-center space-x-2">
-          <span>See All</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-      </div>
-
-      <h2 className="text-white text-2xl font-bold mb-6">Topics</h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {topicsData.map((topic) => (
-          <div
-            key={topic.id} // Essential for list rendering in React
-            className={`relative rounded-lg overflow-hidden h-40 bg-gradient-to-br ${topic.gradient}`}
-          >
-            {/* For Next.js Image Optimization, ideally use next/image */}
-            {/* <Image
+    <section className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto container xl:max-w-[1230px] px-4">
+        <h2 className="text-xl font-bold mb-2">Topics</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {topicsData.map((topic) => (
+            <div
+              key={topic.id} // Essential for list rendering in React
+              className={`relative rounded-lg overflow-hidden h-40 bg-gradient-to-br ${topic.gradient}`}
+            >
+              {/* For Next.js Image Optimization, ideally use next/image */}
+              {/* <Image
               src={topic.imageSrc}
               alt={topic.title}
               layout="fill" // Or adjust as needed
               objectFit="cover"
               className="opacity-50"
+              width={32}
+              height={32}
             /> */}
-            <img
-              src={topic.imageSrc}
-              alt={topic.title}
-              className="absolute inset-0 w-full h-full object-cover opacity-50"
-            />
-            <div className="relative p-4 flex items-end h-full">
-              <span className="text-white text-lg font-semibold">{topic.title}</span>
+              <img
+                src={topic.imageSrc}
+                alt={topic.title}
+                className="absolute inset-0 w-full h-full object-cover opacity-50"
+              />
+              <div className="relative p-4 flex items-end h-full">
+                <span className="text-white text-lg font-semibold">{topic.title}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

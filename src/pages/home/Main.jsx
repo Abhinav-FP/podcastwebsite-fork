@@ -12,11 +12,11 @@ export default function Main() {
   return (
     <>
       <Layout>
-        {/* <HeroSection />
+        <HeroSection />
         <Podcast />
         <TopicsGrid />
-        <WhyChooseUs/>
-        <Podcast /> */}
+        <WhyChooseUs />
+        <Podcast />
         <Testimonials />
       </Layout>
     </>

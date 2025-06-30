@@ -1,5 +1,6 @@
 import React from 'react'
 import { GoDownload } from "react-icons/go";
+import CustomButton from './CustomButton';
 
 
 export default function Card({ index, podcast }) {
@@ -10,15 +11,11 @@ export default function Card({ index, podcast }) {
                 alt={podcast.title}
                 className="w-full h-48 object-cover rounded"
             />
-            <h3 className="text-md font-semibold mt-3 mb-1">
+            <h3 className="text-[16px] sm:text-[18px] font-semibold mt-3 mb-1">
                 {podcast.title}
             </h3>
-            <p className="text-xs text-gray-400">{podcast.description}</p>
-            <button className="flex items-center gap-2 mt-3 px-4 py-2 text-sm rounded-full border border-gray-400  transition">
-                <GoDownload size={20} />
-                Download PDF
-            </button>
-
+            <p className="text-[14px] sm:text-[16px] text-gray-400 mb-3">{podcast.description}</p>
+            <CustomButton text="Download PDF" icon={<GoDownload size={20} />} />
         </div>
     )
 }

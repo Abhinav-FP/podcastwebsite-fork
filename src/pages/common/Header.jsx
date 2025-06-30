@@ -16,7 +16,7 @@ export default function Header() {
             <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+              src="https://img.freepik.com/free-vector/detailed-podcast-logo-template_23-2148786067.jpg?semt=ais_hybrid&w=740"
               alt="Logo"
             />
           </a>
@@ -25,13 +25,19 @@ export default function Header() {
         {/* Desktop Menu Links */}
         <div className="hidden lg:flex lg:gap-x-12">
           <a href="#" className="text-sm font-semibold text-black hover:text-gray-700">
-            Features
+            Home
           </a>
           <a href="#" className="text-sm font-semibold text-black hover:text-gray-700">
-            Marketplace
+            Episode
           </a>
           <a href="#" className="text-sm font-semibold text-black hover:text-gray-700">
-            Company
+            E-Guide
+          </a>
+          <a href="#" className="text-sm font-semibold text-black hover:text-gray-700">
+            About
+          </a>
+          <a href="#" className="text-sm font-semibold text-black hover:text-gray-700">
+            Contact
           </a>
         </div>
 
@@ -47,12 +53,6 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Desktop Login Button */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold text-black hover:text-gray-700">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
       </nav>
 
       {/* Mobile Menu Drawer */}

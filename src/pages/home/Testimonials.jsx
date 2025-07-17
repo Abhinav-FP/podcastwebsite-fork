@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from '../common/heading';
+import Heading from '../../common/heading';
 
 export default function Testimonials() {
   const testimonials = [

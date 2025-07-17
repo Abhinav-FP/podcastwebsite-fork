@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../pages/common/Header";
-import Footer from "../pages/common/Footer";
+import Header from "../common/Header";
+import Footer from "../common/Footer";
 
 export default function Layout({ children }) {
 

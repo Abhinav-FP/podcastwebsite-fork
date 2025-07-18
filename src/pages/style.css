@@ -3,12 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 body { 
-    font-family: "Poppins", sans-serif;   
+    font-family: Poppins;   
   }
   
-  .font-inter {
-    font-family: "Inter", sans-serif;
-  } 
+  
 .hero_bg {
   background: linear-gradient(to right, #f9a8d4, #f9a8d4, #f472b6);
 }

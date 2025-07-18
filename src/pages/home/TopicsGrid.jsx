@@ -109,16 +109,15 @@ const TopicsGrid = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-3">
           {topicsData.map((topic) => (
             <div
-              key={topic.id} // Essential for list rendering in React
-              className={`relative rounded-lg overflow-hidden h-40 `}
-            >
+              key={topic.id} 
+              className={`relative rounded-lg overflow-hidden h-40 `}  >
               <img
                 src={topic.imageSrc}
                 alt={topic.title}
                 className="absolute inset-0 w-full h-[229px] object-cover rounded-lg opacity-80 "
               />
               <div className="relative p-2 flex items-start h-full">
-                <span className="text-white text-lg font-bold font-inter">{topic.title}</span>
+                <span className="text-white text-lg font-bold heading">{topic.title}</span>
               </div>
             </div>
           ))}

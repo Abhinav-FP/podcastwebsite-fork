@@ -25,7 +25,7 @@ export default function Testimonials() {
 
   return (
     <section className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8 text-center">
-      <div className="container  w-[100%]  max-w-[1440px] m-auto ">
+      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  px-4">
         <h2 className="text-4xl sm:text-5xl font-bold mb-4">Real podcast success stories</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (

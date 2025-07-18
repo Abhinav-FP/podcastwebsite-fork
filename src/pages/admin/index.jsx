@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function Index() {
   return (
     <AuthLayout>
-     <div className="rounded-xl w-full max-w-6xl mx-auto bg-gradient-to-b from-[#f18d53] to-[#6b3d23] text-white p-8 flex items-center gap-8">
+     <div className="rounded-xl w-full max-w-6xl mx-auto detail_bg text-white p-8 flex items-center gap-8">
       {/* Profile Image */}
       <div className="w-44 h-44 relative rounded-full overflow-hidden border-4 border-white shadow-md">
         <img

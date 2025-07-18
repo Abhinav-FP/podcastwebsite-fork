@@ -1,83 +1,109 @@
-'use client'
-import { useState } from 'react'
-import { FiMenu, FiX } from 'react-icons/fi'
+'use client';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { RiMenu3Line } from "react-icons/ri";
+import { IoCloseSharp } from "react-icons/io5";
+import Logo from "../assets/logo.avif"
+import Image from 'next/image';
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  // header fixed 
+    const [Scrolled, setScrolled] = useState();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 5);
+        }
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [])
 
   return (
-    <header className="!bg-black shadow-sm">
-      <nav className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-6">
-        {/* Logo */}
-        <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5 flex items-center">
-            <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto rounded-full"
-              src="https://img.freepik.com/free-vector/detailed-podcast-logo-template_23-2148786067.jpg?semt=ais_hybrid&w=740"
-              alt="Logo"
-            />
-          </a>
-        </div>
+ <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out  ${Scrolled ? "bg-[#fff] text-black py-1 lg:py-1" : "bg-transparent py-3  text-white lg:py-6"}`}>
+                <div className="mx-auto container sm:container md:container lg:container  xl:max-w-[1440px]   px-4">
+                    <div className="relative flex items-center justify-between">
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex lg:gap-x-10">
-          <a href="#" className="text-sm font-semibold text-white hover:text-gray-300">Home</a>
-          <a href="#" className="text-sm font-semibold text-white hover:text-gray-300">Episode</a>
-          <a href="#" className="text-sm font-semibold text-white hover:text-gray-300">E-Guide</a>
-          <a href="#" className="text-sm font-semibold text-white hover:text-gray-300">About</a>
-          <a href="#" className="text-sm font-semibold text-white hover:text-gray-300">Contact</a>
-        </div>
+      {/* Logo */}
+      <div className="flex items-center">
+        <Link href="/">
+          <Image
+            width={100}
+            height={100}
+            className="h-16 w-auto rounded-full"
+            src={Logo}
+            alt="Logo"
+          />
+        </Link>
+      </div>
 
-        {/* Mobile menu button */}
-        <div className="flex lg:hidden">
-          <button
-            onClick={() => setIsOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
-          >
-            <span className="sr-only">Open main menu</span>
-            <FiMenu className="h-6 w-6" />
-          </button>
-        </div>
+      {/* Desktop Links */}
+      <nav className="hidden lg:flex gap-x-10">
+        <Link href="/" className="text-sm font-semibold  hover:text-gray-300">Home</Link>
+        <Link href="/episode" className="text-sm font-semibold  hover:text-gray-300">Episode</Link>
+        <Link href="/e-guide" className="text-sm font-semibold  hover:text-gray-300">E-Guide</Link>
+        <Link href="/about" className="text-sm font-semibold  hover:text-gray-300">About</Link>
+        <Link href="/#contact" className="text-sm font-semibold  hover:text-gray-300">Contact</Link>
       </nav>
+      {/* Mobile Menu Open Button */}
 
-      {/* Mobile Drawer */}
-      {isOpen && (
-        <div className="lg:hidden" role="dialog" aria-modal="true">
-          {/* Overlay */}
+      <div className={`flex lg:hidden ${menuOpen ? "hidden" : ""}`}>
+        <button
+          type="button"
+          className="absolute right-[15px] top-[10px] z-[1] inline-flex items-center justify-center rounded-[3px] w-[48px] h-[45px] bg-[#ff0062]  hover:bg-[#EB3465] focus:bg-[#EB3465] focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-controls="mobile-menu"
+          aria-expanded={menuOpen}
+          onClick={toggleMenu}
+        >
+          <RiMenu3Line size={30} />
+        </button>
+      </div>
+      {/* Mobile Menu Close Button */}
+      <div className={`flex lg:hidden  ${menuOpen ? "block" : "hidden"}`}>
+        <button
+          type="button"
+          className="absolute right-[15px] top-[10px] z-[1] inline-flex items-center justify-center rounded-[3px] w-[48px] h-[45px] bg-[#ff0062]  hover:bg-[#EB3465] focus:bg-[#EB3465] focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-controls="mobile-menu"
+          aria-expanded={menuOpen}
+          onClick={toggleMenu}
+        >
+          <IoCloseSharp size={30} />
+        </button>
+
+        {/* Mobile Menu Panel */}
+        {menuOpen && (
           <div
-            className="fixed inset-0 z-40 bg-black bg-opacity-50"
-            onClick={() => setIsOpen(false)}
-          ></div>
-          {/* Drawer */}
-          <div className="fixed inset-y-0 right-0 z-50 w-72 bg-gray-900 p-6">
-            <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
-                <img
-                  className="h-8 w-auto rounded-full"
-                  src="https://img.freepik.com/free-vector/detailed-podcast-logo-template_23-2148786067.jpg?semt=ais_hybrid&w=740"
-                  alt="Logo"
-                />
-              </a>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="rounded-md p-2.5 text-white"
-              >
-                <span className="sr-only">Close menu</span>
-                <FiX className="h-6 w-6" />
-              </button>
-            </div>
+            id="mobile-menu "
+            className="absolute top-0 right-[15px] 11h-full pt-[60px] "
+          >
+            <ul className="relative bg-[#222]  w-[250px] z-[9] h-full flex flex-col gap-[15px] font-manrope font-[600] text-[15px] md:text-[18px] lg:text-[20px]  px-[20px] pt-[20px] pb-[30px] rounded-[5px] ">
+              <li>
+                <Link href="/" className="text-sm font-semibold  hover:text-gray-300">Home</Link>
+              </li>
+              <li>
+                <Link href="/episode" className="text-sm font-semibold  hover:text-gray-300">Episode</Link>
 
-            <div className="mt-6 space-y-4">
-              <a href="#" className="block text-base font-semibold text-white hover:text-gray-300">Home</a>
-              <a href="#" className="block text-base font-semibold text-white hover:text-gray-300">Episode</a>
-              <a href="#" className="block text-base font-semibold text-white hover:text-gray-300">E-Guide</a>
-              <a href="#" className="block text-base font-semibold text-white hover:text-gray-300">About</a>
-              <a href="#" className="block text-base font-semibold text-white hover:text-gray-300">Contact</a>
-            </div>
+              </li>
+
+              <li>
+                <Link href="/e-guide" className="text-sm font-semibold  hover:text-gray-300">E-Guide</Link>
+
+              </li>
+              <li>
+                <Link href="/about" className="text-sm font-semibold  hover:text-gray-300">About</Link>
+
+              </li>
+              <li>
+                <Link href="/#contact" className="text-sm font-semibold  hover:text-gray-300">Contact</Link>
+              </li>
+            </ul>
           </div>
-        </div>
-      )}
-    </header>
-  )
+        )}
+      </div>
+      </div>
+</div>
+    </nav>
+  );
 }

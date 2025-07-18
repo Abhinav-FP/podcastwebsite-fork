@@ -1,6 +1,5 @@
 import React from 'react'
-import Footer from '../../common/Footer'
-import Header from '../../common/Header'
+
 import Layout from '../../layout/Layout'
 import Testimonials from './Testimonials'
 import Podcast from './Podcast'

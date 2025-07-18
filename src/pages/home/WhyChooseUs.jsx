@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import recording from '../assert/home/record.png'
+import recording from '../../assets/record.png'
 import CustomButton from '../../common/CustomButton'
 
 const WhyChooseUs = () => {

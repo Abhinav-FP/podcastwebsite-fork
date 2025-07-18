@@ -4,13 +4,14 @@ import CustomButton from '../../common/CustomButton'
 
 const WhyChooseUs = () => {
   return (
-    <section className="bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-[1440px] mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-4">Why Choose Us</h2>
+    <section className="bg-black text-white  py-12 px-4 sm:px-6 lg:px-8">
+
+      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  ">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-4 heading">Why Choose Us</h2>
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
           <div className="md:w-2/3">
-            <p className="text-lg sm:text-xl text-[#999999]">
+            <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] paragraph ">
               You have the inspiration to start podcasting. Property Portfolio has the tools, support, and community to ensure you keep podcasting.
             </p>
           </div>

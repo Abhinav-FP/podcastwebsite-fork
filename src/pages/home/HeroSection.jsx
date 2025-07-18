@@ -15,15 +15,15 @@ function HeroSection() {
               Where every <br /> music scene lives.
             </h1>
 
-            <p className="text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] mb-8 heading">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] mb-8 text-white ">
               <span className="font-bold">Discover 400 million songs</span>, remixes and DJ sets — every chart-topping track you can find elsewhere, and millions more you can't find anywhere else.
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-[5px] border border-white text-black bg-white font-bold text-base heading py-2 px-5 cursor-pointer">
+              <button className="rounded-[5px] border border-white text-black bg-white font-bold text-base  py-2 px-5 cursor-pointer">
                 Listen Now
               </button>
-              <button className="rounded-[5px] border border-black text-black font-bold text-base heading py-2 px-5 cursor-pointer">
+              <button className="rounded-[5px] border border-black text-black font-bold text-base  py-2 px-5 cursor-pointer">
                 Explore Episodes
               </button>
             </div>

@@ -5,6 +5,7 @@ import { RiMenu3Line } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
 import Logo from "../assets/logo.avif"
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,10 +20,14 @@ export default function Header() {
     }
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [])
+  }, []) 
+
+  const  router  = useRouter();
+
+  console.log(router);
 
   return (
-    <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out  ${Scrolled ? "bg-[#fff] text-black py-1 lg:py-1" : "bg-transparent py-3  text-white lg:py-6"}`}>
+    <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out  ${Scrolled  ? router.pathname === "/"  ? "bg-[#fff] text-black py-1 lg:py-1 "  : "bg-[#000000] text-white py-1 lg:py-1" : "bg-transparent  py-3  text-white lg:py-6"}`}>
       <div className="mx-auto container sm:container md:container lg:container  xl:max-w-[1440px]   px-4">
         <div className="relative flex items-center justify-between">
 

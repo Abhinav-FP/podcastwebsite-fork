@@ -4,14 +4,14 @@ import Listing from "@/pages/api/Listing";
 import { FaChevronDown } from "react-icons/fa";
 import AddPodcast from "./AddPodcast";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [active, setActive] = useState(null);
   const [isPodcastPopupOpen, setIsPodcastPopupOpen] = useState(false);
 
-  const fetchEarnings = async () => {
+  const fetchPodcasts = async () => {
     try {
       setLoading(true);
       const main = new Listing();
@@ -25,14 +25,8 @@ export default function Index() {
   };
 
   useEffect(() => {
-    fetchEarnings();
-  }, []);
-
-  // console.log("data", data);
-
-  const toggleDropdown = (id) => {
-    setActive((prev) => (prev === id ? null : id));
-  };
+    fetchPodcasts();
+  }, []); 
 
   return (
     <AuthLayout page={"Podcast"}>
@@ -53,10 +47,9 @@ export default function Index() {
             key={podcast.id}
             className="bg-[#1a1a1a] rounded-2xl shadow-xl overflow-hidden w-full"
           >
-            {/* Podcast Info */}
-            <div
+            <Link
               className="flex flex-col md:flex-row justify-between md:items-center p-6 gap-6 cursor-pointer hover:bg-[#232323] transition"
-              // onClick={() => toggleDropdown(podcast.id)}
+              href={`/admin/podcast/${podcast?.uuid}`}
             >
               <div className="flex flex-col md:flex-row md:items-center gap-6 flex-1">
                 <Image
@@ -78,7 +71,7 @@ export default function Index() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

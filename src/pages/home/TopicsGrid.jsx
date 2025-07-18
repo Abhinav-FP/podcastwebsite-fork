@@ -103,13 +103,13 @@ const topicsData = [
 
 const TopicsGrid = () => {
   return (
-    <section className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="container  w-[100%] max-w-[1440px] m-auto ">
+    <section className=" py-12 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  ">
         <HeadingTopic title="topics" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-3">
           {topicsData.map((topic) => (
             <div
-              key={topic.id} 
+              key={topic.id}
               className={`relative rounded-lg overflow-hidden h-40 `}  >
               <img
                 src={topic.imageSrc}

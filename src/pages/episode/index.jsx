@@ -7,10 +7,10 @@ import Image from "next/image";
 export default function Index() {
     return (
         <Layout>
-            <div className="bg-[#0a0a0a] text-white pt-[118px] lg:pt-[128px] ">
+            <div className="bg-[#0a0a0a]  pt-[118px] lg:pt-[128px] ">
                 <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  px-4">
-                    <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center ">Browse All Episodes</h1>
-                    <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+                    <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center heading text-white  ">Browse All Episodes</h1>
+                    <p className="paragraph text-center text-[16px] sm:text-[18px] mb-8">
                         Explore our library of insightful podcasts covering everything from equity leverage and financing to market predictions and tax strategies.
                     </p>
 
@@ -43,10 +43,10 @@ export default function Index() {
                                 className=" h-48  "
                             />
                             <div className="p-6">
-                                <span className="inline-block hero_bg  text-xs px-3 py-1 rounded-full mb-3 ">Category</span>
-                                <h3 className="text-xl font-bold heading mb-2">The Complete Guide to Property Depreciation</h3>
-                                <p className="text-gray-400 text-sm mb-4">Everything you need to know to maximize your deductions.</p>
-                                <button className="px-5 py-2 rounded-full  border border-[#FFFFFF] text-[#C0BBB8] text-sm  cursor-pointer ">Play Now</button>
+                                <span className="inline-block button-bg  text-xs px-3 py-1 rounded-full mb-3 ">Category</span>
+                                <h3 className="text-xl font-bold heading text-white  mb-2">The Complete Guide to Property Depreciation</h3>
+                                <p className=" text-[16px] sm:text-[18px] font-semibold paragraph mb-4">Everything you need to know to maximize your deductions.</p>
+                                <button className="px-5 py-2 rounded-full  button-bg text-white  text-sm  cursor-pointer ">Play Now</button>
                             </div>
                         </div>
                     ))}
@@ -54,7 +54,7 @@ export default function Index() {
 
                 {/* Testimonials */}
                 <div className="container mx-auto px-4 mb-16">
-                    <h2 className="text-center text-2xl md:text-4xl font-bold mb-10">What Our Listeners Say</h2>
+                    <h2 className="text-center text-2xl md:text-4xl font-bold mb-10 text-white ">What Our Listeners Say</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[...Array(3)].map((_, idx) => (
                             <div
@@ -77,7 +77,7 @@ export default function Index() {
                 </div>
 
                 {/* Subscribe CTA */}
-                <div className="hero_bg py-12 px-4 text-center rounded
+                <div className="button-bg py-12 px-4 text-center rounded
                 -3xl">
                     <h3 className="text-2xl md:text-4xl font-bold heading mb-4">Stay Ahead in Property</h3>
                     <p className="text-gray-200 mb-6 max-w-xl mx-auto">Get our latest episodes, market updates, and investing tips straight to your inbox.</p>

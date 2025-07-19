@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../common/Card";
 import HeadingTopic from "@/common/HeadingTopic";
+import Listing from "../api/Listing";
 
-const podcasts = [
-  {
-    title: "Cold Case Files: Miami",
-    image: "https://i.pinimg.com/736x/9d/41/54/9d41547e15af9a64706e595d4210bbfb.jpg",
-    description: "Joyce Sapp, 62; Bryan Herrera, 16; and Laurence Webb, 32—three Miami residents...",
-  },
-  {
-    title: "Dateline NBC",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhXCso7FkZZOmoH0mVByTeFH1PXSe6pFul_SR-ClIeCJl3aXoaB5xMC2lL2VlQWKnIeAU&usqp=CAU",
-    description: "Current and classic episodes, featuring compelling true-crime mysteries...",
-  },
-  {
-    title: "Stuff You Should Know",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhXCso7FkZZOmoH0mVByTeFH1PXSe6pFul_SR-ClIeCJl3aXoaB5xMC2lL2VlQWKnIeAU&usqp=CAU",
-    description: "If you’ve ever wanted to know about champagne, salamanders, the Stonewall Uprising...",
-  },
-  {
-    title: "Dateline NBC",
-    image: "https://i.pinimg.com/736x/9d/41/54/9d41547e15af9a64706e595d4210bbfb.jpg",
-    description: "Current and classic episodes, featuring compelling true-crime mysteries...",
-  },
-];
+
 
 export default function Podcast() {
+   const [data, setData] = useState([]);
+   const [loading, setLoading] = useState(false);
+
+
+  const fetchPodcasts = async () => {
+    try {
+      setLoading(true);
+      const main = new Listing();
+      const response = await main.PodcastGet();
+      console.log("response" ,response)
+      setData(response?.data?.data || []);
+    } catch (error) {
+      console.log("error", error);
+      setData({});
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchPodcasts();
+  }, []); 
+
+  console.log(data)
   return (
     <section className="bg-black text-white  py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  ">
@@ -55,7 +58,7 @@ export default function Podcast() {
 
         <HeadingTopic title="Popular Podcasts" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {podcasts.map((podcast, index) => (
+          {data && data?.map((podcast, index) => (
             <Card podcast={podcast} index={index} />
           ))}
         </div>

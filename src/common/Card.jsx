@@ -6,12 +6,12 @@ export default function Card({ index, podcast }) {
     return (
         <div key={index} className=" rounded-lg p-3">
             <img
-                src={podcast.image}
-                alt={podcast.title}
+                src={podcast.thumbnail}
+                alt={podcast.name}
                 className="w-full h-[223px] object-cover rounded-lg"
             />
             <h3 className="text-[16px] sm:text-[18px]  heading text-center mt-3 mb-1 text-[#b5afaf]">
-                {podcast.title}
+                {podcast.name}
             </h3>
             <p className="text-[14px] sm:text-[16px] paragraph mb-3 text-center line-clamp-2">{podcast.description}</p>
             <button

@@ -20,14 +20,14 @@ export default function Header() {
     }
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []) 
+  }, [])
 
-  const  router  = useRouter();
+  const router = useRouter();
 
   console.log(router);
 
   return (
-    <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out  ${Scrolled  ? router.pathname === "/"  ? "bg-[#fff] text-black py-1 lg:py-1 "  : "bg-[#000000] text-white py-1 lg:py-1" : "bg-transparent  py-3  text-white lg:py-6"}`}>
+    <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out  ${Scrolled ? router.pathname === "/" ? "bg-[#fff] text-black py-1 lg:py-1 hover:text-gray-300" : "bg-[#000000] text-white py-1 lg:py-1 hover:text-gray-300" : "bg-transparent  py-3  text-white lg:py-6 hover:text-gray-300"}`}>
       <div className="mx-auto container sm:container md:container lg:container  xl:max-w-[1440px]   px-4">
         <div className="relative flex items-center justify-between">
 
@@ -46,11 +46,11 @@ export default function Header() {
 
           {/* Desktop Links */}
           <nav className="hidden lg:flex gap-x-10">
-            <Link href="/" className="text-sm font-semibold  hover:text-gray-300">Home</Link>
-            <Link href="/episode" className="text-sm font-semibold  hover:text-gray-300">Episode</Link>
-            <Link href="/e-guide" className="text-sm font-semibold  hover:text-gray-300">E-Guide</Link>
-            <Link href="/about" className="text-sm font-semibold  hover:text-gray-300">About</Link>
-            <Link href="/#contact" className="text-sm font-semibold  hover:text-gray-300">Contact</Link>
+            <Link href="/" className="text-sm font-semibold ">Home</Link>
+            <Link href="/episode" className="text-sm font-semibold ">Episode</Link>
+            <Link href="/e-guide" className="text-sm font-semibold ">E-Guide</Link>
+            <Link href="/about" className="text-sm font-semibold ">About</Link>
+            <Link href="/#contact" className="text-sm font-semibold ">Contact</Link>
           </nav>
           {/* Mobile Menu Open Button */}
 
@@ -85,23 +85,23 @@ export default function Header() {
               >
                 <ul className="relative bg-[#222]  w-[250px] z-[9] h-full flex flex-col gap-[15px] font-manrope font-[600] text-[15px] md:text-[18px] lg:text-[20px]  px-[20px] pt-[20px] pb-[30px] rounded-[5px] ">
                   <li>
-                    <Link href="/" className="text-sm font-semibold  hover:text-gray-300">Home</Link>
+                    <Link href="/" className="text-sm font-semibold ">Home</Link>
                   </li>
                   <li>
-                    <Link href="/episode" className="text-sm font-semibold  hover:text-gray-300">Episode</Link>
+                    <Link href="/episode" className="text-sm font-semibold ">Episode</Link>
 
                   </li>
 
                   <li>
-                    <Link href="/e-guide" className="text-sm font-semibold  hover:text-gray-300">E-Guide</Link>
+                    <Link href="/e-guide" className="text-sm font-semibold ">E-Guide</Link>
 
                   </li>
                   <li>
-                    <Link href="/about" className="text-sm font-semibold  hover:text-gray-300">About</Link>
+                    <Link href="/about" className="text-sm font-semibold ">About</Link>
 
                   </li>
                   <li>
-                    <Link href="/#contact" className="text-sm font-semibold  hover:text-gray-300">Contact</Link>
+                    <Link href="/#contact" className="text-sm font-semibold ">Contact</Link>
                   </li>
                 </ul>
               </div>

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Card from "../../common/Card";
 import HeadingTopic from "@/common/HeadingTopic";
 import Listing from "../api/Listing";
+import NoData from "@/common/NoDataFound";
+import LoadingSpinner from "@/common/LoadingSpinner";
 
 
 
 export default function Podcast() {
-   const [data, setData] = useState([]);
-   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
 
   const fetchPodcasts = async () => {
@@ -15,7 +17,7 @@ export default function Podcast() {
       setLoading(true);
       const main = new Listing();
       const response = await main.PodcastGet();
-      console.log("response" ,response)
+      console.log("response", response)
       setData(response?.data?.data || []);
     } catch (error) {
       console.log("error", error);
@@ -26,7 +28,7 @@ export default function Podcast() {
 
   useEffect(() => {
     fetchPodcasts();
-  }, []); 
+  }, []);
 
   console.log(data)
   return (
@@ -57,11 +59,17 @@ export default function Podcast() {
         </div>
 
         <HeadingTopic title="Popular Podcasts" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {data && data?.map((podcast, index) => (
-            <Card podcast={podcast} index={index} />
-          ))}
-        </div>
+        {loading ? (
+          <LoadingSpinner count={5} />
+         ) : data?.length === 0 ? (
+          <NoData heading="No podcasts available." />
+         ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {data.map((podcast, index) => (
+              <Card key={index} podcast={podcast} index={index} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

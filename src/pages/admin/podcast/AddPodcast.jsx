@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Popup from "@/common/Popup";
 import toast from "react-hot-toast";
 import Listing from "@/pages/api/Listing";
 
-export default function AddPodcast({ isOpen, onClose, fetchPodcasts }) {
+export default function AddPodcast({ isOpen, onClose, fetchPodcasts, selectedPodcast }) {
+  // console.log("selectedPodcast", selectedPodcast);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -12,8 +13,25 @@ export default function AddPodcast({ isOpen, onClose, fetchPodcasts }) {
     thumbnail: null,
     description: "",
   });
-
   const [thumbnailPreview, setThumbnailPreview] = useState(null);
+
+  useEffect(() => {
+      setFormData({
+        name: selectedPodcast?.name || "",
+        Author: selectedPodcast?.Author || "",
+        Cast: Array.isArray(selectedPodcast?.Cast)
+              ? selectedPodcast.Cast.join(", ")
+              : selectedPodcast?.Cast || "",
+        thumbnail: selectedPodcast?.thumbnail || null,
+        description: selectedPodcast?.description || "",
+      });
+  
+      if (selectedPodcast?.thumbnail) {
+        setThumbnailPreview(selectedPodcast.thumbnail);
+        return;
+      }
+      setThumbnailPreview(null);
+    }, [selectedPodcast]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -86,11 +104,53 @@ export default function AddPodcast({ isOpen, onClose, fetchPodcasts }) {
     }
     setLoading(false);
   };
+  // console.log("formdata",formData);
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    try {
+      const main = new Listing();
+      console.log("formData.Cast", formData.Cast);
+      const castArray = JSON.stringify(formData.Cast.split(",").map((s) => s.trim()));
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      if (formData.Author) payload.append("Author", formData.Author);
+      if (formData.Cast) payload.append("Cast", castArray);
+      payload.append("description", formData.description);
+      if (formData.thumbnail instanceof File) {
+        payload.append("thumbnail", formData.thumbnail);
+      }
+      const response = await main.PodcastUpdate(selectedPodcast?.uuid, payload);
+      if (response?.data?.status) {
+        toast.success(response.data.message);
+        setFormData({
+          name: "",
+          Author: "",
+          Cast: "",
+          thumbnail: null,
+          description: "",
+        });
+        fetchPodcasts();
+        onClose();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("API error:", error);
+      toast.error(error?.response?.data?.message || "Something went wrong!");
+      setLoading(false);
+    }
+    setLoading(false);
+  };
 
   return (
     <Popup isOpen={isOpen} onClose={onClose} size="max-w-lg">
-      <form onSubmit={handleSubmit} className=" w-full text-white">
-        <h3 className="text-3xl font-bold text-center heading">Add Podcast</h3>
+      <form onSubmit={selectedPodcast ? handleUpdate : handleSubmit} className=" w-full text-white">
+        <h3 className="text-3xl font-bold text-center heading">
+         {selectedPodcast ? "Edit Podcast" : "Add Podcast"} 
+        </h3>
         <div className="space-y-6">
           {/* Name */}
           <div className="space-y-1">
@@ -183,7 +243,7 @@ export default function AddPodcast({ isOpen, onClose, fetchPodcasts }) {
             type="submit"
             className="w-full button-bg font-semibold py-3 rounded-lg transition cursor-pointer"
           >
-            Submit
+            {loading ? "Submitting..." : "Submit"}
           </button>
         </div>
       </form>

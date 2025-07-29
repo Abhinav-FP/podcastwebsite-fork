@@ -1,13 +1,47 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { TbLogout } from "react-icons/tb";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import Sidebar from "./sidebar";
+import Listing from "@/pages/api/Listing";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+import { useRole } from "@/context/RoleContext";
 
-export default function AuthLayout({ children, heading }) {
-  const [toggle, setToggle] = React.useState(false);
+export default function AuthLayout({ children }) {
+  const [toggle, setToggle] = useState(false);
+  const router = useRouter();
+  const {user, setUser} = useRole();
+
   function showSidebar() {
     setToggle(!toggle);
   }
+
+  const fetchData = async (signal) => {
+    try {
+      const main = new Listing();
+      const response = await main.profileVerify(signal);
+      if (response.data) {
+        // console.log("token verify data",response?.data);
+        setUser(response.data.data.user);
+      }
+    } catch (error) {
+      console.log("error", error);
+      localStorage?.removeItem("token");
+      setUser(null);
+      router.push("/admin/login");
+      toast.error("Please log in first.");
+    }
+  };
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+    fetchData(signal);
+    return () => controller.abort();
+  }, []);
+
+  // console.log("user", user);
+
   return (
     <>
       {toggle ? (
@@ -31,9 +65,9 @@ export default function AuthLayout({ children, heading }) {
                   <HiOutlineUserCircle color="white" size="2.5rem" />
                 </div>
                 <div className="text-start me-4 ps-2">
-                  <h2 className="capitalize font-bold text-white">Naveen</h2>
+                  <h2 className="capitalize font-bold text-white">{user?.name || ""}</h2>
                   <p className="capitalize text-sm mt-[-3px] text-gray-400">
-                    co-founder
+                    {user?.email || ""}
                   </p>
                 </div>
               </div>
@@ -42,13 +76,13 @@ export default function AuthLayout({ children, heading }) {
               </button>
 
               <button
-  onClick={showSidebar}
-  className="block md:hidden flex flex-col gap-[4px] px-2 py-1 rounded-md border border-gray-700"
->
-  <span className="w-5 h-[2px] bg-white" />
-  <span className="w-5 h-[2px] bg-white" />
-  <span className="w-5 h-[2px] bg-white" />
-</button>
+                onClick={showSidebar}
+                className="block md:hidden flex flex-col gap-[4px] px-2 py-1 rounded-md border border-gray-700"
+              >
+                <span className="w-5 h-[2px] bg-white" />
+                <span className="w-5 h-[2px] bg-white" />
+                <span className="w-5 h-[2px] bg-white" />
+              </button>
             </div>
           </header>
           <div className="flex w-screen overflow-hidden">

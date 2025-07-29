@@ -5,6 +5,14 @@ class Listing extends Component {
   async Login(data) {
     return Api.post("/user/login", data);
   }
+
+  async profileVerify() {
+    return Api.get("/user/profile")
+  }
+
+  async Dashboard() {
+    return Api.get(`/user/dashboard`);
+  }
   
   async PodcastGet() {
     return Api.get("/podcast/get")
@@ -18,6 +26,14 @@ class Listing extends Component {
     return Api.post("/podcast/add", data);
   }
 
+  async PodcastUpdate(id,data) {
+    return Api.post(`/podcast/update/${id}`, data);
+  }
+
+  async PodcastDelete(id) {
+    return Api.delete(`/podcast/delete/${id}`);
+  }
+
   async EpisodeAdd(data) {
     return Api.post("/file/add", data);
   }
@@ -27,7 +43,7 @@ class Listing extends Component {
   }
 
   async EpisodeDelete(id) {
-    return Api.post(`/file/delete/${id}`);
+    return Api.delete(`/file/delete/${id}`);
   }
 
   render() {

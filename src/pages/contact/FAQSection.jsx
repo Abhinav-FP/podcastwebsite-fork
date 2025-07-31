@@ -36,8 +36,8 @@ export default function FAQSection() {
         <div className=" flex flex-col md:flex-row gap-10">
             {/* Left Content */}
             <div className="md:w-1/3">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4">Frequently<br />Asked<br />Questions</h2>
-                <p className="text-[#FFFFFF66] mb-6">Still have a questions in mind?</p>
+                <h2 className="text-3xl sm:text-4xl text-white font-bold mb-4">Frequently Asked Questions</h2>
+                <p className="text-[#FFFFFF66] mb-6 !mt-[20px]">Still have a questions in mind?</p>
                 <button className="bg-white text-black font-semibold py-2 px-4 rounded-full hover:bg-gray-200 transition">
                     Ask a Question
                 </button>
@@ -54,7 +54,7 @@ export default function FAQSection() {
                             onClick={() => toggleIndex(index)}
                             className="w-full flex justify-between items-center px-6 py-4 focus:outline-none"
                         >
-                            <span className="text-left text-base sm:text-lg font-medium">
+                            <span className=" text-[16px] md:text-[20px] leading-[20px] md:leading-[24px]  font-[500] text-white">
                                 {faq.question}
                             </span>
                             {activeIndex === index ? (
@@ -64,7 +64,7 @@ export default function FAQSection() {
                             )}
                         </button>
                         {activeIndex === index && (
-                            <div className="px-6 pb-4 text-sm text-[#FFFFFF99]">
+                            <div className="px-6 pb-4  text-[14px]  md:text-[16px] leading-[20px] md:leading-[22px] text-[#727272]">
                                 {faq.answer}
                             </div>
                         )}

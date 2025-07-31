@@ -52,9 +52,9 @@ const Index = () => {
             <div className=" bg-[#0a0a0a]  pt-[118px] lg:pt-[128px] pb-[20px]  ">
                 <div className="max-w-[1440px] mx-auto px-4 w-full   px-[15px] mb-[50px] lg:mb-[100px]">
                     {/* Main Heading and Description */}
-                    <Heading 
-                    title={"Free Property Investing Guides"}
-                    content={" Download high-value, expert-approved resources to deepen your property knowledge and take action with confidence. All guides are completely free and packed with actionable insights."}
+                    <Heading
+                        title={"Free Property Investing Guides"}
+                        content={" Download high-value, expert-approved resources to deepen your property knowledge and take action with confidence. All guides are completely free and packed with actionable insights."}
                     />
 
                     {/* Featured Guide Section */}
@@ -86,7 +86,8 @@ const Index = () => {
                     </div>
                 </div>
 
-                <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  px-[15px] mb-[50px] lg:mb-[100px]">
+                <div className="max-w-[1440px] mx-auto px-4 w-full   px-[15px] mb-[50px] lg:mb-[100px]">
+
                     {/* Main Heading and Description */}
                     <h2 className="text-[25px] sm:text-[35px] md:text-[45px] font-bold mb-4 text-white text-center font-inter">All Free Guides</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

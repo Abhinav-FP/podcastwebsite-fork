@@ -31,14 +31,14 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="rounded-2xl p-6 shadow-md">
               <div className="!text-white text-[20px] mb-2">{testimonial.stars}</div>
-              <h3 className="font-inter font-bold text-[17px] leading-snug text-white">
+              <h3 className=" font-bold text-[17px] leading-snug text-white">
                 {testimonial.title}
               </h3>
-              <p className="font-inter text-[16px] text-[#727272] leading-snug">
+              <p className=" text-[16px] text-[#727272] leading-snug">
 
                 {testimonial.description}
               </p>
-              <h6 className="font-inter font-bold text-[17px] leading-snug text-white">
+              <h6 className=" font-bold text-[17px] leading-snug text-white">
 
                 {testimonial.author}
               </h6>

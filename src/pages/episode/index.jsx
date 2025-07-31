@@ -52,10 +52,10 @@ export default function Index() {
             <div className="bg-[#0a0a0a]  pt-[118px] lg:pt-[128px] pb-[20px] ">
                 <div className="max-w-[1440px] mx-auto px-4 w-full">
                     {/* Heading Section */}
-                       <Heading 
-                                        title={"  Browse All Episodes"}
-                                        content={"Explore our library of powerful episodes covering everything from equity leverage and financing to market predictions and tax strategies."}
-                                        />
+                    <Heading
+                        title={"  Browse All Episodes"}
+                        content={"Explore our library of powerful episodes covering everything from equity leverage and financing to market predictions and tax strategies."}
+                    />
 
                     {/* Search + Filter */}
                     <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
@@ -65,7 +65,9 @@ export default function Index() {
                                 type="text"
                                 placeholder="Search episodes..."
                                 aria-label="Search episodes"
-                                className="w-full rounded-lg bg-[#111111] text-white px-4 py-2 pl-10 border border-[#FFFFFF33] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full rounded-lg bg-[#111111] text-white px-4 py-2 pl-10 
+                 border border-[#FFFFFF33] border-[1px]
+                 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                             <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
                         </div>
@@ -73,7 +75,9 @@ export default function Index() {
                         {/* Dropdown */}
                         <select
                             aria-label="Filter by topic"
-                            className="w-full md:w-1/3 rounded-lg bg-[#111111] text-white px-4 py-2 border border-[#FFFFFF33] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full md:w-1/3 rounded-lg bg-[#111111] text-white px-4 py-2 
+               border border-[#FFFFFF33] border-[1px]
+               focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option>All Topics</option>
                             <option>Financing</option>
@@ -81,6 +85,7 @@ export default function Index() {
                             <option>Taxes</option>
                         </select>
                     </div>
+
                 </div>
 
                 {/* Episodes Grid */}
@@ -94,30 +99,30 @@ export default function Index() {
                                 <Image
                                     src={Podcast}
                                     alt={episode.title}
-                                    className="w-full h-[250px] object-cover"
+                                    className="w-full h-[203px] object-cover"
                                 />
                                 <div className="p-4 space-y-3">
                                     {/* Tag + Date */}
                                     <div className="flex justify-between items-center text-sm">
-                                        <span className="bg-[#383535] text-white px-3 py-[6px] rounded-lg text-[14px] font-inter font-medium">
+                                        <span className="bg-[#383535] text-white px-3 py-[6px] rounded-lg text-[14px]  font-medium">
                                             {episode.category}
                                         </span>
                                         <span className="text-[#727272] text-[13px]">{episode.date}</span>
                                     </div>
 
                                     {/* Title */}
-                                    <h3 className="font-inter font-bold text-[17px] leading-snug text-white">
+                                    <h3 className=" font-bold text-[17px] leading-snug text-white">
                                         {episode.title}
                                     </h3>
 
                                     {/* Description */}
-                                    <p className="font-inter text-[16px] text-[#727272] leading-snug">
+                                    <p className=" text-[16px] text-[#727272] leading-snug">
                                         {episode.description}
                                     </p>
 
                                     {/* Duration + CTA */}
                                     <div className="flex justify-between items-center pt-2">
-                                        <span className="font-inter text-[15px] text-[#727272]">
+                                        <span className=" text-[15px] text-[#727272]">
                                             {episode.duration}
                                         </span>
                                         <button className="rounded-full border border-[#727272] px-4 py-1 hover:bg-white hover:text-black transition-all">
@@ -129,7 +134,7 @@ export default function Index() {
                         ))}
                     </div>
                 </div>
-                <NewsletterBanner/>
+                <NewsletterBanner />
             </div>
         </Layout>
     );

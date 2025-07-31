@@ -1,14 +1,40 @@
-import React from 'react';
-import news from "../assets/episode.png"
+import React, { useState } from 'react';
+import news from "../assets/episode.png";
 import Image from 'next/image';
+import Listing from '@/pages/api/Listing';
+import toast from 'react-hot-toast';
 
 const NewsletterBanner = () => {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    if (loading) return;
+    if (!email || !email.includes("@")) {
+      toast.error("Please enter a valid email.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.AddSubscriber({email :email});
+      toast.success("Thank you for subscribing!");
+      setEmail(""); // clear field
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error?.response?.data?.errors);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="text-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className='max-w-[1440px] mx-auto px-4 w-full'>
-        <div className='bg-[#141414] p-4   rounded-[30px]'>
-          <div className=" relative rounded-[30px] overflow-hidden shadow-2xl ">
-            {/* Blurred Background Image */}
+      <div className="max-w-[1440px] mx-auto px-4 w-full">
+        <div className="bg-[#141414] p-4 rounded-[30px]">
+          <div className="relative rounded-[30px] overflow-hidden shadow-2xl">
+            {/* Background Image */}
             <div className="absolute inset-0">
               <Image
                 src={news}
@@ -24,37 +50,31 @@ const NewsletterBanner = () => {
 
             {/* Content */}
             <div className="relative z-10 p-3 sm:p-8 md:p-12 flex flex-col items-center text-center">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-inter leading-tight">
-                What more Exclusive content ?
+              <h2 className="text-[30px] sm:text-[45px] md:text-[55px] font-[700] mb-4 leading-tight">
+                Want more exclusive content?
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 font-inter">
-                Get exclusive property tips, expert strategies, and bonus content delivered to your inbox: weekly.
+              <p className="text-[16px] sm:text-[18px] md:text-[20px] font-[400] max-w-2xl mx-auto mb-8">
+                Get exclusive property tips, expert strategies, and bonus content delivered to your inbox weekly.
               </p>
-              {/* Email Input and Subscribe Button */}
-              <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md border-1  border-[#FFFFFF33] rounded-lg  p-2">
+
+              {/* Email Input + Button */}
+              <div className="flex flex-col sm:flex-row items-center sm:justify-between w-full max-w-[404px] border border-[#FFFFFF33] rounded-[10px] px-[9px] sm:pl-[20px] py-[9px] gap-3">
                 <input
                   type="email"
-                  placeholder="Enter Your Email"
-                  className="flex-grow p-3 sm:p-4 rounded-md text-white placeholder-white 
-             border-none outline-none focus:outline-none focus:ring-0 focus:border-none 
-             hover:border-none bg-transparent"
+                  placeholder="Enter your email"
+                  value={email}
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-transparent text-white placeholder-white border-none outline-none focus:ring-0"
                 />
-
                 <button
-                  className="
-    px-4 py-2 sm:px-6 sm:py-2 
-    rounded-lg bg-[#000000] text-white 
-    font-[400] text-[20px] sm:text-[15px] font-inter 
-    whitespace-nowrap cursor-pointer transition-colors duration-300
-
-    outline-none border-none 
-    focus:outline-none focus:ring-0 focus:border-none 
-    hover:outline-none hover:border-none
-    active:outline-none active:border-none
-  "
+                  onClick={handleSubmit}
+                  disabled={loading}
+                  className={`w-full sm:w-auto px-4 py-2 bg-black text-white text-[16px] font-medium rounded-[8px] transition duration-300 ${
+                    loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 >
-
-                  Subscribe
+                  {loading ? "Subscribing..." : "Subscribe"}
                 </button>
               </div>
             </div>

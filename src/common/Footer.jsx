@@ -31,22 +31,22 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4 text-white ">Quick Links</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="#" className="text-[#727272] hover:text-white transition">
                   Episode
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="#" className="text-[#727272] hover:text-white transition">
                   E-Guide
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="#" className="text-[#727272] hover:text-white transition">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="#" className="text-[#727272] hover:text-white transition">
                   Contact
                 </Link>
               </li>
@@ -58,22 +58,22 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4 text-white">Listen</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="#" className="text-[#727272] hover:text-white transition">
                   Spotify
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="#" className="text-[#727272] hover:text-white transition">
                   Apple Podcasts
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="#" className="text-[#727272] hover:text-white transition">
                   Google Podcasts
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
+                <Link href="#" className="text-[#727272] hover:text-white transition">
                   YouTube
                 </Link>
               </li>

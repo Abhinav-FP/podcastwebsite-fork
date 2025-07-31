@@ -46,6 +46,18 @@ class Listing extends Component {
     return Api.delete(`/file/delete/${id}`);
   }
 
+  async AddSubscriber(data){
+    return Api.post("/subscriber/add" , data)
+  }
+async enquiryGet() {
+    return Api.get("/contact/get")
+  }
+   async GetSubscriber(){
+    return Api.get("/subscriber/get" , )
+  }
+  async AddContact(data){
+    return  Api.post("/contact/add" ,data)
+  }
   render() {
     return (
       <div>

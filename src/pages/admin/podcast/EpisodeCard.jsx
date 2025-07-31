@@ -25,7 +25,7 @@ export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelecte
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleDelete = async(id) => {
+  const handleDelete = async (id) => {
     if (deleteLoading) return;
     setDeleteLoading(true);
     try {
@@ -96,23 +96,23 @@ export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelecte
               className="absolute right-0 w-32 bg-[#1c1c1c] border border-gray-700 rounded-md shadow-lg z-10"
             >
               <button
-                onClick={()=>{
+                onClick={() => {
                   setSelectedEpisode(episode);
                   setShowMenu(false);
                   setIsEpisodePopupOpen(true);
                 }}
                 className="flex gap-2 items-center w-full px-4 py-2 text-sm text-white hover:bg-white/10 text-left border-b border-gray-700 cursor-pointer"
               >
-                Edit <MdEdit size={16}/>
+                Edit <MdEdit size={16} />
               </button>
               <button
-                onClick={()=>{
+                onClick={() => {
                   setShowMenu(false);
                   handleDelete(episode?.uuid);
                 }}
                 className="flex gap-2 items-center w-full px-4 py-2 text-sm text-red-400 hover:bg-white/10 text-left cursor-pointer"
               >
-                Delete <RiDeleteBin5Line size={16}/>
+                Delete <RiDeleteBin5Line size={16} />
               </button>
             </div>
           )}

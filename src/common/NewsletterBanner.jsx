@@ -18,7 +18,7 @@ const NewsletterBanner = () => {
     setLoading(true);
     try {
       const main = new Listing();
-      const response = await main.AddSubscriber({email :email});
+      const response = await main.AddSubscriber({ email: email });
       toast.success("Thank you for subscribing!");
       setEmail(""); // clear field
     } catch (error) {
@@ -63,6 +63,7 @@ const NewsletterBanner = () => {
                   type="email"
                   placeholder="Enter your email"
                   value={email}
+                  required
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-transparent text-white placeholder-white border-none outline-none focus:ring-0"
@@ -70,9 +71,8 @@ const NewsletterBanner = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={loading}
-                  className={`w-full sm:w-auto px-4 py-2 bg-black text-white text-[16px] font-medium rounded-[8px] transition duration-300 ${
-                    loading ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`w-full sm:w-auto px-4 py-2 bg-black text-white text-[16px] font-medium rounded-[8px] transition duration-300 ${loading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                 >
                   {loading ? "Subscribing..." : "Subscribe"}
                 </button>

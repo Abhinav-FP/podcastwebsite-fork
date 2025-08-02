@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
-import Card from "../../common/Card";
 import HeadingTopic from "@/common/HeadingTopic";
 import Listing from "../api/Listing";
 import NoData from "@/common/NoDataFound";
-import LoadingSpinner from "@/common/LoadingSpinner";
-
-
-
+import Card from "@/common/Card";
+import { LoadingSpinner } from "@/common/LoadingSpinner";
 export default function Podcast() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-
 
   const fetchPodcasts = async () => {
     try {
       setLoading(true);
       const main = new Listing();
       const response = await main.PodcastGet();
-      console.log("response", response)
+      console.log("response", response?.data?.data)
       setData(response?.data?.data || []);
     } catch (error) {
       console.log("error", error);
-      setData({});
+      console.log("Hellos");
+
+      setData([]);
     }
     setLoading(false);
   };
@@ -30,7 +28,7 @@ export default function Podcast() {
     fetchPodcasts();
   }, []);
 
-  console.log("data",data);
+  console.log("data", data);
   return (
     <section className="bg-black text-white  py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  ">
@@ -42,28 +40,14 @@ export default function Podcast() {
               Stream the best podcasts from your favorite stations
             </p>
           </div>
-
-          {/* Right side */}
-          <div className="w-full md:w-auto">
-            <select
-              className="w-full md:w-64 px-4 py-2 rounded-lg bg-black border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
-            >
-              <option value="">Select podcast...</option>
-              <option value="tech">Tech</option>
-              <option value="business">Business</option>
-              <option value="health">Health</option>
-              <option value="education">Education</option>
-            </select>
-
-          </div>
         </div>
 
         <HeadingTopic title="Popular Podcasts" />
         {loading ? (
           <LoadingSpinner count={5} />
-         ) : data && data?.length === 0 ? (
+        ) : data && data?.length === 0 ? (
           <NoData heading="No podcasts available." />
-         ) : (
+        ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {data && data?.map((podcast, index) => (
               <Card key={index} podcast={podcast} index={index} />

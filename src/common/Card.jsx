@@ -1,8 +1,8 @@
+import Link from 'next/link';
 import React from 'react'
 import { RiChatVoiceLine } from "react-icons/ri";
-
-
 export default function Card({ index, podcast }) {
+    console.log("Link", podcast)
     return (
         <div key={index} className=" rounded-lg p-3">
             <img
@@ -14,11 +14,12 @@ export default function Card({ index, podcast }) {
                 {podcast.name}
             </h3>
             <p className="text-[14px] sm:text-[16px] paragraph mb-3 text-center line-clamp-2">{podcast.description}</p>
-            <button
+            <Link
+                href={`/podcast/${podcast?.id}`}
                 className="flex items-center justify-center gap-3 text-center mx-auto rounded-[40px] button-bg py-2 px-5 cursor-pointer " >
                 <RiChatVoiceLine size={20} />
                 Listen Now
-            </button>
+            </Link>
         </div>
     )
 }

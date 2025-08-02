@@ -1,7 +1,5 @@
 import React from 'react'
-
 import Layout from '../../layout/Layout'
-import Testimonials from './Testimonials'
 import Podcast from './Podcast'
 import HeroSection from './HeroSection'
 import TopicsGrid from './TopicsGrid'
@@ -12,10 +10,10 @@ export default function Main() {
     <>
       <Layout>
         <HeroSection />
-        {/* <Podcast /> */}
+        <Podcast />
         <TopicsGrid />
         <WhyChooseUs />
-        {/* <Podcast /> */}
+        <Podcast />
       </Layout>
     </>
   )

@@ -8,7 +8,7 @@ export default function PodcastDetails() {
             <Image
                 src={podcast} // Replace with actual image
                 alt="The Stories of Mahabharata"
-                className="w-[400px] h-[400px] rounded-lg object-cover"
+                className="w-48 h-48 rounded-lg object-cover"
             />
             <div>
                 <h1 className="text-3xl font-bold mb-1 text-white">The Stories of Mahabharata</h1>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Listing from "@/pages/api/Listing";
 import { useRouter } from "next/router";
 import moment from "moment";
-import EpisodeCard from "./EpisodeCard";
+import EpisodeCard from "../../../common/EpisodeCard";
 import AddEpisode from "./AddEpisode";
 
 export default function Detail() {

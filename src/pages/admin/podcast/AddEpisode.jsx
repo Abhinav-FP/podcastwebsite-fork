@@ -48,9 +48,9 @@ export default function AddEpisode({
       setThumbnailPreview(URL.createObjectURL(file));
     } else if (name === "video" && files?.[0]) {
       const file = files[0];
-      if (!file.type.startsWith("video/")) {
-        toast.error("Only video files allowed");
-        return;
+      if (!file.type.startsWith("video/") && !file.type.startsWith("audio/")) {
+      toast.error("Only video or audio files allowed");
+      return;
       }
       setFormData((prev) => ({ ...prev, video: file }));
     } else {
@@ -227,12 +227,12 @@ export default function AddEpisode({
         {/* Video */}
         <div className="space-y-1">
           <label className="block text-sm font-medium">
-            Video <span className="text-red-500">*</span>
+            File <span className="text-red-500">*</span>
           </label>
           <input
             type="file"
             name="video"
-            accept="video/*"
+             accept="video/*,audio/*"
             onChange={handleChange}
             className="w-full text-sm text-gray-400 file:bg-white file:text-black file:rounded-lg file:px-4 file:py-2 border border-gray-700 bg-[#1c1c1c]"
           />

@@ -57,7 +57,7 @@ export default function Index() {
     };
 
   return (
-    <AuthLayout page={"Podcast"}>
+    <AuthLayout>
       <div className="bg-[#0a0a0a] text-white min-h-screen py-8 px-4 lg:px-12 space-y-8">
         <div className="flex items-center justify-between tracking-tight border-b border-[#2a2a2a] pb-4 mb-6 w-full">
           <h1 className="text-3xl lg:text-4xl font-bold">🎙️ Latest Podcasts</h1>

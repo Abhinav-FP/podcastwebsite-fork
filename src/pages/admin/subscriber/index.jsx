@@ -56,7 +56,10 @@ export default function index() {
   };
 
   return (
-    <AuthLayout page={"Contact Get"}>
+    <AuthLayout>
+      <div className="flex items-center justify-between tracking-tight border-b border-[#2a2a2a] pb-4 mb-6 w-full">
+        <h1 className="text-3xl lg:text-4xl font-bold">Subscription List</h1>
+      </div>
       <div className="overflow-auto">
         {loading ? (
           <TableLoader length={2} />
@@ -66,7 +69,7 @@ export default function index() {
           ) : (
             <table className="w-full table-auto whitespace-nowrap">
               <thead className="">
-                <tr>
+                <tr className="bg-theme">
                   <th className="border-b border-[#ffffff]  text-[14px] text-[#ffffff] uppercase text-left p-[10px] mb-[10px]">S.No.</th>
                   <th className="border-b border-[#ffffff]  text-[14px] text-[#ffffff] uppercase text-left   p-[10px]">Email</th>
                 </tr>
@@ -79,7 +82,6 @@ export default function index() {
               ))}
             </table>
           )
-
         )}
       </div>
       {/* <div className="mt-[10px] mb-[10px] lg:mt-[10px] lg:mb-[20px] flex justify-center items-center">

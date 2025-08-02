@@ -21,7 +21,7 @@ export default function AuthLayout({ children }) {
       const main = new Listing();
       const response = await main.profileVerify(signal);
       if (response.data) {
-        console.log("token verify data",response?.data);
+        // console.log("token verify data",response?.data);
         setUser(response.data.data.user);
       }
     } catch (error) {

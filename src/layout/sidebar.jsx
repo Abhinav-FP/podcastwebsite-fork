@@ -5,9 +5,11 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import Link from "next/link";
 import { FaRegUser } from "react-icons/fa";
 import { MdSupportAgent } from "react-icons/md";
-
+import { BsFileEarmarkPdf } from "react-icons/bs";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar({ toggle }) {
+  const pathname = usePathname();
   return (
     <>
       <div
@@ -29,7 +31,7 @@ export default function Sidebar({ toggle }) {
         <ul>
           <li>
             <Link
-              className={`hover:!bg-[#131313] hover:text-white focus:!text-white bg-dark text-gray-200 mb-2 py-[13px] px-[13px] border border-gray-900 rounded-2xl  flex items-center`}
+              className={`bg-dark hover:!bg-theme hover:text-white focus:!text-white  text-gray-200 mb-2 py-[13px] px-[13px] ${pathname === "/admin" ? "bg-theme" : ""} border border-gray-900 rounded-2xl  flex items-center`}
               href={"/admin"}
             >
               <MdOutlineSpaceDashboard className="me-2" size={"1.4rem"} />{" "}
@@ -38,7 +40,7 @@ export default function Sidebar({ toggle }) {
           </li>
           <li>
             <Link
-              className={`hover:!bg-[#131313] hover:text-white focus:!text-white bg-dark text-gray-200 mb-2 py-[13px] px-[13px] border border-gray-900 rounded-2xl  flex items-center`}
+              className={`hover:!bg-theme hover:text-white focus:!text-white bg-dark text-gray-200 mb-2 py-[13px] px-[13px] ${pathname === "/admin/podcast" ? "bg-theme" : ""} border border-gray-900 rounded-2xl  flex items-center`}
               href={"/admin/podcast"}
             >
               <MdOutlineSpaceDashboard className="me-2" size={"1.4rem"} />{" "}
@@ -48,25 +50,33 @@ export default function Sidebar({ toggle }) {
 
           <li>
             <Link
-              className={`hover:!bg-[#131313] hover:text-white focus:!text-white bg-dark text-gray-200 mb-2 py-[13px] px-[13px] border border-gray-900 rounded-2xl  flex items-center`}
+              className={`hover:!bg-theme hover:text-white focus:!text-white bg-dark text-gray-200 mb-2 py-[13px] px-[13px] ${pathname === "/admin/enquiry" ? "bg-theme" : ""} border border-gray-900 rounded-2xl  flex items-center`}
               href={"/admin/enquiry"}
             >
               <MdSupportAgent className="me-2" size={"1.4rem"} /> Enquiry
             </Link>
-
           </li>
+
           <li>
             <Link
-              className={`hover:!bg-[#131313] hover:text-white focus:!text-white bg-dark text-gray-200 mb-2 py-[13px] px-[13px] border border-gray-900 rounded-2xl  flex items-center`}
+              className={`hover:!bg-theme hover:text-white focus:!text-white bg-dark text-gray-200 mb-2 py-[13px] px-[13px] ${pathname === "/admin/subscriber" ? "bg-theme" : ""} border border-gray-900 rounded-2xl  flex items-center`}
               href={"/admin/subscriber"}
             >
               <FaRegUser className="me-2" size={"1.4rem"} /> Subscriber
-
             </Link>
-
           </li>
+
           <li>
-            <button className="hover:!bg-[#131313] hover:text-white focus:!text-white text-gray-200 w-full mb-2 py-[13px] px-[13px] border border-gray-900 rounded-2xl bg-dark flex items-center">
+            <Link
+              className={`hover:!bg-theme hover:text-white focus:!text-white bg-dark text-gray-200 mb-2 py-[13px] px-[13px] ${pathname === "/admin/guide" ? "bg-theme" : ""} border border-gray-900 rounded-2xl  flex items-center`}
+              href={"/admin/guide"}
+            >
+              <BsFileEarmarkPdf className="me-2" size={"1.4rem"} /> Guides
+            </Link>
+          </li>
+
+          <li>
+            <button className="hover:!bg-theme hover:text-white focus:!text-white text-gray-200 w-full mb-2 py-[13px] px-[13px] border border-gray-900 rounded-2xl bg-dark flex items-center">
               <MdOutlineLogout className="me-2" size={"1.4rem"} /> Logout
             </button>
           </li>

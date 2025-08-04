@@ -25,7 +25,7 @@ export default function Index() {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log("data", data);
+  // console.log("data", data);
 
   const stats = useMemo(
     () =>[

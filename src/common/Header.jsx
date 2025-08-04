@@ -24,7 +24,7 @@ export default function Header() {
 
   const router = useRouter();
 
-  console.log(router);
+  // console.log(router);
 
   return (
     <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out  ${Scrolled ? router.pathname === "/" ? "bg-[#fff] text-black py-1 lg:py-1 hover:text-gray-300" : "bg-[#000000] text-white py-1 lg:py-1 hover:text-gray-300" : "bg-transparent  py-3  text-white lg:py-6 hover:text-gray-300"}`}>

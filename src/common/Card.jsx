@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react'
 import { RiChatVoiceLine } from "react-icons/ri";
 export default function Card({ index, podcast }) {
-    console.log("Link", podcast)
+    // console.log("Link", podcast)
     return (
         <div key={index} className=" rounded-lg p-3">
             <img

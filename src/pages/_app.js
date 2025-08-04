@@ -3,6 +3,8 @@ import "./style.css";
 import { Toaster } from "react-hot-toast";
 import { RoleProvider } from "@/context/RoleContext";
 import NextNProgress from 'nextjs-progressbar';
+import { AudioPlayerProvider } from "@/context/AudioPlayerContext";
+import AudioPlayerWrapper from "@/components/AudioPlayerWrapper";
 
 export default function App({ Component, pageProps }) {
   return <>
@@ -17,7 +19,10 @@ export default function App({ Component, pageProps }) {
       }}
     />
     <RoleProvider>
+      <AudioPlayerProvider>
      <Component {...pageProps} />
+     <AudioPlayerWrapper />
+      </AudioPlayerProvider>
     </RoleProvider>
   </>;
 }

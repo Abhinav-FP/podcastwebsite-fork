@@ -3,7 +3,7 @@ import podcastImage from "../assets/e-guidebanner.png"
 import Image from 'next/image'
 
 export default function PodcastDetails({ podcast }) {
-    console.log("podcast", podcast);
+    // console.log("podcast", podcast);
     return (
         <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
             <div className='w-48 h-48 min-w-48 md:w-48 md:h-48 md:min-w-48 relative'>

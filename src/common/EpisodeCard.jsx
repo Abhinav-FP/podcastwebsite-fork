@@ -6,12 +6,13 @@ import { FaPlay } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Listing from "@/pages/api/Listing";
+import { useAudioPlayer } from "@/context/AudioPlayerContext";
 
 export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelectedEpisode, fetchDetails, isAdmin=false }) {
+  const { playTrack } = useAudioPlayer();
   const [isOpen, setIsOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
   const menuRef = useRef();
 
   // Close dropdown when clicking outside
@@ -49,7 +50,7 @@ export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelecte
     <>
       <div
         className="group flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 py-4 border-b border-gray-700 hover:bg-white/5 transition-colors duration-200 cursor-pointer"
-        onClick={() => setIsOpen(true)}
+        onClick={() => playTrack(episode)}
       >
         {/* Thumbnail */}
         <div className="w-full sm:w-32 h-28 relative rounded-lg overflow-hidden">
@@ -121,7 +122,7 @@ export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelecte
       </div>
 
       {/* Video Player Modal */}
-      {isOpen && (
+      {/* {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
           <div className="bg-black p-4 rounded-lg relative w-[90vw] max-w-3xl">
             <button
@@ -138,7 +139,7 @@ export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelecte
             />
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }

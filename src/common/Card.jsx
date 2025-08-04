@@ -15,7 +15,7 @@ export default function Card({ index, podcast }) {
             </h3>
             <p className="text-[14px] sm:text-[16px] paragraph mb-3 text-center line-clamp-2">{podcast.description}</p>
             <Link
-                href={`/podcast/${podcast?.id}`}
+                href={`/podcast/${podcast?.uuid}`}
                 className="flex items-center justify-center gap-3 text-center mx-auto rounded-[40px] button-bg py-2 px-5 cursor-pointer " >
                 <RiChatVoiceLine size={20} />
                 Listen Now

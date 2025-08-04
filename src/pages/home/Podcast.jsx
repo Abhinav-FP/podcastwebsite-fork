@@ -28,7 +28,7 @@ export default function Podcast() {
     fetchPodcasts();
   }, []);
 
-  console.log("data", data);
+  // console.log("data", data);
   return (
     <section className="bg-black text-white  py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  ">

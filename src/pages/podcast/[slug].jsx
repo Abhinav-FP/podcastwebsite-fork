@@ -1,44 +1,72 @@
 import Layout from "@/layout/Layout";
 import Image from "next/image";
 import PodcastDetails from "@/common/PodcastDetails";
+import { useEffect, useState } from "react";
+import Listing from "../api/Listing";
+import EpisodeCard from "@/common/EpisodeCard";
+import { useRouter } from "next/router";
 
 export default function index() {
-  const episodes = [
-    {
-      title: "Mahabharata Episode 1: Beginnings",
-      description:
-        "Ganga, Devabrata and Shantanu... This episode tells the story of the beginnings of the great saga told by Rishi Vyasa and written by Lord Ganesha. , Ganga, Devabrata and Shantanu... This episode tells the story of the beginnings of the great saga told by Rishi Vyasa and written by Lord Ganesha.,Ganga, Devabrata and Shantanu... This episode tells the story of the beginnings of the great saga told by Rishi Vyasa and written by Lord Ganesha.",
-      duration: "23 min",
-    },
-    {
-      title: "Mahabharata Episode 2: Amba’s Plight",
-      description:
-        "Bhishma abducts Amba, Ambika and Ambalika... Audio engineering and sound design by Avi Ziv.",
-      duration: "26 min",
-    },
-    {
-      title: "Mahabharata Episode 3: Birth of the Kuru Princes",
-      description:
-        "Pandu Hunts the Deer Couple... We also learn about the tragic death of King Pandu.",
-      duration: "20 min",
-    },
-    {
-      title: "Mahabharata Episode 4: The Conflict Begins",
-      description:
-        "Young Bheema fights with the Nagas... Enjoy and do not forget to give your feedback.",
-      duration: "15 min",
-    },
-  ];
+  const router = useRouter();
+  const { slug } = router.query;
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  const fetchDetails = async (slug) => {
+    try {
+      setLoading(true);
+      const main = new Listing();
+      const response = await main.PodcastDetail(slug);
+      setData(response?.data?.data || []);
+    } catch (error) {
+      console.log("error", error);
+      setData({});
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (slug) {
+      fetchDetails(slug);
+    }
+  }, [slug]);
+
+  // const episodes = [
+  //   {
+  //     title: "Mahabharata Episode 1: Beginnings",
+  //     description:
+  //       "Ganga, Devabrata and Shantanu... This episode tells the story of the beginnings of the great saga told by Rishi Vyasa and written by Lord Ganesha. , Ganga, Devabrata and Shantanu... This episode tells the story of the beginnings of the great saga told by Rishi Vyasa and written by Lord Ganesha.,Ganga, Devabrata and Shantanu... This episode tells the story of the beginnings of the great saga told by Rishi Vyasa and written by Lord Ganesha.",
+  //     duration: "23 min",
+  //   },
+  //   {
+  //     title: "Mahabharata Episode 2: Amba’s Plight",
+  //     description:
+  //       "Bhishma abducts Amba, Ambika and Ambalika... Audio engineering and sound design by Avi Ziv.",
+  //     duration: "26 min",
+  //   },
+  //   {
+  //     title: "Mahabharata Episode 3: Birth of the Kuru Princes",
+  //     description:
+  //       "Pandu Hunts the Deer Couple... We also learn about the tragic death of King Pandu.",
+  //     duration: "20 min",
+  //   },
+  //   {
+  //     title: "Mahabharata Episode 4: The Conflict Begins",
+  //     description:
+  //       "Young Bheema fights with the Nagas... Enjoy and do not forget to give your feedback.",
+  //     duration: "15 min",
+  //   },
+  // ];
 
   return (
     <Layout>
       <div className=" pt-[118px] lg:pt-[128px] ">
         <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  px-4">
-    <PodcastDetails/>
+         <PodcastDetails podcast={data}/>
 
           {/* Episodes List */}
           <h2 className="mt-10 text-xl font-semibold text-white">Episodes </h2>
-          <div className="mt-4 divide-y divide-[#FFFFFF1A]">
+          {/* <div className="mt-4 divide-y divide-[#FFFFFF1A]">
             {episodes.map((ep, index) => (
               <div key={index} className="py-6">
                 <h4 className="font-bold text-[15px] leading-snug text-white uppercase mb-1">
@@ -62,7 +90,10 @@ export default function index() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
+           {data && data?.files && data?.files?.map((item,index)=>(
+              <EpisodeCard episode={item} key={index} setIsEpisodePopupOpen={false} setSelectedEpisode={null} fetchDetails={fetchDetails} isAdmin={false}/>
+            ))}
         </div>
       </div>
     </Layout>

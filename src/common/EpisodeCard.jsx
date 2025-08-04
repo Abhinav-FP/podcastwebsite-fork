@@ -7,7 +7,7 @@ import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Listing from "@/pages/api/Listing";
 
-export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelectedEpisode, fetchDetails }) {
+export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelectedEpisode, fetchDetails, isAdmin=false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -85,6 +85,7 @@ export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelecte
         </div>
 
         {/* Dropdown Menu Trigger */}
+        {isAdmin &&
         <div className="relative" onClick={(e) => e.stopPropagation()}>
           <BsThreeDots
             className="text-gray-400 text-xl cursor-pointer"
@@ -116,7 +117,7 @@ export default function EpisodeCard({ episode, setIsEpisodePopupOpen, setSelecte
               </button>
             </div>
           )}
-        </div>
+        </div>}
       </div>
 
       {/* Video Player Modal */}

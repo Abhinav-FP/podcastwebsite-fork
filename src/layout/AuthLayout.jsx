@@ -6,6 +6,7 @@ import Listing from "@/pages/api/Listing";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import { useRole } from "@/context/RoleContext";
+import Link from "next/link";
 
 export default function AuthLayout({ children }) {
   const [toggle, setToggle] = useState(false);
@@ -55,10 +56,10 @@ export default function AuthLayout({ children }) {
       <div className="auth-wrap flex justify-between max-lg:flex-wrap">
         <main className="main-wrap">
           <header className="fixed top-0 left-0 w-full z-[9998] bg-black shadow-lg border-b border-gray-800 px-6 md:px-7 py-2 xl:py-4 flex items-center justify-between">
-            <img
-              className="max-w-[170px]"
-              src="https://images.carriercms.com/image/upload/carrier/residential-hvac/adkit/Logos/Carrier/Full_color_wWhite_tagline_thumb.png"
-            />
+              <img
+                className="max-w-[170px]"
+                src="https://images.carriercms.com/image/upload/carrier/residential-hvac/adkit/Logos/Carrier/Full_color_wWhite_tagline_thumb.png"
+              />
             <div className="flex gap-2 items-center">
               <div className="hidden md:flex items-center">
                 <div>

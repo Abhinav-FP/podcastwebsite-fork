@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "plyr/dist/plyr.css";
 import "./style.css";
 import { Toaster } from "react-hot-toast";
 import { RoleProvider } from "@/context/RoleContext";

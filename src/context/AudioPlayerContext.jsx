@@ -33,12 +33,14 @@ export const AudioPlayerProvider = ({ children }) => {
       value={{
         isPlaying,
         currentTrack,
+        setCurrentTrack,
         playTrack,
         pauseTrack,
         audioRef,
         isMinimized,
         setIsMinimized,
-        selectedEpisode
+        selectedEpisode,
+        setSelectedEpisode
       }}
     >
       {children}

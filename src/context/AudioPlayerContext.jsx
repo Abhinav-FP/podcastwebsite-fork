@@ -10,7 +10,7 @@ export const AudioPlayerProvider = ({ children }) => {
   const [currentTrack, setCurrentTrack] = useState(null);
   const [isMinimized, setIsMinimized] = useState(true);
   const [selectedEpisode, setSelectedEpisode] = useState(null);
-  console.log("selectedEpisode", selectedEpisode);
+  // console.log("selectedEpisode", selectedEpisode);
 
   const playTrack = (episode) => {
     if (selectedEpisode !== episode) {

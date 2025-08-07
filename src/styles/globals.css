@@ -49,6 +49,7 @@ body {
   width: 14px !important;
   height: 14px !important;
   margin-top: -4px !important;
+  top: 0px !important;
 }
 
 .rhap_main-controls-button {
@@ -62,6 +63,10 @@ body {
   border: none !important;
   cursor: pointer !important;
   padding: 0 8px !important;
+}
+
+.rhap_time{
+  color: #ffffff !important;
 }
 
 @tailwind base;

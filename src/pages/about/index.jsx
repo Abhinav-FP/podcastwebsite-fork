@@ -7,6 +7,8 @@ import SubhashPatel from "../../assets/subhash.png"
 import Image from 'next/image';
 import arrow from "../../assets/arrow.png"
 import NewsletterBanner from '@/common/NewsletterBanner';
+import InvestorSection from '../home/InvestorSection';
+import MeetYourHost from '../home/MeetYourHost';
 
 const Index = () => {
 
@@ -112,16 +114,14 @@ const Index = () => {
     return (
         <Layout>
             <div className=" text-white pt-[118px] lg:pt-[128px] ">
+                <InvestorSection/>
+                <MeetYourHost/>
                 <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]   px-[15px] mb-[50px] lg:mb-[100px]">
-                    <section className="bg-[#141414] border-1  border-[#FFFFFF33] rounded-[10px]  p-[20px] md:p-[40px] mb-3">
-
-                        {/* Section Header */}
+                    {/* <section className="bg-[#141414] border-1  border-[#FFFFFF33] rounded-[10px]  p-[20px] md:p-[40px] mb-3">
                         <Heading
                             title={"Meet Your Hosts"}
                             content={"We're passionate about simplifying property investing. With decades of combined experience in real estate strategy, finance, and coaching, we bring practical, honest advice that actually works."}
                         />
-
-                        {/* Stats Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-3 md:mt-12">
                             {stats.map((stat, index) => (
                                 <div
@@ -143,7 +143,7 @@ const Index = () => {
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </section> */}
                     {/* Main Heading and Description */}
                     <section className="  p-[20px] md:p-[40px] mb-3">
                         <h2 className="text-[25px] sm:text-[35px] md:text-[45px] font-bold mb-4 text-white text-center ">The Team Behind The Podcast</h2>

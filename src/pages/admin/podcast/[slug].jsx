@@ -78,9 +78,11 @@ export default function Detail() {
             Add New Episode
         </button>
         </div>
-      {data && data?.episodes && data?.episodes?.map((item,index)=>(
-        <EpisodeCard episode={item} key={index} setIsEpisodePopupOpen={setIsEpisodePopupOpen} setSelectedEpisode={setSelectedEpisode} fetchDetails={fetchDetails} isAdmin={true} slug={slug}/>
-      ))}
+         <div className="space-y-8 mt-6">
+          {data && data?.episodes && data?.episodes?.map((item,index)=>(
+            <EpisodeCard episode={item} key={index} setIsEpisodePopupOpen={setIsEpisodePopupOpen} setSelectedEpisode={setSelectedEpisode} fetchDetails={fetchDetails} isAdmin={true} slug={slug}/>
+          ))}
+         </div>
       </div>
       <AddEpisode
         isOpen={isEpisodePopupOpen}

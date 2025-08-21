@@ -2,28 +2,28 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
-  
+
 .font-outfit {
-    font-family: 'Outfit', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 
 
 
-  body {
-  --white:#ffffff;
-  --black:#000000;
-  --gray:#cccccc;
-  --gray2:#4D4D4D;
-  --mint:#05EFB8;
-  --pink:#F94F97;
-  --yellow:#E6EA7B;
-  --lightpink:#FFC4E2;
+body {
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #cccccc;
+  --gray2: #4D4D4D;
+  --mint: #05EFB8;
+  --pink: #F94F97;
+  --yellow: #E6EA7B;
+  --lightpink: #FFC4E2;
   --voilet: #8C52FF;
   --purple: #8C52FF;
-  --body-font:'gulfs';
+  --body-font: 'gulfs';
   --heading-font: 'gulfs';
   --para-font: 'CeraGRMedium';
   --parabold-font: 'CeraGRBold';
@@ -31,27 +31,57 @@
   --text-bl: #000000;
   --text-gray: #616161;
   --text-graydark: #333333;
-  --text-paragraph:  #999999;
-  --linear-gradient :linear-gradient(to right, #f9a8d4, #f9a8d4, #f472b6);
+  --text-paragraph: #999999;
+  --linear-gradient: linear-gradient(to right, #f9a8d4, #f9a8d4, #f472b6);
   --theme: linear-gradient(90deg, #9747FF 0%, #FC18D8 100%);
 }
 
-body{
+body {
   background-color: #000000;
-  color :white;
+  color: white;
   font-family: "Inter", sans-serif;
 }
 
-.hero_bg{background:var(--linear-gradient);}
-.detail_bg{background:var(--linear-gradient);}
-.button-bg {background: var(--pink);color: var(--white);font-weight: 600;}
-.button-bg:hover {background: var(--white);color: var(--pink);}
-.paragraph {  font-family: Poppins; color:var(--text-paragraph);}
-.heading{font-family: Inter;  color : var(--white);}
-.sidebar{  box-shadow: 0px 4px 74px 0px #0000000D;}
+.hero_bg {
+  background: var(--linear-gradient);
+}
 
-.bg-theme {background: var(--theme) !important;}
-.text-theme{ @apply bg-[linear-gradient(270deg,#9747FF_0%,#FC18D8_97.09%)] bg-clip-text text-transparent}
+.detail_bg {
+  background: var(--linear-gradient);
+}
+
+.button-bg {
+  background: var(--pink);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.button-bg:hover {
+  background: var(--white);
+  color: var(--pink);
+}
+
+.paragraph {
+  font-family: Poppins;
+  color: var(--text-paragraph);
+}
+
+.heading {
+  font-family: Inter;
+  color: var(--white);
+}
+
+.sidebar {
+  box-shadow: 0px 4px 74px 0px #0000000D;
+}
+
+.bg-theme {
+  background: var(--theme) !important;
+}
+
+.text-theme {
+  @apply bg-[linear-gradient(270deg, #9747FF_0%, #FC18D8_97.09%)] bg-clip-text text-transparent
+}
 
 
 .send {
@@ -106,4 +136,10 @@ body{
   to {
     transform: translateY(-0.1em);
   }
+}
+
+.bg-gradient-custom {
+  background: linear-gradient(180deg,
+      rgba(90, 63, 205, 0.3) 0%,
+      rgba(226, 32, 210, 0.3) 100%);
 }

@@ -103,39 +103,12 @@ const Index = () => {
 
   return (
     <Layout>
-      <div className=" text-white pt-[118px] lg:pt-[128px] ">
-        <InvestorSection />
-        <MeetYourHost />
-        <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]   px-[15px] mb-[50px] lg:mb-[100px]">
-          {/* <section className="bg-[#141414] border-1  border-[#FFFFFF33] rounded-[10px]  p-[20px] md:p-[40px] mb-3">
-                        <Heading
-                            title={"Meet Your Hosts"}
-                            content={"We're passionate about simplifying property investing. With decades of combined experience in real estate strategy, finance, and coaching, we bring practical, honest advice that actually works."}
-                        />
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-3 md:mt-12">
-                            {stats.map((stat, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-[#1F1F1F] rounded-lg p-3 md:p-6 flex flex-col items-start justify-between border-1  border-[#FFFFFF33]  "
-                                >
-                                    <div className="flex justify-between items-center w-full mb-2 md:mb-4">
-                                        <p className="text-[40px] sm:text-[55px] font-[400] text-[#FFFFFF66] font-outfit leading-[55px]">
-                                            {stat.value}
-                                        </p>
-                                        <span className='border-1  border-[#FFFFFF33] p-2 rounded-full'>
+      <div className="container xl:max-w-[1440px] mx-auto px-4 ">
+        <div className=" text-white pt-[118px] lg:pt-[128px] ">
+          <InvestorSection />
+          <MeetYourHost />
 
-                                            {stat.icon}
-                                        </span>
-                                    </div>
-                                    <p className="text-[16px] md:text-[18px]  font-outfit font-medium">
-                                        {stat.label}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </section> */}
-          {/* Main Heading and Description */}
-         <Team/>
+          <Team />
 
           <section className="py-[20px] md:py-[40px] mb-3">
             <div className="bg-[#141414] border-1  border-[#FFFFFF33] rounded-[10px] p-[20px] md:p-[40px]">
@@ -152,12 +125,11 @@ const Index = () => {
                 {missionFeatures && missionFeatures?.map((feature, index) => (
                   <div
                     key={index}
-                    className="bg-[#141414] border border-[#FFFFFF33] p-2 md:p-4 rounded-xl flex  items-start gap-4 w-full"
+                    className="bg-[#141414] border border-[#FFFFFF33] p-2 md:p-4 rounded-xl flex flex-wrap items-start gap-4 w-full"
                   >
                     {/* Icon Container */}
                     <div
-                      className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] md:w-[80px] md:h-[80px] lg:w-[85px] lg:h-[85px] 
-                                               bg-[#141414] border border-[#FFFFFF33] rounded-full flex items-center justify-center mx-auto mb-4"
+                      className="w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] md:w-[80px] md:h-[80px] lg:w-[85px] lg:h-[85px] bg-[#141414] border border-[#FFFFFF33] rounded-full flex md:items-center md:justify-center mx-auto mb-4"
                     >
                       <Image
                         src={feature?.icon}
@@ -181,55 +153,26 @@ const Index = () => {
             </div>
           </section>
 
-          {/* <section className="  p-[20px] md:p-[40px] mb-3">
-            <h2 className="text-[25px] sm:text-[35px] md:text-[45px] font-bold mb-4 text-white text-center ">
-              Our Journey
-            </h2>
-            <div className="relative">
-              {journeyEvents.map((event, index) => (
-                <div
-                  key={index}
-                  className="
-                  flex flex-col md:flex-row items-start md:items-center border-b-1 border-[#FFFFFF33]
-                  mb-4 md:mb-4 last:mb-0"
-                >
-                  <div className=" flex-shrink-0 text-left md:pr-8 mb-2 md:mb-0  p-1 md:p-0">
-                    <span className="text-[55px] sm:text-[40px] font-[400] text-gray-300 ">
-                      {event.year}
-                    </span>
-                  </div>
 
-                  <div className="  rounded-lg p-1 md:p-6 ">
-                    <h3 className="text-[18px] md:text-[25px] font-bold mb-1 ">
-                      {event.title}
-                    </h3>
-                    <p className="text-[16px] md:text-[20px]  text-gray-300 font-[400]  leading-relaxed">
-                      {event.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section> */}
           <section className="py-[20px] md:py-[40px] mb-10">
             <h2 className="text-[25px] sm:text-[35px] md:text-[45px] font-bold mb-4 text-white text-center uppercase">
               As
-              <span className="text-theme"> featured </span> 
-              In 
+              <span className="text-theme"> featured </span>
+              In
             </h2>
 
             <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
               {featuredInLogos.map((logo, index) => (
                 <div
                   key={index}
-                  className="bg-[#4B4B4B] rounded-full px-5 py-4 text-white text-[18px] md:text-[20px] whitespace-nowrap"
+                  className="bg-[#4B4B4B] rounded-full px-3 py-2 md:px-5 md:py-4 text-white text-[18px] md:text-[20px] whitespace-nowrap"
                 >
                   {logo}
                 </div>
               ))}
             </div>
           </section>
-          <Testimonials/>
+          <Testimonials />
           {/* <NewsletterBanner /> */}
         </div>
       </div>

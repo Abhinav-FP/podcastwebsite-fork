@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { FaUserFriends } from "react-icons/fa";
-import { PiMedalFill } from "react-icons/pi";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { PiMedal } from "react-icons/pi";
 
@@ -20,7 +18,6 @@ export default function MeetYourHost() {
             />
           </div>
         </div>
-
         {/* Right Side - Text */}
         <div className="flex flex-col gap-5 w-full lg:w-1/2 text-center lg:text-left">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">

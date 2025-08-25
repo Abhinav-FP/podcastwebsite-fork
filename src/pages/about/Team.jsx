@@ -43,7 +43,7 @@ export default function Team() {
           hosts?.map((host, index) => (
             <div
               key={index}
-              className="bg-[#141414] rounded-lg p-8 flex flex-col items-center text-center border-1  border-[#FFFFFF33]"
+              className="bg-[#141414] rounded-lg p-2 md:p-8 flex flex-col items-center text-center border-1  border-[#FFFFFF33]"
             >
               {/* Host Image */}
               <div className="relative w-32 h-32 mb-6">
@@ -70,7 +70,7 @@ export default function Team() {
               </p>
 
               {/* Badges */}
-              <div className="flex flex-col sm:flex-row items-center justify-between w-full md:gap-4 md:px-5 py-3 border border-[#FFFFFF33] rounded-lg text-base md:text-lg">
+              <div className="flex flex-col sm:flex-row items-center justify-between w-full md:gap-4 px-3 py-1 md:px-5 md:py-3 border border-[#FFFFFF33] rounded-lg text-base md:text-lg">
                 <div className="flex items-center gap-3 font-semibold">
                     <div className="bg-[linear-gradient(180deg,rgba(252,24,216,0.7)_0%,rgba(151,71,255,0.7)_100%)] rounded-full flex items-center justify-center w-12 h-12">
                     <PiMedal className="text-white" size={26} />

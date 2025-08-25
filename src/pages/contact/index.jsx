@@ -88,7 +88,7 @@ const Index = () => {
 
   return (
     <Layout>
-      <div className="mx-auto container xl:max-w-[1440px] p-4 sm:p-6 lg:p-16 bg-[#1C1C1C]">
+      <div className="mx-auto container xl:max-w-[1440px] p-4 md:p-6 lg:p-16 bg-[#1C1C1C]">
         <GetInTouch />
         {/* <section className=" rounded-[10px] p-[20px] md:p-[40px] mt-4"> */}
           <FAQSection />

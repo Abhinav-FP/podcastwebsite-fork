@@ -51,7 +51,7 @@ export default function MeetYourHost() {
               <div className="bg-[linear-gradient(180deg,rgba(252,24,216,0.7)_0%,rgba(151,71,255,0.7)_100%)] p-2 rounded-full flex items-center justify-center w-12 h-12">
                 <PiMedal className="text-white" size={26} />
               </div>
-                Property Expert
+              Property Expert
             </div>
 
             {/* Community Builder */}
@@ -59,7 +59,7 @@ export default function MeetYourHost() {
               <div className="bg-[linear-gradient(180deg,rgba(252,24,216,0.7)_0%,rgba(151,71,255,0.7)_100%)] p-2 rounded-full flex items-center justify-center w-12 h-12 text-base md:text-lg font-semibold">
                 <MdOutlinePeopleAlt className="text-white" size={26} />
               </div>
-                Community Builder
+              Community Builder
             </div>
           </div>
         </div>

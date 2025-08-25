@@ -42,13 +42,13 @@ export default function FAQSection() {
       <h2 className="text-center text-4xl md:text-5xl font-bold uppercase my-12">
         <span className="text-theme">Frequently </span> Asked Questions
       </h2>
-      <div className="space-y-4 bg-[#2C2C2C]">
+      <div className="space-y-4 bg-[#2C2C2C] ">
         {faqs &&
           faqs?.map((faq, index) => (
             <div key={index} className="rounded-lg border-b border-white/20">
               <button
                 onClick={() => toggleIndex(index)}
-                className="w-full flex justify-between items-center px-6 py-4 focus:outline-none"
+                className="w-full flex justify-between items-center text-left px-6 py-4 focus:outline-none"
               >
                 <span className="text-base md:text-lg leading-[20px] md:leading-[24px]  font-[500] text-white">
                   {faq?.question}

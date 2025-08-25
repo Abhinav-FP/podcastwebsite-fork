@@ -1,3 +1,4 @@
+import Heading from "@/common/Heading";
 import React from "react";
 import {FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaLocationDot, FaXTwitter } from "react-icons/fa6";
@@ -6,6 +7,7 @@ import { SiSpotify } from "react-icons/si";
 export default function GetInTouch() {
   return (
     <section className="relative py-10 mt-24 px-6 md:px-12">
+      <div className="relative z-[1]">
       <div className="text-center">
         <h2 className="text-4xl md:text-5xl font-bold uppercase mb-3">
           GET IN <span className="text-theme">TOUCH</span>
@@ -137,7 +139,8 @@ export default function GetInTouch() {
           </form>
         </div>
       </div>
-      <div className="absolute inset-0 bg-[url('/contact-bg.png')] bg-no-repeat bg-center bg-cover z-[-1]" />
+      </div>
+      <div className="absolute inset-0 bg-[url('/contact-bg.png')] bg-no-repeat bg-center bg-cover " />
     </section>
   );
 }

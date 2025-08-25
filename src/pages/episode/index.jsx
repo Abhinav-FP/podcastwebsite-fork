@@ -19,7 +19,7 @@ export default function Index() {
         try {
             setLoading(true);
             const main = new Listing();
-            const response = await main.EpsodeGetAll();
+            const response = await main.EpisodeGetAll();
             console.log("response", response?.data?.data)
             setData(response?.data?.data || []);
         } catch (error) {

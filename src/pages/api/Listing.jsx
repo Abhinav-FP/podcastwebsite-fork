@@ -26,6 +26,10 @@ class Listing extends Component {
     return Api.get("/home/file/getAll")
   }
 
+  async GuideList() {
+    return Api.get("/guide/getAll")
+  }
+
   async AdminPodcastGet() {
     return Api.get("/admin/podcast/get")
   }

@@ -2,17 +2,18 @@ import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import GuideCard from "@/common/GuideCard";
+import Listing from "../api/Listing";
 
 
 
 export default function Guide() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const fetchEpisodes = async () => {
+  const fecthGuides = async () => {
     try {
       setLoading(true);
       const main = new Listing();
-      const response = await main.HomeEpisode();
+      const response = await main.GuideList();
       setData(response?.data?.data || []);
     } catch (error) {
       console.log("error", error);
@@ -22,43 +23,10 @@ export default function Guide() {
   };
 
   useEffect(() => {
-    fetchEpisodes();
+    fecthGuides();
   }, []);
 
-  const guides = [
-    {
-      id: 1,
-      title: "The Complete Guide to Property Depreciation",
-      desc: "Each episode features expert insights, proven strategies, and real-world stories that break down complex topics into easy, actionable steps. From mastering productivity tools to understanding algorithms and digital marketing, E-Guide gives you the clarity and confidence to thrive online.",
-      pages: "32 pages",
-      downloads: "2.5k Download",
-      image: "/guide.jpg", // replace with actual image path
-    },
-    {
-      id: 2,
-      title: "The Complete Guide to Property Depreciation",
-      desc: "Each episode features expert insights, proven strategies, and real-world stories that break down complex topics into easy, actionable steps. From mastering productivity tools to understanding algorithms and digital marketing, E-Guide gives you the clarity and confidence to thrive online.",
-      pages: "32 pages",
-      downloads: "2.5k Download",
-      image: "/guide.jpg",
-    },
-    {
-      id: 3,
-      title: "The Complete Guide to Property Depreciation",
-      desc: "Each episode features expert insights, proven strategies, and real-world stories that break down complex topics into easy, actionable steps. From mastering productivity tools to understanding algorithms and digital marketing, E-Guide gives you the clarity and confidence to thrive online.",
-      pages: "32 pages",
-      downloads: "2.5k Download",
-      image: "/guide.jpg",
-    },
-    {
-      id: 4,
-      title: "The Complete Guide to Property Depreciation",
-      desc: "Each episode features expert insights, proven strategies, and real-world stories that break down complex topics into easy, actionable steps. From mastering productivity tools to understanding algorithms and digital marketing, E-Guide gives you the clarity and confidence to thrive online.",
-      pages: "32 pages",
-      downloads: "2.5k Download",
-      image: "/guide.jpg",
-    },
-  ];
+
   return (
     <div className="bg-[#1C1C1C]">
       <section className="mx-auto container xl:max-w-[1440px] py-16 px-4">
@@ -72,7 +40,7 @@ export default function Guide() {
         </div>
         {/* Grid */}
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 ">
-          {guides && guides?.map((guide) => (
+          {data && data?.map((guide) => (
             <GuideCard guide={guide} />
           ))}
         </div>

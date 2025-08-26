@@ -25,7 +25,7 @@ export default function GuideCard({guide}) {
               {guide?.title}
             </h3>
             <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-              {guide?.desc}
+              {guide?.description}
             </p>
           </div>
 

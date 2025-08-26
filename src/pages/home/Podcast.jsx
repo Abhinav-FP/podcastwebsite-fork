@@ -30,8 +30,8 @@ export default function Podcast() {
   // console.log("data", data);
 
   return (
-    <section className="bg-black py-12">
-      <div className="relative mx-auto container xl:max-w-[1440px] px-4 ">
+    <section className="relative py-12">
+      <div className=" mx-auto container xl:max-w-[1440px] px-4 ">
         {/* Heading */}
         <div className="relative z-[2]">
         <h2 className="text-center text-4xl lg:text-5xl font-extrabold mb-10">
@@ -57,9 +57,8 @@ export default function Podcast() {
         </div>
         </div>
        {/* <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-purple-900 via-fuchsia-700 to-black" /> */}
-       <img src="/right.png" width={1000} height={1000}
-       className="absolute right-[-55px] top-[0px] w-[500px] h-[500px]"/>
       </div>
+       <div className="absolute inset-0 bg-[url('/bg-test.png')] bg-no-repeat bg-center bg-cover z-[-1]" />
     </section>
   );
 }

@@ -37,7 +37,8 @@ const guides = [
 
 export default function Guide() {
   return (
-    <section className="bg-[#1C1C1C] mx-auto container xl:max-w-[1440px] py-16 px-6 md:px-16 lg:px-24">
+    <div className="bg-[#1C1C1C]">
+    <section className="mx-auto container xl:max-w-[1440px] py-16 px-6 md:px-16 lg:px-24">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-white">
           FREE{" "}
@@ -97,5 +98,6 @@ export default function Guide() {
         </button>
       </div>
     </section>
+    </div>
   );
 }

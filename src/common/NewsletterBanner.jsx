@@ -49,7 +49,7 @@ const NewsletterBanner = () => {
               className="flex-1 px-4 py-3 bg-transparent text-white placeholder-gray-400 outline-none"
             />
             <button
-              className={`hidden sm:block mt-2 sm:mt-0 sm:ml-2 px-6 py-3 bg-gray-600 hover:bg-purple-600 transition text-white font-medium rounded-full ${loading ? "opacity-50 cursor-not-allowed" : ""
+              className={`hidden sm:block mt-2 sm:mt-0 sm:ml-2 px-6 py-3 bg-gray-600 hover:bg-[linear-gradient(270deg,#9747FF_0%,#FC18D8_97.09%)] transition text-white font-medium rounded-full ${loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               onClick={handleSubmit}
               disabled={loading}
@@ -58,7 +58,7 @@ const NewsletterBanner = () => {
             </button>
           </div>
           <button
-            className={`block sm:hidden mt-2 sm:mt-0 mb-3 sm:ml-2 px-6 py-3 bg-gray-600 hover:bg-purple-600 transition text-white font-medium rounded-full ${loading ? "opacity-50 cursor-not-allowed" : ""
+            className={`block sm:hidden mt-2 sm:mt-0 mb-3 sm:ml-2 px-6 py-3 bg-gray-600 hover:bg-[linear-gradient(270deg,#9747FF_0%,#FC18D8_97.09%)] transition text-white font-medium rounded-full ${loading ? "opacity-50 cursor-not-allowed" : ""
               }`}
             onClick={handleSubmit}
             disabled={loading}

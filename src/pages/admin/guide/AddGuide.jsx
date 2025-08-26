@@ -1,4 +1,5 @@
 import Popup from "@/common/Popup";
+import Listing from "@/pages/api/Listing";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -8,9 +9,10 @@ export default function AddGuide({ isOpen, onClose }) {
     title: "",
     description: "",
     author: "",
-    file: "",
+    guide: "",
     thumbnail: null,
     language: "",
+    pages: "",
   });
   const [thumbnailPreview, setThumbnailPreview] = useState(null);
 
@@ -25,12 +27,13 @@ export default function AddGuide({ isOpen, onClose }) {
       setFormData((prev) => ({ ...prev, thumbnail: file }));
       setThumbnailPreview(URL.createObjectURL(file));
     } else if (name === "file" && files?.[0]) {
+      console.log("files",files);
       const file = files[0];
       if (!file.type.startsWith("application/pdf")) {
         toast.error("Only video or audio files allowed");
         return;
       }
-      setFormData((prev) => ({ ...prev, video: file }));
+      setFormData((prev) => ({ ...prev, guide: file }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -53,9 +56,47 @@ export default function AddGuide({ isOpen, onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit");
+    console.log("formdata", formData);
+    if (loading) return;
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const payload = new FormData();
+      const languageArray = formData.language
+        ? formData.language.split(",").map((l) => l.trim())
+        : [];
+      payload.append("title", formData.title);
+      payload.append("description", formData.description);
+      payload.append("author", formData?.author);
+      payload.append("language", JSON.stringify(languageArray));
+      payload.append("pages", formData?.pages);
+      if (formData.thumbnail) payload.append("thumbnail", formData.thumbnail);
+      if (formData.guide) payload.append("guide", formData.guide);
+      const response = await main.GuideAdd(payload);
+      if (response?.data?.status) {
+        toast.success(response.data.message);
+        setFormData({
+          title: "",
+          description: "",
+          author: "",
+          guide: "",
+          thumbnail: null,
+          language: "",
+          pages: "",
+        });
+        setThumbnailPreview(null);
+        // fetchDetails(podcast?.uuid);
+        onClose();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("API error:", error);
+      toast.error(error?.response?.data?.message || "Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
   };
-  console.log("formdata", formData);
 
   return (
     <Popup isOpen={isOpen} onClose={onClose} size="max-w-lg">
@@ -102,6 +143,27 @@ export default function AddGuide({ isOpen, onClose }) {
               className="w-full p-3 rounded-lg bg-[#1c1c1c] text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-white"
               value={formData.language}
               onChange={handleChange}
+            />
+          </div>
+
+          {/* Pages */}
+          <div className="space-y-1">
+            <label className="block text-sm font-medium">
+              Pages<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="pages"
+              className="w-full p-3 rounded-lg bg-[#1c1c1c] text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-white"
+              value={formData.pages}
+              onChange={(e) => {
+                if (
+                  e.target.value.length <= 3 &&
+                  /^[0-9]*$/.test(e.target.value)
+                ) {
+                  handleChange(e);
+                }
+              }}
             />
           </div>
 

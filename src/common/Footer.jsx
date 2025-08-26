@@ -31,11 +31,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white py-12 px-6 md:px-16 lg:px-24">
-  <div className="mx-auto container xl:max-w-[1440px]">
+    <footer className="bg-black text-white py-12">
+  <div className="mx-auto container xl:max-w-[1440px] px-4">
 
     {/* Grid Layout */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 px-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       
       {/* Left - Logo & Tagline */}
       <div>

@@ -37,7 +37,7 @@ export default function Testimonials() {
     },
   ];
   return (
-    <section className="relative mx-auto container xl:max-w-[1440px] py-16 px-6 md:px-16 lg:px-24 overflow-hidden">
+    <section className="relative mx-auto container xl:max-w-[1440px] py-16 px-4">
       {/* Heading */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-white">

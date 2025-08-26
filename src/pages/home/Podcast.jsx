@@ -26,7 +26,7 @@ export default function Podcast() {
 
   return (
     <section className="relative py-12">
-      <div className=" mx-auto container xl:max-w-[1440px] px-4 ">
+      <div className=" mx-auto container xl:max-w-[1440px] px-4">
         {/* Heading */}
         <div className="relative z-[2]">
           <h2 className="text-center text-4xl lg:text-5xl font-extrabold mb-10">

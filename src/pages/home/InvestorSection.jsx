@@ -3,7 +3,7 @@ import { MdOutlineHeadphones } from "react-icons/md";
 
 export default function InvestorSection() {
   return (
-    <section className="bg-[#1C1B1B] py-20 px-6 lg:px-20">
+    <section className="bg-[#1C1B1B] py-20">
       <div className="mx-auto container xl:max-w-[1440px] px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* Left Content */}
         <div className="text-white max-w-xl text-center lg:text-left">

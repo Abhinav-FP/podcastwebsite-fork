@@ -3,7 +3,7 @@ import { MdOutlinePeopleAlt } from "react-icons/md";
 import { PiMedal } from "react-icons/pi";
 export default function MeetYourHost() {
   return (
-    <section className="bg-black text-white py-10 px-6 md:px-16 lg:px-24">
+    <section className="bg-black text-white py-10">
       <div className="mx-auto container xl:max-w-[1440px] px-4 flex flex-col lg:flex-row items-center gap-10">
         {/* Left Side - Host Image */}
         <div className="flex justify-center w-full lg:w-1/2">

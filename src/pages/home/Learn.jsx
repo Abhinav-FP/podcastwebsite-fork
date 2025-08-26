@@ -38,7 +38,7 @@ export default function Learn() {
   return (
     <div className="bg-[#1E1E1E] ">
       <div className="mx-auto container xl:max-w-[1440px] px-4">
-        <section className="text-white py-16 px-6 md:px-16 lg:px-24">
+        <section className="text-white py-16">
           {/* Heading */}
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -49,7 +49,6 @@ export default function Learn() {
               wealth through smart property investment decisions
             </p>
           </div>
-
           {/* Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {learnItems.map((item, idx) => (

@@ -62,6 +62,14 @@ class Listing extends Component {
     return Api.delete(`/admin/file/delete/${id}`);
   }
 
+  async GuideAdd(data) {
+    return Api.post("/admin/guide/add", data);
+  }
+
+  async AdminGuideGet(data) {
+    return Api.get("/admin/guide/get", data);
+  }
+
   async AddSubscriber(data){
     return Api.post("/subscriber/add" , data)
   }

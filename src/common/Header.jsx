@@ -28,9 +28,8 @@ export default function Header() {
 
   return (
      <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out bg-black text-white py-4`}>
-      <div className="mx-auto container sm:container md:container lg:container  xl:max-w-[1440px]   px-4">
+      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px] px-4">
         <div className="relative flex items-center justify-between">
-
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/">

@@ -4,8 +4,8 @@ import { MdOutlineHeadphones } from "react-icons/md";
 
 function HeroSection() {
   return (
-    <section className="relative min-h-[600px] lg:h-[800px] flex items-center justify-center pt-6 mt-24 px-6 md:px-12">
-      <div className="mx-auto container xl:max-w-[1440px] text-white flex flex-col lg:flex-row items-center justify-between gap-12">
+    <section className="relative min-h-[600px] lg:h-[800px] flex items-center justify-center pt-6 mt-24">
+      <div className="mx-auto container xl:max-w-[1440px] px-4 text-white flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* Left Content */}
         <div className="max-w-xl text-center lg:text-left">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">

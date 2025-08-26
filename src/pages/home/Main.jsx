@@ -8,7 +8,6 @@ import Learn from './Learn'
 import Guide from './Guide'
 import Testimonials from './Testimonials'
 import NewsletterBanner from '@/common/NewsletterBanner'
-
 export default function Main() {
   return (
     <Layout>

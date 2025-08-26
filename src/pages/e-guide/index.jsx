@@ -44,7 +44,7 @@ const Index = () => {
   return (
     <Layout>
       <div className=" bg-[#0a0a0a]  pt-[118px] lg:pt-[128px] pb-[20px]  ">
-        <div className="max-w-[1440px] mx-auto px-4 w-full sm:px-[15px] mb-[50px] lg:mb-[100px]">
+        <div className="max-w-[1440px] mx-auto w-full  mb-[50px] lg:mb-[100px]">
           {/* Main Heading and Description */}
           <Heading
             title={"Free Property "}

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { PiMedal } from "react-icons/pi";
-
 export default function MeetYourHost() {
   return (
     <section className="bg-black text-white py-10 px-6 md:px-16 lg:px-24">

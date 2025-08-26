@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import recording from '../../assets/record.png'
 import CustomButton from '../../common/CustomButton'
-
 const WhyChooseUs = () => {
   return (
     <section className="bg-black text-white  py-12 px-4 sm:px-6 lg:px-8">
@@ -19,9 +18,7 @@ const WhyChooseUs = () => {
             <CustomButton text="Get Started Free" />
           </div>
         </div>
-
-        <div className=" rounded-lg ">
-
+        <div className="rounded-lg">
           <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden">
             <Image
               src={recording}
@@ -29,7 +26,6 @@ const WhyChooseUs = () => {
               fill
               className="object-cover"
             />
-
           </div>
         </div>
       </div>

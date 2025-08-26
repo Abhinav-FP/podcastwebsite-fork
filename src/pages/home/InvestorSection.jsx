@@ -12,7 +12,6 @@ export default function InvestorSection() {
             <br />
             <span className="text-theme">POWERED</span> BY EXPERIENCE.
           </h2>
-
           <p className="mt-6 text-gray-300 text-base sm:text-lg">
             At{" "}
             <span className="font-semibold">
@@ -21,7 +20,6 @@ export default function InvestorSection() {
             , we believe real estate is one of the most powerful tools to build
             long-term wealth — but it doesn’t have to be complicated.
           </p>
-
           <p className="mt-4 text-gray-300 text-base sm:text-lg">
             Hosted by a team of seasoned property investors, developers, and
             finance professionals, our podcast delivers{" "}

@@ -5,39 +5,37 @@ import "swiper/css/navigation";
 import { FaStar } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
-
-const testimonials = [
-  {
-    id: 1,
-    review:
-      "This podcast gave me the confidence to buy my first investment property. The advice is clear, honest, and incredibly practical.",
-    name: "Jenny Wilson",
-    role: "First-Time Investor",
-  },
-  {
-    id: 2,
-    review:
-      "This podcast gave me the confidence to buy my first investment property. The advice is clear, honest, and incredibly practical.",
-    name: "Jenny Wilson",
-    role: "First-Time Investor",
-  },
-  {
-    id: 3,
-    review:
-      "This podcast gave me the confidence to buy my first investment property. The advice is clear, honest, and incredibly practical.",
-    name: "Jenny Wilson",
-    role: "First-Time Investor",
-  },
-  {
-    id: 4,
-    review:
-      "This podcast gave me the confidence to buy my first investment property. The advice is clear, honest, and incredibly practical.",
-    name: "Jenny Wilson",
-    role: "First-Time Investor",
-  },
-];
-
 export default function Testimonials() {
+  const testimonials = [
+    {
+      id: 1,
+      review:
+        "This podcast gave me the confidence to buy my first investment property. The advice is clear, honest, and incredibly practical.",
+      name: "Jenny Wilson",
+      role: "First-Time Investor",
+    },
+    {
+      id: 2,
+      review:
+        "This podcast gave me the confidence to buy my first investment property. The advice is clear, honest, and incredibly practical.",
+      name: "Jenny Wilson",
+      role: "First-Time Investor",
+    },
+    {
+      id: 3,
+      review:
+        "This podcast gave me the confidence to buy my first investment property. The advice is clear, honest, and incredibly practical.",
+      name: "Jenny Wilson",
+      role: "First-Time Investor",
+    },
+    {
+      id: 4,
+      review:
+        "This podcast gave me the confidence to buy my first investment property. The advice is clear, honest, and incredibly practical.",
+      name: "Jenny Wilson",
+      role: "First-Time Investor",
+    },
+  ];
   return (
     <section className="relative mx-auto container xl:max-w-[1440px] py-16 px-6 md:px-16 lg:px-24 overflow-hidden">
       {/* Heading */}

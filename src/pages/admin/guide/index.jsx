@@ -41,11 +41,12 @@ export default function index() {
          Add New Guide
         </button>
       </div>
-
-      {data &&
-        data?.map((guide, index) => (
-          <GuideCard guide={guide} key={index}/>
-      ))}
+      <div className="grid gap-8 md:grid-cols-2">
+        {data &&
+          data?.map((guide, index) => (
+            <GuideCard guide={guide} key={index}/>
+        ))}
+      </div>
       <AddGuide
         isOpen={isGuidePopupOpen}
         onClose={() => {

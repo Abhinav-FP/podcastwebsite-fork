@@ -11,7 +11,7 @@ export default function GuideCard({guide}) {
         {/* Left Image */}
         <div className="relative w-full lg:w-1/3 h-[300px] md:h-[350px] lg:h-auto rounded-xl overflow-hidden">
           <Image
-            src={"/guide.png"}
+            src={guide?.thumbnail || "/guide.png"}
             alt={guide?.title}
             fill
             className="object-cover object-top"
@@ -30,8 +30,8 @@ export default function GuideCard({guide}) {
           </div>
 
           <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
-            <span>{guide?.pages}</span>
-            <span>{guide?.downloads}</span>
+            <span>{guide?.pages} pages</span>
+            <span>{guide?.downloads} downloads</span>
           </div>
 
           <button className="w-full cursor-pointer bg-gray-700 text-white py-2 rounded-lg font-medium hover:bg-[linear-gradient(270deg,#9747FF_0%,#FC18D8_97.09%)] transition">

@@ -2,8 +2,6 @@ import React from 'react'
 import Layout from '../../layout/Layout'
 import Podcast from './Podcast'
 import HeroSection from './HeroSection'
-import TopicsGrid from './TopicsGrid'
-import WhyChooseUs from './WhyChooseUs'
 import InvestorSection from './InvestorSection'
 import MeetYourHost from './MeetYourHost'
 import Learn from './Learn'
@@ -13,17 +11,17 @@ import NewsletterBanner from '@/common/NewsletterBanner'
 
 export default function Main() {
   return (
-      <Layout>
-        <HeroSection />
-        <InvestorSection/>
-        <Podcast />
-        <MeetYourHost/>
-        <Learn />
-        <Guide/>
-        <Testimonials/>
-        <NewsletterBanner/>
-        {/* <TopicsGrid /> */}
-        {/* <WhyChooseUs /> */}
-      </Layout>
+    <Layout>
+      <HeroSection />
+      <InvestorSection />
+      <Podcast />
+      <MeetYourHost />
+      <Learn />
+      <Guide />
+      <Testimonials />
+      <NewsletterBanner />
+      {/* <TopicsGrid /> */}
+      {/* <WhyChooseUs /> */}
+    </Layout>
   )
 }

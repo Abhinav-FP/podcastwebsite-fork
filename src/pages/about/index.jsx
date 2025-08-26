@@ -142,7 +142,6 @@ const Index = () => {
                       <h3 className=" text-[14px] md:text-[20px] font-[400] mb-2 text-white  leading-[14px] md:leading-[20px]">
                         {feature?.title}
                       </h3>
-
                       <p className="text-[10px] md:text-[14px] text-gray-400 font-semibold leading-relaxed">
                         {feature?.description}
                       </p>
@@ -152,8 +151,6 @@ const Index = () => {
               </div>
             </div>
           </section>
-
-
           <section className="py-[20px] md:py-[40px] mb-10">
             <h2 className="text-[25px] sm:text-[35px] md:text-[45px] font-bold mb-4 text-white text-center uppercase">
               As

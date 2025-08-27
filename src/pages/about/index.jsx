@@ -9,7 +9,6 @@ import {
 } from "react-icons/hi";
 import Image from "next/image";
 import arrow from "../../assets/arrow.png";
-import NewsletterBanner from "@/common/NewsletterBanner";
 import InvestorSection from "../home/InvestorSection";
 import MeetYourHost from "../home/MeetYourHost";
 import Team from "./Team";
@@ -107,9 +106,7 @@ const Index = () => {
         <div className=" text-white pt-[118px] lg:pt-[128px] ">
           <InvestorSection />
           <MeetYourHost />
-
           <Team />
-
           <section className="py-[20px] md:py-[40px] mb-3">
             <div className="bg-[#141414] border-1  border-[#FFFFFF33] rounded-[10px] p-[20px] md:p-[40px]">
               {/* Section Header */}

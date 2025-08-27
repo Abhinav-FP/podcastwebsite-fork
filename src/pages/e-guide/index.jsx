@@ -30,7 +30,14 @@ const Index = () => {
         <div className="max-w-[1440px] mx-auto px-4 w-full mb-[50px] lg:mb-[100px]">
           <Free />
           {/* Main Heading and Description */}
-          <div className="max-w-7xl mx-auto text-center mb-12 mt-12">
+        </div>
+      </div>
+      <div className="relative w-full mb-[80px] lg:mb-[120px]">
+        {/* Background Circles - Full Section */}
+        <div className="absolute w-[200px] h-[200px] -bottom-0 -right-0 blurcircle rounded-l-full"></div>
+        <div className="absolute w-[200px] h-[200px] -top-0 -left-0 blurcircle rounded-r-full"></div>
+        <div className=" max-w-[1440px] mx-auto px-4">
+          <div className="max-w-7xl mx-auto text-center mb-12 mt-12 relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               FREE{" "}
               <span className="bg-gradient-to-r from-[#9747FF] to-[#FC18D8] bg-clip-text text-transparent">
@@ -38,15 +45,12 @@ const Index = () => {
               </span>
             </h2>
           </div>
-          {/* Grid */}
-          <div className="grid gap-8 md:grid-cols-2">
-            {data &&
-              data?.map((guide) => (
-                <GuideCard guide={guide} />
-              ))}
+          <div className="grid gap-8 md:grid-cols-2 relative z-10">
+            {data?.map((guide, index) => (
+              <GuideCard guide={guide} key={index} />
+            ))}
           </div>
-
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center mt-12 relative z-10">
             <button className="px-8 py-3 rounded-full font-medium text-white bg-theme hover:opacity-90 transition">
               View All
             </button>

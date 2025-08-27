@@ -36,7 +36,7 @@ const learnItems = [
 
 export default function Learn() {
   return (
-    <div className="bg-[#1E1E1E] ">
+    <div className="bg-[#1E1E1E] relative">
       <div className="mx-auto container xl:max-w-[1440px] px-4">
         <section className="text-white py-16">
           {/* Heading */}

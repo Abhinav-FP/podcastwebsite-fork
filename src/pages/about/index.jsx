@@ -79,12 +79,14 @@ const Index = () => {
         <InvestorSection />
         <MeetYourHost />
       </div>
-      <div className="container xl:max-w-[1440px] mx-auto px-4 ">
-        <Team />
-      </div>
-        <Mission />
-      <div className="container xl:max-w-[1440px] mx-auto px-4 ">
-        <Featured />
+      <div className="relative overflow-hidden">
+        <div className="absolute w-[20vw] max-w-[500px] aspect-square -left-[5%] top-1/3 blurcircle rounded-r-full" />
+        <div className="absolute w-[20vw] max-w-[500px] aspect-square -right-[5%] bottom-1/10 blurcircle rounded-l-full" />
+        <div className="container xl:max-w-[1440px] mx-auto px-4 ">
+          <Team />
+          <Mission />
+          <Featured />
+        </div>
       </div>
       <Testimonials />
       {/* <NewsletterBanner /> */}

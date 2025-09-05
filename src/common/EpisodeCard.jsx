@@ -81,7 +81,7 @@ export default function EpisodeCard({
 
   {/* Content */}
   <div className="flex-1 font-outfit text-white flex flex-col items-start w-full">
-    <h3 className="font-bold text-lg sm:text-xl md:text-2xl mb-2 tracking-wide">
+    <h3 className="font-bold text-lg sm:text-xl md:text-2xl mb-2 tracking-wide capitalize">
       {episode?.title}
     </h3>
 
@@ -119,8 +119,13 @@ export default function EpisodeCard({
     </p>
 
     {/* See more */}
-    <button className="flex items-center gap-1 text-sm sm:text-base text-white/70 mt-2">
-      See More <IoIosArrowDown />
+    <button className="flex items-center gap-1 text-sm sm:text-base text-white/70 mt-2 cursor-pointer"
+        onClick={(e) => {
+        e.stopPropagation(); // prevent triggering playTrack
+        setIsOpen(!isOpen);  // toggle description expand/collapse
+      }}
+    >
+       {isOpen ? "See Less" : "See More"} <IoIosArrowDown />
     </button>
 
     {/* Listen Button */}
@@ -165,6 +170,5 @@ export default function EpisodeCard({
     </div>
   )}
 </div>
-
   );
 }

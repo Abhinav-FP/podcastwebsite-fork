@@ -42,7 +42,6 @@ const learnItems = [
 
 export default function Learn() {
   return (
-    <div className="bg-[#1E1E1E] relative">
       <div className="mx-auto container xl:max-w-[1440px] px-4">
         <section className="text-white py-8 sm:py-16">
           {/* Heading */}
@@ -60,14 +59,14 @@ export default function Learn() {
             {learnItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group bg-[#2C2C2C] rounded-2xl p-6 shadow-lg hover:shadow-xl transition justify-items-center sm:justify-items-start text-center sm:text-left border-b-4 border-transparent hover:border-purple-500"
+                className="group bg-[#2C2C2C] rounded-2xl p-6 shadow-lg hover:shadow-xl transition justify-items-center sm:justify-items-start text-center sm:text-left border-b-4 border-transparent hover:border-purple-500 relative"
               >
                 {/* Icon inside a circle */}
                 <div className="bg-gray-700/60 w-14 h-14 flex items-center justify-center rounded-full mb-4 text-gray-300 group-hover:text-purple-500 transition">
                   {item.icon}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-2 text-white group-hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] group-hover:bg-clip-text group-hover:text-transparent transition">
+                <h3 className="text-xl font-semibold mb-2 text-white transition group-hover:bg-gradient-to-r group-hover:from-[#9747FF] group-hover:to-[#FC18D8] group-hover:bg-clip-text group-hover:text-transparent">
                   {item.title}
                 </h3>
 
@@ -79,6 +78,5 @@ export default function Learn() {
           </div>
         </section>
       </div>
-    </div>
   );
 }

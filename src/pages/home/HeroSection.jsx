@@ -8,14 +8,19 @@ function HeroSection() {
     <section className="relative min-h-[600px] lg:h-[800px] flex items-center justify-center pt-6 mt-24">
       <div className="mx-auto container xl:max-w-[1440px] px-4 text-white flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* Left Content */}
-        <div className="max-w-xl text-center lg:text-left">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-            VOICE THAT{" "}
-            <span className="text-theme block lg:inline">MATTERS</span>
+        <div className="max-w-2xl text-center lg:text-left">
+          {/* <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+             VOICE THAT
+            <span className="text-theme block lg:inline"> Matters </span>
+          </h1> */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.15]">
+            The Place Where
+            <span className="text-theme inline"> Property Portfolios </span>
+            Are Made
           </h1>
+
           <p className="mt-4 text-base sm:text-lg text-gray-300">
-            Stories That Resonate. Real investment insights from property
-            experts who've been there, done that, and want to share the lessons.
+            Learn the strategies behind Australia's most successful property portfolios
           </p>
            <Link
               href={"/episode"} className="mt-6 flex items-center gap-2 px-6 py-3 rounded-full font-semibold bg-theme mx-auto lg:mx-0 cursor-pointer w-fit">

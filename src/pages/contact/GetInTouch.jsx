@@ -16,11 +16,10 @@ export default function GetInTouch() {
       <div className="relative z-[1]">
         <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold uppercase mb-3">
-            GET IN <span className="text-theme">TOUCH</span>
+            GET IN<span className="text-theme"> TOUCH </span>With Us
           </h2>
           <p className="mt-3 text-gray-300 max-w-lg items-center mx-auto">
-            Have a question, guest suggestion, or just want to say hello? We’d
-            love to hear from you. We typically respond within 24 hours.
+            Share your questions, thoughts, or suggestions, and we’ll get back to you with something worth your time.
           </p>
         </div>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 text-white mt-12 px-4">

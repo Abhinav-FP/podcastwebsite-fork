@@ -8,26 +8,14 @@ export default function InvestorSection() {
       <div className="mx-auto container xl:max-w-[1440px] px-4 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-12">
         {/* Left Content */}
         <div className="text-white max-w-xl text-center lg:text-left">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-            BUILT FOR <span className="text-theme">INVESTORS</span>.
-            <br />
-            <span className="text-theme">POWERED</span> BY EXPERIENCE.
+          <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight uppercase">
+            Conversation That <span className="text-theme">Shapes Your Next Move</span>.
           </h2>
           <p className="mt-6 text-gray-300 text-base sm:text-lg">
-            At{" "}
-            <span className="font-semibold">
-              The Property Portfolio Podcast
-            </span>
-            , we believe real estate is one of the most powerful tools to build
-            long-term wealth — but it doesn’t have to be complicated.
+            Property isn’t just about bricks and numbers. It’s about the choices that shape how you live, grow, and plan for the future.
           </p>
           <p className="mt-4 text-gray-300 text-base sm:text-lg">
-            Hosted by a team of seasoned property investors, developers, and
-            finance professionals, our podcast delivers{" "}
-            <span className="font-semibold">
-              real, unfiltered conversations
-            </span>{" "}
-            with experts across the real estate spectrum.
+            Our podcast brings real stories, fresh perspectives, and straight talk from voices that matter in finance and property, giving you a different way to think about building your future.
           </p>
 
           <div className="mt-6 border-l-4 border-white pl-4 text-gray-200 flex items-start justify-center lg:justify-start gap-2 text-left">

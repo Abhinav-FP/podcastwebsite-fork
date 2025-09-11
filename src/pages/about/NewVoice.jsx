@@ -4,10 +4,12 @@ import Link from "next/link";
 
 export default function NewVoice() {
   return (
-    <section className="bg-[#1C1B1B] py-8 sm:py-20">
+    <section className="relative bg-[#1C1B1B] py-8 sm:py-20">
+      <div className="absolute w-[20vw] max-w-[500px] aspect-square -left-[5%] top-1/10 blurcircle rounded-r-full" />
+      <div className="absolute w-[20vw] max-w-[500px] aspect-square -right-[5%] bottom-1/10 blurcircle rounded-l-full" />
       <div className="mx-auto container xl:max-w-[1440px] px-4 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-12">
         {/* Left Content */}
-        <div className="text-white max-w-xl text-center lg:text-left">
+        <div className="text-white max-w-xl text-center lg:text-left relative z-[2]">
           <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">
             Australia’s{" "}
             <span className="text-theme"> New Voice in Educating Smart </span>
@@ -45,7 +47,7 @@ export default function NewVoice() {
         </div>
 
         {/* Right Image */}
-        <div className="flex-shrink-0 w-full max-w-sm sm:max-w-md lg:max-w-lg">
+        <div className="flex-shrink-0 w-full max-w-sm sm:max-w-md lg:max-w-lg relative z-[2]">
           <Image
             src="/investor.png"
             alt="Podcast Recording"

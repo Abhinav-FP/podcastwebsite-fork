@@ -2,68 +2,105 @@ import Image from "next/image";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { PiMedal } from "react-icons/pi";
 export default function MeetYourHost() {
+  const host = [
+    {
+      id: 1,
+      name: "Parag Dixit",
+      designation: "Mortgage & Investment Strategy Expert",
+      paragraph:
+        "Parag brings a unique dual perspective as both a mortgage specialist and a successful property investor. With over 25 years in financial services, he's the founding director of Nfinity Financials and PropWealth and was recently recognised as one of Australia's Top 10 Elite Brokers of 2024. His personal property investment journey began in 2016, giving him firsthand experience in building wealth through strategic property decisions, using complex mix of individual, trust and company assets. This combination of Strategic mindset and expertise, deep financial understanding and real estate investment experience makes him uniquely positioned to guide clients through both financing and property investment strategies.",
+      img: "/host.png",
+    },
+    {
+      id: 2,
+      name: "Mudit Khandelwal",
+      designation: "Your Strategic Finance Director",
+      paragraph:
+        "An alumnus of IIT Kanpur and IIM Ahmedabad, Mudit brings academic excellence and real-world mastery to every client interaction. As Director at Nfinity Financials, this 5-star-rated mortgage broker has earned over 200 five-star reviews, reflecting his exceptional service standards. With over 20 years of entrepreneurial experience, Mudit is passionate about helping Australians achieve their homeownership dreams faster, easier, and at competitive rates. His strategic approach transforms complex financial scenarios into clear pathways to property wealth.",
+      img: "/host.png",
+    },
+    {
+      id: 3,
+      name: "Julius Dabre",
+      designation: "Your Property Acquisition Specialist",
+      paragraph:
+        "As Founder of PropWealth, Julius has orchestrated over $67 million in property transactions, establishing himself as a formidable force in Australia's property landscape. His specialty lies in identifying high-growth suburbs before they become mainstream, combining profound market trend analysis with practical, actionable advice. Julius's insights have empowered over 100,000 investors to make informed decisions, turning market knowledge into tangible portfolio growth.",
+      img: "/host.png",
+    },
+  ];
 
-    const host = [
-        {
-            "id": 1,
-            "name": "Parag Dixit - Mortgage & Investment Strategy Expert",
-            "paragraph": "Parag brings a unique dual perspective as both a mortgage specialist and a successful property investor. With over 25 years in financial services, he's the founding director of Nfinity Financials and PropWealth and was recently recognised as one of Australia's Top 10 Elite Brokers of 2024. His personal property investment journey began in 2016, giving him firsthand experience in building wealth through strategic property decisions, using complex mix of individual, trust and company assets. This combination of Strategic mindset and expertise, deep financial understanding and real estate investment experience makes him uniquely positioned to guide clients through both financing and property investment strategies.",
-            "image-url": "/host.png"
-        },
-        {
-            "id": 2,
-            "name": "Mudit Khandelwal - Your Strategic Finance Director",
-            "paragraph": "An alumnus of IIT Kanpur and IIM Ahmedabad, Mudit brings academic excellence and real-world mastery to every client interaction. As Director at Nfinity Financials, this 5-star-rated mortgage broker has earned over 200 five-star reviews, reflecting his exceptional service standards. With over 20 years of entrepreneurial experience, Mudit is passionate about helping Australians achieve their homeownership dreams faster, easier, and at competitive rates. His strategic approach transforms complex financial scenarios into clear pathways to property wealth.",
-            "image-url": "/host.png"
-        },
-        {
-            "id": 3,
-            "name": "Julius Dabre - Your Property Acquisition Specialist",
-            "paragraph": "As Founder of PropWealth, Julius has orchestrated over $67 million in property transactions, establishing himself as a formidable force in Australia's property landscape. His specialty lies in identifying high-growth suburbs before they become mainstream, combining profound market trend analysis with practical, actionable advice. Julius's insights have empowered over 100,000 investors to make informed decisions, turning market knowledge into tangible portfolio growth.", "image-url": "/host.png"
-        }
-    ]
+  return (
+    <section className="relative overflow-hidden bg-black text-white pb-5 sm:pt-10 mt-10">
+        <div className="absolute w-[30vw] max-w-[500px] aspect-square -right-[5%] top-3/20 blurcircle rounded-r-full" />
+        <div className="absolute w-[30vw] max-w-[500px] aspect-square -right-[5%] bottom-1/30 blurcircle rounded-l-full" />
+        <div className="absolute w-[30vw] max-w-[500px] aspect-square -left-[5%] top-1/2 blurcircle rounded-r-full" />
+      <div className="mx-auto container xl:max-w-[1440px] px-4 ">
+        {/* Left Side - Host Image */}
 
-    return (
-        <section className="bg-black text-white pb-5 sm:pb-10 sm:pt-10">
-            <div className="mx-auto container xl:max-w-[1440px] px-4 ">
-                {/* Left Side - Host Image */}
+        <div className="text-center mb-12">
+          <h2 className="text-[30px] sm:text-[41px] lg:text-[52px] font-[700] mb-2 uppercase">
+            MEET YOUR <span className="text-theme">HOST</span>
+          </h2>
+          <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-4 text-[#FFFFFFCC]">
+            Together, Parag, Mudit, and Julius represent the complete property
+            investment ecosystem of mortgage mastery, strategic financing, and
+            acquisition expertise unified under one educational platform. Their
+            combined decades of experience and proven track records create an
+            unparalleled resource for discerning investors. Each brings distinct
+            strengths that complement the others, ensuring you receive
+            comprehensive guidance whether you're securing your first investment
+            property or expanding an established portfolio.
+          </p>
+        </div>
 
-                <div className="text-center mb-12">
-
-                    <h2 className="text-[30px] sm:text-[41px] lg:text-[52px] font-[700] mb-2 uppercase">
-
-                        MEET YOUR <span className="text-theme">HOST</span>
-                    </h2>
-                    <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-4 text-[#FFFFFFCC]">
-                        Together, Parag, Mudit, and Julius represent the complete property investment ecosystem of mortgage mastery, strategic financing, and acquisition expertise unified under one educational platform. Their combined decades of experience and proven track records create an unparalleled resource for discerning investors. Each brings distinct strengths that complement the others, ensuring you receive comprehensive guidance whether you're securing your first investment property or expanding an established portfolio.
-                    </p>
+        <div className="mt-6 mb-4">
+          {host &&
+            host.map((content, index) => (
+              <div className={`flex flex-col ${index%2==0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-center gap-10 mb-4 relative z-[2]`} key={index}>
+                <div className="flex justify-center w-full lg:w-1/2">
+                  <div className="w-full max-w-[700px] aspect-[7/5] overflow-hidden rounded-lg">
+                    <Image
+                      src={content?.img || "/host.png"}
+                      alt="Podcast Host"
+                      width={700}
+                      height={550}
+                      className="rounded-lg object-cover w-full h-full transform transition-transform duration-500 hover:scale-110"
+                    />
+                  </div>
                 </div>
+                {/* Right Side - Text */}
+                <div className="flex flex-col gap-5 w-full lg:w-1/2 text-center lg:text-left">
+                  <h2 className="text-lg md:text-xl lg:text-2xl font-bold">
+                    {content?.name} - <span className="text-theme">{content?.designation}</span>
+                  </h2>
 
-                <div className="mt-6 mb-4">
-                    {host && host.map((content, index) => (
-                        <div
-                            key={index}
-                            className={`md:flex items-center gap-8 md:pb-12 ${index % 2 === 0 ? "flex-col md:flex-row " : "flex-col-reverse  md:flex-row-reverse"
-                                }`}>
-                            {/* Image */}
-                            <div className="md:w-1/2">
-                                <img
-                                    src={content["image-url"]}
-                                    alt="Podcast Host"
-                                    width={650}
-                                    className="rounded-lg 
-                                    transform transition-transform duration-500 shadow hover:scale-105 sm:pb-4"
-                                />
-                            </div>
-                            {/* Text */}
-                            <div className="md:w-1/2">
-                                <h3 className="text-base sm:text-lg lg:text-xl font-[700] mb-5 mt-2 uppercase">{content.name}</h3>
-                                <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-7 md:mb-5  text-[#FFFFFFCC] text-justify">{content.paragraph}</p>
-                            </div>
-                        </div>
-                    ))}
+                  <p className="text-base md:text-lg leading-relaxed">
+                    {content?.paragraph}
+                  </p>
+
+                  {/* Bottom badges */}
+                  <div className="flex flex-wrap justify-center items-center lg:justify-start gap-6">
+                    {/* Property Expert */}
+                    <div className="flex items-center gap-3 text-base md:text-lg font-semibold">
+                      <div className="bg-[linear-gradient(180deg,rgba(252,24,216,0.7)_0%,rgba(151,71,255,0.7)_100%)] p-2 rounded-full flex items-center justify-center w-12 h-12">
+                        <PiMedal className="text-white" size={26} />
+                      </div>
+                      Property Expert
+                    </div>
+
+                    {/* Community Builder */}
+                    <div className="flex items-center gap-3 text-base md:text-lg font-semibold">
+                      <div className="bg-[linear-gradient(180deg,rgba(252,24,216,0.7)_0%,rgba(151,71,255,0.7)_100%)] p-2 rounded-full flex items-center justify-center w-12 h-12">
+                        <MdOutlinePeopleAlt className="text-white" size={26} />
+                      </div>
+                      Community Builder
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </section>
-    );
+              </div>
+            ))}
+        </div>
+      </div>
+    </section>
+  );
 }

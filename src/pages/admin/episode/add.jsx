@@ -1,39 +1,28 @@
 import React, { useEffect, useState } from "react";
-import Popup from "@/common/Popup";
+import AuthLayout from "@/layout/AuthLayout";
 import toast from "react-hot-toast";
 import Listing from "@/pages/api/Listing";
+import { useRouter } from "next/router";
+import ReactQuillEditor from "./ReactQuillEditor";
 
-export default function AddEpisode({
-  isOpen,
-  onClose,
-  podcast,
-  fetchDetails,
-  selectedEpisode,
-}) {
+export default function add() {
+  const selectedEpisode=null;
+  const router = useRouter();
+  const { id } = router.query; 
+//   console.log("id", id);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     thumbnail: null,
     video: null,
+    details: null,
   });
   const [thumbnailPreview, setThumbnailPreview] = useState(null);
-  // console.log("podcast", podcast);
 
-  useEffect(() => {
-    setFormData({
-      title: selectedEpisode?.title || "",
-      description: selectedEpisode?.description || "",
-      thumbnail: selectedEpisode?.thumbnail || null,
-      video: selectedEpisode?.link || null,
-    });
-
-    if (selectedEpisode?.thumbnail) {
-      setThumbnailPreview(selectedEpisode.thumbnail);
-      return;
-    }
-    setThumbnailPreview(null);
-  }, [selectedEpisode]);
+  const handleQuillChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -82,7 +71,8 @@ export default function AddEpisode({
       const payload = new FormData();
       payload.append("title", formData.title);
       payload.append("description", formData.description);
-      payload.append("podcastId", podcast?.id);
+      payload.append("podcastId", id);
+      payload.append("detail", formData?.details);
       if (formData.thumbnail) payload.append("thumbnail", formData.thumbnail);
       if (formData.video) payload.append("video", formData.video);
       let size = 0;
@@ -101,8 +91,6 @@ export default function AddEpisode({
           video: null,
         });
         setThumbnailPreview(null);
-        fetchDetails(podcast?.uuid);
-        onClose();
       } else {
         toast.error(response.data.message);
       }
@@ -113,56 +101,10 @@ export default function AddEpisode({
       setLoading(false);
     }
   };
-
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    if (loading) return;
-    setLoading(true);
-    try {
-      const main = new Listing();
-      const payload = new FormData();
-      payload.append("title", formData.title);
-      payload.append("description", formData.description);
-      payload.append("podcastId", podcast?.id);
-      if (formData.thumbnail instanceof File) {
-        payload.append("thumbnail", formData.thumbnail);
-      }
-      if (formData.video instanceof File) {
-        payload.append("video", formData.video);
-      }
-      if (formData.video instanceof File) {
-        let size = Number((formData.video.size / (1024 * 1024)).toFixed(2)) || 0;
-        payload.append("size", size);
-      }
-      const response = await main.EpisodeUpdate(selectedEpisode?.uuid, payload);
-
-      if (response?.data?.status) {
-        toast.success(response.data.message);
-        setFormData({
-          title: "",
-          description: "",
-          thumbnail: null,
-          video: null,
-        });
-        setThumbnailPreview(null);
-        fetchDetails(podcast?.uuid);
-        onClose();
-      } else {
-        toast.error(response.data.message);
-      }
-    } catch (error) {
-      console.error("API error:", error);
-      toast.error(error?.response?.data?.message || "Something went wrong!");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // console.log("formData",formData);
 
   return (
-    <Popup isOpen={isOpen} onClose={onClose} size="max-w-lg">
-      <form onSubmit={selectedEpisode ? handleUpdate : handleSubmit} className="w-full text-white space-y-6">
+    <AuthLayout>
+      <form onSubmit={handleSubmit} className="w-full text-white space-y-6 mx-auto">
         <h3 className="text-3xl font-bold text-center heading">
           {selectedEpisode ? "Edit Episode" : "Add Episode"}
         </h3>
@@ -236,16 +178,22 @@ export default function AddEpisode({
             onChange={handleChange}
             className="w-full text-sm text-gray-400 file:bg-white file:text-black file:rounded-lg file:px-4 file:py-2 border border-gray-700 bg-[#1c1c1c]"
           />
-          {typeof formData.video === "string" && selectedEpisode && (
-            <video controls className="mt-2 w-full rounded-lg">
-              <source src={selectedEpisode.link} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
+        </div>
+
+        {/* Video */}
+        <div className="space-y-1">
+          <label className="block text-sm font-medium">
+            Details
+          </label>
+          <ReactQuillEditor
+            label="details"
+            desc={formData?.details}
+            handleBioChange={(val) => handleQuillChange('details', val)}
+          />
         </div>
 
         {/* Submit */}
-        <div className="pt-2">
+        <div className="pt-2 mt-16">
           <button
             type="submit"
             disabled={loading}
@@ -255,6 +203,6 @@ export default function AddEpisode({
           </button>
         </div>
       </form>
-    </Popup>
+    </AuthLayout>
   );
 }

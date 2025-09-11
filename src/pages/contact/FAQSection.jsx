@@ -58,7 +58,7 @@ export default function FAQSection() {
             </div>
               {activeIndex === index && (
                 <div className="flex gap-2 px-6 pb-4 text-sm md:text-base leading-[20px] md:leading-[22px] text-white/50 max-w-4xl">
-                    <HiOutlineArrowTurnDownRight size={24} className="min-w-fit"/>
+                    <HiOutlineArrowTurnDownRight size={24} className="min-w-fit text-purple-200"/>
                   {faq?.answer}
                 </div>
               )}

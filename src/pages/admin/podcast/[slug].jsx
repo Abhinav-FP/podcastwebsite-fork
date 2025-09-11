@@ -8,6 +8,7 @@ import moment from "moment";
 import EpisodeCard from "../../../common/EpisodeCard";
 import AddEpisode from "./AddEpisode";
 import PodcastDetails from "@/common/PodcastDetails";
+import Link from "next/link";
 
 export default function Detail() {
   const router = useRouter();
@@ -35,7 +36,7 @@ export default function Detail() {
       fetchDetails(slug);
     }
   }, [slug]);
-  // console.log("data", data);
+  console.log("data", data);
 
   return (
     <AuthLayout>
@@ -69,14 +70,12 @@ export default function Detail() {
       <div className="mt-8">
         <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Episodes</h2>
-        <button className="rounded-[40px] button-bg py-1 sm:py-2 px-3 sm:px-5 cursor-pointer text-sm sm:text-base md:text-md"
-         onClick={()=>{
-          setSelectedEpisode(null);
-          setIsEpisodePopupOpen(true);
-        }}
+        <Link
+          href={`/admin/episode/add?id=${data?.id}`}
+          className="rounded-[40px] button-bg py-1 sm:py-2 px-3 sm:px-5 cursor-pointer text-sm sm:text-base md:text-md inline-block"
         >
-            Add New Episode
-        </button>
+          Add New Episode
+        </Link>
         </div>
          <div className="space-y-8 mt-6">
           {data && data?.episodes && data?.episodes?.map((item,index)=>(

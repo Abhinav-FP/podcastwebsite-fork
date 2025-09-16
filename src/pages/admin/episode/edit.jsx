@@ -5,12 +5,12 @@ import Listing from "@/pages/api/Listing";
 import { useRouter } from "next/router";
 import ReactQuillEditor from "./ReactQuillEditor";
 
-export default function Add() {
-  const selectedEpisode=null;
+export default function Edit() {
   const router = useRouter();
   const { id } = router.query; 
 //   console.log("id", id);
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -73,14 +73,17 @@ export default function Add() {
       payload.append("description", formData.description);
       payload.append("podcastId", id);
       payload.append("detail", formData?.details);
-      if (formData.thumbnail) payload.append("thumbnail", formData.thumbnail);
-      if (formData.video) payload.append("video", formData.video);
-      let size = 0;
-      if (formData.video) {
-        size = Number((formData.video.size / (1024 * 1024)).toFixed(2)) || 0;
+      if (formData.thumbnail instanceof File) { 
+        payload.append("thumbnail", formData.thumbnail);
       }
-      payload.append("size", size);
-      const response = await main.EpisodeAdd(payload);
+      if (formData.video instanceof File) {
+        payload.append("video", formData.video);
+      }
+      if (formData.video instanceof File) {
+        let size = Number((formData.video.size / (1024 * 1024)).toFixed(2)) || 0;
+        payload.append("size", size);
+      }
+      const response = await main.EpisodeUpdate(id, payload);
 
       if (response?.data?.status) {
         toast.success(response.data.message);
@@ -91,7 +94,7 @@ export default function Add() {
           video: null,
         });
         setThumbnailPreview(null);
-        router.push("/admin/podcast");
+        router.push(`/admin/podcast/${data?.podcast?.uuid}`);
       } else {
         toast.error(response.data.message);
       }
@@ -103,11 +106,46 @@ export default function Add() {
     }
   };
 
+  const fetchDetails = async (id) => {
+    try {
+      const main = new Listing();
+      const response = await main.AdminEpisodeByUUID(id);
+      setData(response?.data?.data || []);
+    //   console.log("response?.data?.data?.detail",response?.data?.data?.detail);
+      // Updating the fields as required
+      setFormData({
+      title: response?.data?.data?.title || "",
+      description: response?.data?.data?.description || "",
+      thumbnail: response?.data?.data?.thumbnail || null,
+      video: response?.data?.data?.link || null,
+      details: response?.data?.data?.detail || null,
+    });
+
+    if (response?.data?.data?.thumbnail) {
+      setThumbnailPreview(response?.data?.data.thumbnail);
+      return;
+    }
+    setThumbnailPreview(null);
+
+    } catch (error) {
+      console.log("error", error);
+      setData({});
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      fetchDetails(id);
+    }
+  }, [id]);
+
+  console.log("data", data);
+
   return (
     <AuthLayout>
       <form onSubmit={handleSubmit} className="w-full text-white space-y-6 mx-auto">
         <h3 className="text-3xl font-bold text-center heading">
-          {selectedEpisode ? "Edit Episode" : "Add Episode"}
+          Edit Episode
         </h3>
 
         {/* Title */}
@@ -179,6 +217,12 @@ export default function Add() {
             onChange={handleChange}
             className="w-full text-sm text-gray-400 file:bg-white file:text-black file:rounded-lg file:px-4 file:py-2 border border-gray-700 bg-[#1c1c1c]"
           />
+          {typeof formData.video === "string" && (
+            <video controls className="mt-2 w-full rounded-lg">
+              <source src={data?.link} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
         </div>
 
         {/* Video */}

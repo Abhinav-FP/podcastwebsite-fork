@@ -11,6 +11,7 @@ import { FaHeadphones, FaUser, FaClock } from "react-icons/fa";
 import { IoIosArrowDown, IoMdTime } from "react-icons/io";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function EpisodeCard({
   episode,
@@ -95,7 +96,7 @@ export default function EpisodeCard({
 
     {/* Meta Info */}
     <div className="flex flex-wrap items-center text-xs sm:text-sm md:text-base text-white gap-2 sm:gap-4 mb-3">
-      <span className="">Episode: {episode?.episode?._count?.episodes || 11}</span> |
+      {/* <span className="">Episode: {episode?.episode?._count?.episodes || 11}</span> | */}
       <span className="flex items-center gap-1">
          <svg
           width="16"
@@ -154,16 +155,12 @@ export default function EpisodeCard({
           ref={menuRef}
           className="absolute right-0 mt-2 w-32 bg-[#1c1c1c] border border-gray-700 rounded-md shadow-lg z-10"
         >
-          <button
-            onClick={() => {
-              setSelectedEpisode(episode);
-              setShowMenu(false);
-              setIsEpisodePopupOpen(true);
-            }}
+          <Link
+            href={`/admin/episode/edit?id=${episode?.uuid}`}
             className="flex gap-2 items-center w-full px-4 py-2 text-sm text-white hover:bg-white/10 border-b border-gray-700"
           >
             Edit <MdEdit size={16} />
-          </button>
+          </Link>
           <button
             onClick={() => {
               setShowMenu(false);

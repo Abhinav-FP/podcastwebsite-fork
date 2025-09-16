@@ -76,7 +76,7 @@ export default function AuthLayout({ children }) {
                 </div>
                 <div className="text-start me-4 ps-2">
                   <h2 className="capitalize font-bold text-white">{user?.name || ""}</h2>
-                  <p className="capitalize text-sm mt-[-3px] text-gray-400">
+                  <p className="text-sm mt-[-3px] text-gray-400">
                     {user?.email || ""}
                   </p>
                 </div>

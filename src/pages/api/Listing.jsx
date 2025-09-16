@@ -30,6 +30,10 @@ class Listing extends Component {
     return Api.get(`/file/get/${data}`)
   }
 
+  async AdminEpisodeByUUID(data) {
+    return Api.get(`/admin/file/get/${data}`)
+  }
+
   async GuideList(page=1) {
     return Api.get(`/guide/getAll?page=${page}`)
   }

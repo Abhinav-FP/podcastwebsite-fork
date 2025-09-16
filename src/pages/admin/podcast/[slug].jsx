@@ -36,7 +36,7 @@ export default function Detail() {
       fetchDetails(slug);
     }
   }, [slug]);
-  console.log("data", data);
+  // console.log("data", data);
 
   return (
     <AuthLayout>

@@ -9,6 +9,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import toast from "react-hot-toast";
+import Loader from "@/common/Loader";
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
@@ -36,25 +37,25 @@ export default function Index() {
     fetchPodcasts();
   }, []);
 
-  const handleDelete = async(id) => {
-      if (deleteLoading) return;
-      setDeleteLoading(true);
-      try {
-        const main = new Listing();
-        const response = await main.PodcastDelete(id);
-        if (response?.data?.status) {
-          toast.success(response.data.message);
-          fetchPodcasts();
-        } else {
-          toast.error(response.data.message);
-        }
-      } catch (error) {
-        console.error("API error:", error);
-        toast.error(error?.response?.data?.message || "Something went wrong!");
-      } finally {
-        setDeleteLoading(false);
+  const handleDelete = async (id) => {
+    if (deleteLoading) return;
+    setDeleteLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.PodcastDelete(id);
+      if (response?.data?.status) {
+        toast.success(response.data.message);
+        fetchPodcasts();
+      } else {
+        toast.error(response.data.message);
       }
-    };
+    } catch (error) {
+      console.error("API error:", error);
+      toast.error(error?.response?.data?.message || "Something went wrong!");
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
 
   return (
     <AuthLayout>
@@ -71,7 +72,11 @@ export default function Index() {
             Add Podcast
           </button>
         </div>
-        {data &&
+        {loading ? (
+          <Loader />
+        ) : data?.length === 0 ? (
+          <p className="text-gray-500 text-center mt-20">No podcasts found.</p>
+        ) : (
           data?.map((podcast) => (
             <div
               key={podcast.id}
@@ -110,15 +115,13 @@ export default function Index() {
                       }}
                       className="flex gap-2 items-center w-full px-4 py-2 text-sm text-red-400 hover:bg-white/10 text-left cursor-pointer"
                     >
-                      {podcast?.isDeleted ? 
-                        <>
-                          Enable
-                        </>
-                        :
+                      {podcast?.isDeleted ? (
+                        <>Enable</>
+                      ) : (
                         <>
                           Disable <RiDeleteBin5Line size={16} />
                         </>
-                      }
+                      )}
                     </button>
                   </div>
                 )}
@@ -162,7 +165,8 @@ export default function Index() {
                 </div>
               </Link>
             </div>
-          ))}
+          ))
+        )}
       </div>
       <AddPodcast
         isOpen={isPodcastPopupOpen}

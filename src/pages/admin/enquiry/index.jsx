@@ -4,6 +4,7 @@ import Listing from "@/pages/api/Listing";
 import NoData from "@/common/NoDataFound";
 import  { TableLoader } from "@/common/LoadingSpinner";
 import AuthLayout from "@/layout/AuthLayout";
+import Loader from "@/common/Loader";
 
 export default function index() {
   const [listing, setLisitng] = useState([]);
@@ -35,7 +36,7 @@ export default function index() {
         setLoadingButton(false);
       }
     } catch (error) {
-      console.error("Error fetching package data:", error);
+      console.log("Error fetching package data:", error);
     } finally {
       setLoading(false);
       setLoadingButton(false);
@@ -63,6 +64,7 @@ export default function index() {
       <div className="overflow-auto">
         {loading ? (
           <TableLoader length={4} />
+          // <Loader/>
         ) : listing?.length === 0 ? (
           <NoData />
         ) : (
@@ -103,20 +105,6 @@ export default function index() {
           </table>
         )}
       </div>
-      {/* <div className="mt-[10px]  lg:mt-[10px] lg:mb-[20px] flex justify-center items-center">
-        {
-          listing?.length > 0 && !loading && hasMore && (
-            <div className="mt-[10px]  lg:mt-[10px] lg:mb-[20px] flex justify-center items-center">
-              <button
-                onClick={loadMore}
-                className="px-[20px] py-[15px] lg:px-[20px] lg:py-[15px] button-bg text-white  font-[700] text-[15px] rounded-md hover:bg-[#938539] transition duration-300">
-                {loadingButton ? "Loading..." : "Load More"}
-
-              </button>
-            </div>
-          )
-        }
-      </div> */}
     </AuthLayout>
   );
 }

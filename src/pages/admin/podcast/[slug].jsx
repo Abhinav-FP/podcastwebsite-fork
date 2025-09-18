@@ -9,6 +9,7 @@ import EpisodeCard from "../../../common/EpisodeCard";
 import AddEpisode from "./AddEpisode";
 import PodcastDetails from "@/common/PodcastDetails";
 import Link from "next/link";
+import Loader from "@/common/Loader";
 
 export default function Detail() {
   const router = useRouter();
@@ -66,6 +67,8 @@ export default function Detail() {
           </p>
         </div>
       </div> */}
+      {loading ? <Loader/> : 
+      <>
       <PodcastDetails podcast={data}/>
       <div className="mt-8">
         <div className="flex justify-between items-center">
@@ -90,6 +93,7 @@ export default function Detail() {
         fetchDetails={fetchDetails}
         selectedEpisode={selectedEpisode}
       />
+      </>}
     </AuthLayout>
   );
 }

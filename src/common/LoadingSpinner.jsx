@@ -11,29 +11,36 @@ const LoadingSpinner = ({ count = 4 }) => {
       ))}
     </>
   );
-}
+};
 
-
-const TableLoader = ({ length }) => {
+const TableLoader = ({ rows = 4 }) => {
   return (
     <tbody>
-      {[1, 2, 3, 4].map((_, index) => (
-        <tr key={index} className="border-t border-[rgba(204,40,40,0.2)] animate-pulse">
-          {[...Array(length || 2)].map((__, colIdx) => (
-            <td
-              key={colIdx}
-              className="px-3 lg:px-4 py-2 lg:py-3"
-            >
-              <div className="h-4 bg-gray-200 rounded w-full mx-auto"></div>
-            </td>
-          ))}
+      {[...Array(rows)].map((_, rowIdx) => (
+        <tr key={rowIdx} className="animate-pulse">
+          {/* S.No */}
+          <td className="px-[10px] py-[16px] border-b border-[#ffffff1a]">
+            <div className="h-4 bg-gray-700 rounded w-[8vw]"></div>
+          </td>
+
+          {/* Name */}
+          <td className="px-[10px] py-[16px] border-b border-[#ffffff1a]">
+            <div className="h-4 bg-gray-700 rounded w-[8vw]"></div>
+          </td>
+
+          {/* Email */}
+          <td className="px-[10px] py-[16px] border-b border-[#ffffff1a]">
+            <div className="h-4 bg-gray-700 rounded w-[30vw]"></div>
+          </td>
+
+          {/* Message */}
+          <td className="px-[10px] py-[16px] border-b border-[#ffffff1a]">
+            <div className="h-4 bg-gray-700 rounded w-[30vw]"></div>
+          </td>
         </tr>
       ))}
     </tbody>
   );
-}
-
-export {
-  TableLoader, LoadingSpinner
-
 };
+
+export { TableLoader, LoadingSpinner };

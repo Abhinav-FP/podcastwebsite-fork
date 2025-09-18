@@ -3,6 +3,7 @@ import AuthLayout from "@/layout/AuthLayout";
 import AddGuide from "./AddGuide";
 import Listing from "@/pages/api/Listing";
 import GuideCard from "@/common/GuideCard";
+import Loader from "@/common/Loader";
 
 export default function index() {
   const [loading, setLoading] = useState(false);
@@ -26,27 +27,33 @@ export default function index() {
     fetchGuides();
   }, []);
 
-  console.log("data",data);
+  // console.log("data",data);
 
   return (
     <AuthLayout>
       <div className="flex items-center justify-between tracking-tight border-b border-[#2a2a2a] pb-4 mb-6 w-full">
-        <h1 className="text-3xl lg:text-4xl font-bold">Property Investing Guides</h1>
+        <h1 className="text-3xl lg:text-4xl font-bold">
+          Property Investing Guides
+        </h1>
         <button
-         onClick={() => {
-             setIsGuidePopupOpen(true);
-         }}
-         className="w-fit button-bg px-4 xl:px-8 py-2 h-[44px] rounded-md tracking-[-0.06em] text-sm font-medium cursor-pointer"
+          onClick={() => {
+            setIsGuidePopupOpen(true);
+          }}
+          className="w-fit button-bg px-4 xl:px-8 py-2 h-[44px] rounded-md tracking-[-0.06em] text-sm font-medium cursor-pointer"
         >
-         Add New Guide
+          Add New Guide
         </button>
       </div>
-      <div className="grid gap-8 md:grid-cols-2">
-        {data &&
-          data?.map((guide, index) => (
-            <GuideCard guide={guide} key={index}/>
-        ))}
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="grid gap-8 md:grid-cols-2">
+          {data &&
+            data?.map((guide, index) => (
+              <GuideCard guide={guide} key={index} />
+            ))}
+        </div>
+      )}
       <AddGuide
         isOpen={isGuidePopupOpen}
         onClose={() => {

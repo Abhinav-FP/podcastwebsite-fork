@@ -20,7 +20,7 @@ export default function index() {
       setLoadingButton(true);
       const main = new Listing();
       const response = await main.GetSubscriber(page, limit, { signal });
-      console.log("response", response)
+      // console.log("response", response)
       if (response?.data?.data) {
         setLisitng((prevData) => {
           if (page === 1) {

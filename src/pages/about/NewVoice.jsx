@@ -15,7 +15,7 @@ export default function NewVoice() {
             <span className="text-theme"> New Voice in Educating Smart </span>
             Property Investors.
           </h1>
-          <p className="mt-6 text-gray-300 text-base sm:text-lg">
+          <p className="mt-6 text-gray-300 text-base sm:text-lg leading-loose">
             We're dedicated to transforming complex property investment concepts
             into strategic frameworks that help intelligent investors to build
             enduring wealth through property. Born from the strategic

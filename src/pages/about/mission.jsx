@@ -35,7 +35,7 @@ export default function Mission() {
           <h3 className="text-base sm:text-lg lg:text-xl font-[700] mb-4 uppercase">
             Making property education practical and accessible for Australians.
           </h3>
-          <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-5 text-[#FFFFFFCC]">
+          <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-5 text-[#FFFFFFCC] leading-loose">
             We exist to close the knowledge gap that often keeps capable people
             from creating wealth through property. Too many Australians sit on
             the sidelines while others grow strong portfolios, not because of

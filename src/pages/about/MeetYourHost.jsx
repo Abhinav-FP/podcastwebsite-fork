@@ -41,7 +41,7 @@ export default function MeetYourHost() {
           <h2 className="text-[30px] sm:text-[41px] lg:text-[52px] font-[700] mb-2 uppercase">
             MEET YOUR <span className="text-theme">HOST</span>
           </h2>
-          <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-4 text-[#FFFFFFCC]">
+          <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-4 text-[#FFFFFFCC] leading-loose">
             Together, Parag, Mudit, and Julius represent the complete property
             investment ecosystem of mortgage mastery, strategic financing, and
             acquisition expertise unified under one educational platform. Their
@@ -74,9 +74,10 @@ export default function MeetYourHost() {
                     {content?.name} - <span className="text-theme">{content?.designation}</span>
                   </h2>
 
-                  <p className="text-base md:text-lg leading-relaxed">
+                  <p className="text-base md:text-lg leading-loose">
                     {content?.paragraph}
                   </p>
+                  
 
                   {/* Bottom badges */}
                   <div className="flex flex-wrap justify-center items-center lg:justify-start gap-6">

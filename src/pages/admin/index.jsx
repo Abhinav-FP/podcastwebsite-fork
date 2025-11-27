@@ -79,7 +79,7 @@ export default function Index() {
             </div>
           ))}
       </div>
-        Index
+        {/* 0Index */}
       </>
       }
     </AuthLayout>

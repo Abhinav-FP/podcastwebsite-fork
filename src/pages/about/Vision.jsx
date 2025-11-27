@@ -13,7 +13,7 @@ export default function Vision() {
           <h3 className="text-base sm:text-lg lg:text-xl font-[700] mb-4 uppercase">
             Helping Australians build lasting wealth through property.
           </h3>
-          <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-5 text-[#FFFFFFCC]">
+          <p className="text-[18px] sm:text-[20px] md:text-[18px] mb-5 text-[#FFFFFFCC] leading-loose">
             We see a future where background, postcode, or starting point no
             longer decides who can build a strong property portfolio. Our vision
             is for more Australians to feel informed, confident, and capable of

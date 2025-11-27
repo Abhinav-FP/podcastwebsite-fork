@@ -51,10 +51,10 @@ export default function Footer() {
       <div>
         <h3 className="font-semibold mb-4 text-sm">COMPANY</h3>
         <ul className="space-y-4 text-gray-400 text-sm">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Episodes</a></li>
-          <li><a href="#">E-guides</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><Link href="#">About</Link></li>
+          <li><Link href="#">Episodes</Link></li>
+          <li><Link href="#">E-guides</Link></li>
+          <li><Link href="#">Contact</Link></li>
         </ul>
       </div>
 
@@ -62,10 +62,11 @@ export default function Footer() {
       <div>
         <h3 className="font-semibold mb-4 text-sm">HELP</h3>
         <ul className="space-y-4 text-gray-400 text-sm">
-          <li><a href="#">Customer Support</a></li>
-          <li><a href="#">Delivery Details</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          {/* <li><a href="#">Delivery Details</a></li> */}
+          <li><Link href="/contact">Customer Support</Link></li>
+          <li><Link href="/access">Terms Of Access</Link></li>
+          <li><Link href="/use">Terms Of Use</Link></li>
+          <li><Link href="/privacy">Privacy Policy</Link></li>
         </ul>
       </div>
 

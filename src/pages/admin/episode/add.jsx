@@ -4,6 +4,8 @@ import toast from "react-hot-toast";
 import Listing from "@/pages/api/Listing";
 import { useRouter } from "next/router";
 import ReactQuillEditor from "./ReactQuillEditor";
+import axios from "axios";
+import { Api } from "../../api/Api";
 
 export default function Add() {
   const selectedEpisode=null;
@@ -19,12 +21,15 @@ export default function Add() {
     details: null,
   });
   const [thumbnailPreview, setThumbnailPreview] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadedFileUrl, setUploadedFileUrl] = useState(null);
+  const [uploadingVideo, setUploadingVideo] = useState(false);
 
   const handleQuillChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleChange = (e) => {
+  const handleChange = async(e) => {
     const { name, value, files } = e.target;
 
     if (name === "thumbnail" && files?.[0]) {
@@ -37,11 +42,25 @@ export default function Add() {
       setThumbnailPreview(URL.createObjectURL(file));
     } else if (name === "video" && files?.[0]) {
       const file = files[0];
-      if (!file.type.startsWith("video/") && !file.type.startsWith("audio/")) {
-      toast.error("Only video or audio files allowed");
+
+    if (!file.type.startsWith("video/") && !file.type.startsWith("audio/")) {
+      toast.error("Only video/audio allowed");
       return;
-      }
-      setFormData((prev) => ({ ...prev, video: file }));
+    }
+
+    setUploadingVideo(true);
+    toast.loading("Uploading file...");
+
+    try {
+      const url = await uploadLargeFile(file);
+      setUploadedFileUrl(url);
+      toast.dismiss();
+      toast.success("Upload complete!");
+    } catch (err) {
+      toast.error("Upload failed!");
+      console.error(err);
+    }
+    setUploadingVideo(false);
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -62,24 +81,115 @@ export default function Add() {
     e.preventDefault();
   };
 
+  const uploadLargeFile = async (file) => {
+  const CHUNK_SIZE = 10 * 1024 * 1024; // 10MB
+  const totalChunks = Math.ceil(file.size / CHUNK_SIZE);
+
+  setUploadingVideo(true);
+  setUploadProgress(0);
+
+  try {
+    // STEP 1️⃣: Initialize multipart upload
+    const initRes = await Api.post(`/upload/init`, {
+      fileName: file.name,
+      mimeType: file.type
+    });
+
+    const { uploadId, key } = initRes.data;
+    let uploadedParts = [];
+
+    for (let i = 0; i < totalChunks; i++) {
+      const start = i * CHUNK_SIZE;
+      const end = Math.min(start + CHUNK_SIZE, file.size);
+      const chunk = file.slice(start, end);
+
+      // STEP 2️⃣: Upload each chunk as raw binary
+      const chunkRes = await Api.put(
+        `/upload/part?uploadId=${uploadId}&key=${key}&partNumber=${i + 1}`,
+        chunk,
+        {
+          headers: {
+            "Content-Type": "application/octet-stream",
+            "Content-Length": chunk.size
+          },
+          onUploadProgress: (e) => {
+            const chunkProgress = e.loaded / chunk.size;
+            const percent = Math.round(((i + chunkProgress) / totalChunks) * 100);
+            setUploadProgress(percent);
+          },
+        }
+      );
+
+      uploadedParts.push({
+        ETag: chunkRes.data.ETag.replace(/"/g, ""), // remove quotes if any
+        PartNumber: i + 1,
+      });
+    }
+
+    // STEP 3️⃣: Complete multipart upload
+    uploadedParts.sort((a, b) => a.PartNumber - b.PartNumber);
+
+    const completeRes = await Api.post(`/upload/complete`, {
+      uploadId,
+      key,
+      parts: uploadedParts,
+    });
+
+    const url = completeRes.data.fileUrl;
+    setUploadedFileUrl(url);
+    setFormData((prev) => ({
+      ...prev,
+      videoUrl: url,
+      size: Number((file.size / (1024 * 1024)).toFixed(2)), // MB
+    }));
+
+    setUploadProgress(100);
+    toast.success("Upload completed!");
+    return url;
+
+  } catch (error) {
+    console.error("Upload failed:", error);
+    toast.error("Upload failed, please try again.");
+    setUploadProgress(0);
+    return null;
+
+  } finally {
+    setUploadingVideo(false);
+  }
+};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (loading) return;
     setLoading(true);
+
     try {
       const main = new Listing();
+
       const payload = new FormData();
       payload.append("title", formData.title);
       payload.append("description", formData.description);
       payload.append("podcastId", id);
-      payload.append("detail", formData?.details);
-      if (formData.thumbnail) payload.append("thumbnail", formData.thumbnail);
-      if (formData.video) payload.append("video", formData.video);
-      let size = 0;
-      if (formData.video) {
-        size = Number((formData.video.size / (1024 * 1024)).toFixed(2)) || 0;
+      payload.append("detail", formData.details);
+
+      // Video now handled via chunk upload
+      if (!formData.videoUrl) {
+        toast.error("Please upload the video first!");
+        setLoading(false);
+        return;
       }
-      payload.append("size", size);
+
+      payload.append("link", formData.videoUrl);
+      payload.append("mimefield", formData.mimeType || "");
+      payload.append("duration", formData.duration || 0);
+      payload.append("durationInSec", formData.durationInSec || 0);
+      payload.append("size", formData.size || 0);
+
+      // Thumbnail still uploaded via backend
+      if (formData.thumbnail) {
+        payload.append("thumbnail", formData.thumbnail);
+      }
+
       const response = await main.EpisodeAdd(payload);
 
       if (response?.data?.status) {
@@ -87,10 +197,16 @@ export default function Add() {
         setFormData({
           title: "",
           description: "",
+          details: "",
           thumbnail: null,
-          video: null,
+          videoUrl: "",
+          thumbnailPreview: "",
+          duration: 0,
+          durationInSec: 0,
+          mimeType: "",
+          size: 0,
         });
-        setThumbnailPreview(null);
+
         router.push("/admin/podcast");
       } else {
         toast.error(response.data.message);
@@ -179,6 +295,16 @@ export default function Add() {
             onChange={handleChange}
             className="w-full text-sm text-gray-400 file:bg-white file:text-black file:rounded-lg file:px-4 file:py-2 border border-gray-700 bg-[#1c1c1c]"
           />
+          {uploadingVideo && (
+            <div>
+              <label>Uploading Video...</label>
+              <progress value={uploadProgress} max="100"></progress>
+              <span>{uploadProgress}%</span>
+            </div>
+          )}
+          {uploadedFileUrl && (
+            <div className="text-green-400 text-sm mt-1">File uploaded ✔</div>
+          )}
         </div>
 
         {/* Video */}

@@ -110,7 +110,7 @@ export default function Add() {
         {
           headers: {
             "Content-Type": "application/octet-stream",
-            "Content-Length": chunk.size
+            // "Content-Length": chunk.size
           },
           onUploadProgress: (e) => {
             const chunkProgress = e.loaded / chunk.size;

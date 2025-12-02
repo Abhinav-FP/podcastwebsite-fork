@@ -23,6 +23,16 @@ const nextConfig = {
         hostname: 'f004.backblazeb2.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        pathname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '**',
+      },
     ],
   },
   webpack: (config) => {

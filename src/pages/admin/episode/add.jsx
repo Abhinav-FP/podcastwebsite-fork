@@ -81,82 +81,165 @@ export default function Add() {
     e.preventDefault();
   };
 
+  // const uploadLargeFile = async (file) => {
+  //   const CHUNK_SIZE = 10 * 1024 * 1024; // 10MB
+  //   const totalChunks = Math.ceil(file.size / CHUNK_SIZE);
+
+  //   setUploadingVideo(true);
+  //   setUploadProgress(0);
+
+  //   try {
+  //     // STEP 1️⃣: Initialize multipart upload
+  //     const initRes = await Api.post(`/upload/init`, {
+  //       fileName: file.name,
+  //       mimeType: file.type
+  //     });
+
+  //     const { uploadId, key } = initRes.data;
+  //     let uploadedParts = [];
+
+  //     for (let i = 0; i < totalChunks; i++) {
+  //       const start = i * CHUNK_SIZE;
+  //       const end = Math.min(start + CHUNK_SIZE, file.size);
+  //       const chunk = file.slice(start, end);
+
+  //       // STEP 2️⃣: Upload each chunk as raw binary
+  //       const chunkRes = await Api.put(
+  //         `/upload/part?uploadId=${uploadId}&key=${key}&partNumber=${i + 1}`,
+  //         chunk,
+  //         {
+  //           headers: {
+  //             "Content-Type": "application/octet-stream",
+  //             // "Content-Length": chunk.size
+  //           },
+  //           onUploadProgress: (e) => {
+  //             const chunkProgress = e.loaded / chunk.size;
+  //             const percent = Math.round(((i + chunkProgress) / totalChunks) * 100);
+  //             setUploadProgress(percent);
+  //           },
+  //         }
+  //       );
+
+  //       uploadedParts.push({
+  //         ETag: chunkRes.data.ETag.replace(/"/g, ""), // remove quotes if any
+  //         PartNumber: i + 1,
+  //       });
+  //     }
+
+  //     // STEP 3️⃣: Complete multipart upload
+  //     uploadedParts.sort((a, b) => a.PartNumber - b.PartNumber);
+
+  //     const completeRes = await Api.post(`/upload/complete`, {
+  //       uploadId,
+  //       key,
+  //       parts: uploadedParts,
+  //     });
+
+  //     const url = completeRes.data.fileUrl;
+  //     setUploadedFileUrl(url);
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       videoUrl: url,
+  //       size: Number((file.size / (1024 * 1024)).toFixed(2)), // MB
+  //     }));
+
+  //     setUploadProgress(100);
+  //     toast.success("Upload completed!");
+  //     return url;
+
+  //   } catch (error) {
+  //     console.error("Upload failed:", error);
+  //     toast.error("Upload failed, please try again.");
+  //     setUploadProgress(0);
+  //     return null;
+
+  //   } finally {
+  //     setUploadingVideo(false);
+  //   }
+  // };
+
   const uploadLargeFile = async (file) => {
-  const CHUNK_SIZE = 10 * 1024 * 1024; // 10MB
-  const totalChunks = Math.ceil(file.size / CHUNK_SIZE);
+    const CHUNK_SIZE = 10 * 1024 * 1024; // 10MB
+    const totalChunks = Math.ceil(file.size / CHUNK_SIZE);
 
-  setUploadingVideo(true);
-  setUploadProgress(0);
+    setUploadingVideo(true);
+    setUploadProgress(0);
 
-  try {
-    // STEP 1️⃣: Initialize multipart upload
-    const initRes = await Api.post(`/upload/init`, {
-      fileName: file.name,
-      mimeType: file.type
-    });
+    try {
+      // STEP 1: Init (Same as before)
+      const initRes = await Api.post(`/upload/init`, {
+        fileName: file.name,
+        mimeType: file.type
+      });
 
-    const { uploadId, key } = initRes.data;
-    let uploadedParts = [];
+      const { uploadId, key } = initRes.data;
+      let uploadedParts = [];
 
-    for (let i = 0; i < totalChunks; i++) {
-      const start = i * CHUNK_SIZE;
-      const end = Math.min(start + CHUNK_SIZE, file.size);
-      const chunk = file.slice(start, end);
+      for (let i = 0; i < totalChunks; i++) {
+        const start = i * CHUNK_SIZE;
+        const end = Math.min(start + CHUNK_SIZE, file.size);
+        const chunk = file.slice(start, end);
 
-      // STEP 2️⃣: Upload each chunk as raw binary
-      const chunkRes = await Api.put(
-        `/upload/part?uploadId=${uploadId}&key=${key}&partNumber=${i + 1}`,
-        chunk,
-        {
+        // STEP 2A: Ask Backend for a Presigned URL for this specific chunk
+        const { data: { url: presignedUrl } } = await Api.post("/upload/part-url", {
+          uploadId,
+          key,
+          partNumber: i + 1
+        });
+
+        // STEP 2B: Upload directly to Backblaze using standard Axios
+        // Important: Do NOT use your 'Api' instance here, because it might add Authorization headers
+        // which will conflict with the AWS Signature. Use a fresh axios call.
+        const uploadRes = await axios.put(presignedUrl, chunk, {
           headers: {
-            "Content-Type": "application/octet-stream",
-            // "Content-Length": chunk.size
+            "Content-Type": "application/octet-stream"
           },
           onUploadProgress: (e) => {
             const chunkProgress = e.loaded / chunk.size;
             const percent = Math.round(((i + chunkProgress) / totalChunks) * 100);
             setUploadProgress(percent);
-          },
-        }
-      );
+          }
+        });
 
-      uploadedParts.push({
-        ETag: chunkRes.data.ETag.replace(/"/g, ""), // remove quotes if any
-        PartNumber: i + 1,
+        // Backblaze returns the ETag in the response header
+        // Sometimes ETag is wrapped in quotes '"etag"', we strip them.
+        const rawETag = uploadRes.headers["etag"] || uploadRes.headers["ETag"];
+        const cleanETag = rawETag.replace(/"/g, "");
+
+        uploadedParts.push({
+          ETag: cleanETag,
+          PartNumber: i + 1,
+        });
+      }
+
+      // STEP 3: Complete (Same as before)
+      const completeRes = await Api.post(`/upload/complete`, {
+        uploadId,
+        key,
+        parts: uploadedParts,
       });
+
+      const url = completeRes.data.fileUrl;
+      setUploadedFileUrl(url);
+      setFormData((prev) => ({
+        ...prev,
+        videoUrl: url,
+        size: Number((file.size / (1024 * 1024)).toFixed(2)),
+      }));
+
+      setUploadProgress(100);
+      toast.success("Upload completed!");
+      return url;
+
+    } catch (error) {
+      console.error("Upload failed:", error);
+      toast.error("Upload failed, please try again.");
+      setUploadProgress(0);
+      return null;
+    } finally {
+      setUploadingVideo(false);
     }
-
-    // STEP 3️⃣: Complete multipart upload
-    uploadedParts.sort((a, b) => a.PartNumber - b.PartNumber);
-
-    const completeRes = await Api.post(`/upload/complete`, {
-      uploadId,
-      key,
-      parts: uploadedParts,
-    });
-
-    const url = completeRes.data.fileUrl;
-    setUploadedFileUrl(url);
-    setFormData((prev) => ({
-      ...prev,
-      videoUrl: url,
-      size: Number((file.size / (1024 * 1024)).toFixed(2)), // MB
-    }));
-
-    setUploadProgress(100);
-    toast.success("Upload completed!");
-    return url;
-
-  } catch (error) {
-    console.error("Upload failed:", error);
-    toast.error("Upload failed, please try again.");
-    setUploadProgress(0);
-    return null;
-
-  } finally {
-    setUploadingVideo(false);
-  }
-};
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

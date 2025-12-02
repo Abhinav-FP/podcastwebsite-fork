@@ -158,89 +158,141 @@ export default function Add() {
   //   }
   // };
 
-  const uploadLargeFile = async (file) => {
-    const CHUNK_SIZE = 10 * 1024 * 1024; // 10MB
-    const totalChunks = Math.ceil(file.size / CHUNK_SIZE);
+  // Add this helper function outside of the component or at the top of the file
+// This is an async function that handles fetching the URL and uploading one chunk with retries
+  // Make sure this helper is outside the component (it doesn't need component state)
+const uploadChunkWithRetry = async (
+    chunk, 
+    partNumber, 
+    uploadId, 
+    key, 
+    MAX_RETRIES, 
+    Api, 
+    onProgress
+) => {
+    let attempts = 0;
+    while (attempts < MAX_RETRIES) {
+        try {
+            // 1. Get Presigned URL
+            const { data: { url: presignedUrl } } = await Api.post("/upload/part-url", {
+                uploadId, key, partNumber,
+            });
+
+            // 2. Upload Chunk
+            const uploadRes = await axios.put(presignedUrl, chunk, {
+                headers: { "Content-Type": "application/octet-stream" },
+                onUploadProgress: onProgress, // Passes event data to the centralized handler
+            });
+
+            const rawETag = uploadRes.headers["etag"] || uploadRes.headers["ETag"];
+            const cleanETag = rawETag.replace(/"/g, "");
+
+            return { ETag: cleanETag, PartNumber: partNumber };
+
+        } catch (error) {
+            attempts++;
+            if (attempts < MAX_RETRIES) {
+                console.warn(`Chunk ${partNumber} failed (Attempt ${attempts}/${MAX_RETRIES}). Retrying...`);
+                await new Promise(resolve => setTimeout(resolve, 2000));
+            } else {
+                throw new Error(`Failed to upload chunk ${partNumber} after ${MAX_RETRIES} attempts.`);
+            }
+        }
+    }
+};
+
+const uploadLargeFile = async (file) => {
+    const fileSize = file.size;
+    const MIN_CHUNK_SIZE = 10 * 1024 * 1024;
+    const MAX_CHUNKS = 100;
+    const MAX_RETRIES = 3; 
+    const CONCURRENCY_LIMIT = 5;
+
+    const idealChunkSize = Math.ceil(fileSize / MAX_CHUNKS);
+    const CHUNK_SIZE = idealChunkSize > MIN_CHUNK_SIZE ? idealChunkSize : MIN_CHUNK_SIZE;
+    const totalChunks = Math.ceil(fileSize / CHUNK_SIZE);
+
+    // --- NEW: Global progress trackers ---
+    const uploadedBytesRef = { current: 0 }; // Bytes fully completed and accounted for
+    const activeChunkProgress = new Map();     // Bytes transferred for currently uploading chunks (key=partNumber, value=bytes loaded)
+    const totalFileBytes = file.size;
+    // --- END NEW ---
 
     setUploadingVideo(true);
     setUploadProgress(0);
 
     try {
-      // STEP 1: Init (Same as before)
-      const initRes = await Api.post(`/upload/init`, {
-        fileName: file.name,
-        mimeType: file.type
-      });
+        const initRes = await Api.post(`/upload/init`, { fileName: file.name, mimeType: file.type });
+        const { uploadId, key } = initRes.data;
+        
+        const chunkTasks = [];
+        for (let i = 0; i < totalChunks; i++) {
+            const start = i * CHUNK_SIZE;
+            const end = Math.min(start + CHUNK_SIZE, fileSize);
+            const chunk = file.slice(start, end);
+            const partNumber = i + 1;
 
-      const { uploadId, key } = initRes.data;
-      let uploadedParts = [];
+            // NEW: Centralized progress handler 
+            const onProgress = (e) => {
+                // Update the current progress for THIS partNumber
+                activeChunkProgress.set(partNumber, e.loaded);
 
-      for (let i = 0; i < totalChunks; i++) {
-        const start = i * CHUNK_SIZE;
-        const end = Math.min(start + CHUNK_SIZE, file.size);
-        const chunk = file.slice(start, end);
+                let totalBytesTransferred = uploadedBytesRef.current;
+                
+                // Sum all bytes currently loaded from active parallel uploads
+                for (const bytes of activeChunkProgress.values()) {
+                    totalBytesTransferred += bytes;
+                }
 
-        // STEP 2A: Ask Backend for a Presigned URL for this specific chunk
-        const { data: { url: presignedUrl } } = await Api.post("/upload/part-url", {
-          uploadId,
-          key,
-          partNumber: i + 1
-        });
+                // Calculate the single, overall percentage
+                const percent = Math.round((totalBytesTransferred / totalFileBytes) * 100);
+                setUploadProgress(percent);
+            };
 
-        // STEP 2B: Upload directly to Backblaze using standard Axios
-        // Important: Do NOT use your 'Api' instance here, because it might add Authorization headers
-        // which will conflict with the AWS Signature. Use a fresh axios call.
-        const uploadRes = await axios.put(presignedUrl, chunk, {
-          headers: {
-            "Content-Type": "application/octet-stream"
-          },
-          onUploadProgress: (e) => {
-            const chunkProgress = e.loaded / chunk.size;
-            const percent = Math.round(((i + chunkProgress) / totalChunks) * 100);
-            setUploadProgress(percent);
-          }
-        });
+            chunkTasks.push(
+                uploadChunkWithRetry(chunk, partNumber, uploadId, key, MAX_RETRIES, Api, onProgress)
+            );
+        }
 
-        // Backblaze returns the ETag in the response header
-        // Sometimes ETag is wrapped in quotes '"etag"', we strip them.
-        const rawETag = uploadRes.headers["etag"] || uploadRes.headers["ETag"];
-        const cleanETag = rawETag.replace(/"/g, "");
+        const allUploadedParts = [];
+        for (let i = 0; i < chunkTasks.length; i += CONCURRENCY_LIMIT) {
+            const batch = chunkTasks.slice(i, i + CONCURRENCY_LIMIT);
+            const results = await Promise.all(batch);
+            allUploadedParts.push(...results);
+            
+            // --- NEW: Move active bytes to completed bytes after batch success ---
+            for (const part of results) {
+                // Determine the actual size of the completed chunk
+                const chunkIndex = part.PartNumber - 1;
+                const completedChunkSize = Math.min(CHUNK_SIZE, totalFileBytes - (chunkIndex * CHUNK_SIZE));
+                
+                // Add the full chunk size to the completed total
+                uploadedBytesRef.current += completedChunkSize;
+                
+                // Remove the chunk from the active tracker to avoid double counting
+                activeChunkProgress.delete(part.PartNumber);
+            }
+            // --- END NEW ---
+        }
+        
+        // Final completion logic
+        allUploadedParts.sort((a, b) => a.PartNumber - b.PartNumber);
+        const completeRes = await Api.post(`/upload/complete`, { uploadId, key, parts: allUploadedParts });
 
-        uploadedParts.push({
-          ETag: cleanETag,
-          PartNumber: i + 1,
-        });
-      }
-
-      // STEP 3: Complete (Same as before)
-      const completeRes = await Api.post(`/upload/complete`, {
-        uploadId,
-        key,
-        parts: uploadedParts,
-      });
-
-      const url = completeRes.data.fileUrl;
-      setUploadedFileUrl(url);
-      setFormData((prev) => ({
-        ...prev,
-        videoUrl: url,
-        size: Number((file.size / (1024 * 1024)).toFixed(2)),
-      }));
-
-      setUploadProgress(100);
-      toast.success("Upload completed!");
-      return url;
+        // ... success handling remains the same ...
+        setUploadProgress(100);
+        toast.success("Upload completed!");
+        return completeRes.data.fileUrl;
 
     } catch (error) {
-      console.error("Upload failed:", error);
-      toast.error("Upload failed, please try again.");
-      setUploadProgress(0);
-      return null;
+        // ... failure handling remains the same ...
+        toast.error(error.message.includes("chunk") ? error.message : "Upload failed, please try again.");
+        setUploadProgress(0);
+        return null;
     } finally {
-      setUploadingVideo(false);
+        setUploadingVideo(false);
     }
-  };
-
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (loading) return;

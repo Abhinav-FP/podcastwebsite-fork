@@ -5,7 +5,11 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}", // if using App Router
   ],
   theme: {
-    extend: {},
-  },
+  extend: {
+    colors: {
+      pink: 'var(--pink)'
+    }
+  }
+},
   plugins: [],
 }

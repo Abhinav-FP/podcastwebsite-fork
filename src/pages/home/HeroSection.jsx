@@ -1,47 +1,49 @@
-// components/HeroSection.jsx
-import Image from 'next/image';
-import React from 'react';
-import artistImg from "../../assets/artist.png"; // Replace with your image path
-
+import React from "react";
+import Image from "next/image";
+import { MdOutlineHeadphones } from "react-icons/md";
+import Link from "next/link";
 
 function HeroSection() {
   return (
-    <div className="hero_bg pt-[118px] lg:pt-[128px] ">
-      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  px-4">
-        <div className="flex flex-col lg:flex-row   relative">
-          {/* 40% - Text Section */}
-          <div className="w-full   text-white  ">
-            <h1 className="text-[30px] md:text-[36px] lg:text-[44px] xl:text-[48px] font-bold leading-[100%] mb-4 heading capitalize">
-              Where every <br /> music scene lives.
-            </h1>
+    <section className="relative min-h-[600px] lg:h-[800px] flex items-center justify-center pt-6 mt-24">
+      <div className="mx-auto container xl:max-w-[1440px] px-4 text-white flex flex-col lg:flex-row items-center justify-between gap-12">
+        {/* Left Content */}
+        <div className="max-w-2xl text-center lg:text-left">
+          {/* <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+             VOICE THAT
+            <span className="text-theme block lg:inline"> Matters </span>
+          </h1> */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-[1.15]">
+            The Place Where
+            <span className="text-theme inline"> Property Portfolios </span>
+            Are Made
+          </h1>
 
-            <p className="text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px] mb-8 text-white ">
-              <span className="font-bold">Discover 400 million songs</span>, remixes and DJ sets — every chart-topping track you can find elsewhere, and millions more you can't find anywhere else.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <button className="rounded-[5px] border border-white text-black bg-white font-bold text-base  py-2 px-5 cursor-pointer">
-                Listen Now
-              </button>
-              <button className="rounded-[5px] border border-black text-black font-bold text-base  py-2 px-5 cursor-pointer">
-                Explore Episodes
-              </button>
-            </div>
-          </div>
-          {/* 30% - Image Section */}
-          <div className="w-full flex justify-center md:justify-right  md:mt-[-150px]  relative h-[400px] md:h-[500px] ">
+          <p className="mt-4 text-base sm:text-lg text-gray-300">
+            Learn the strategies behind Australia's most successful property portfolios
+          </p>
+           <Link
+              href={"/episode"} className="mt-6 flex items-center gap-2 px-6 py-3 rounded-full font-semibold bg-theme mx-auto lg:mx-0 cursor-pointer w-fit">
+            <MdOutlineHeadphones size={20} />
+            Listen Now
+          </Link>
+        </div>
+        {/* Right Image */}
+        <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
+          <div className="relative overflow-hidden rounded-xl shadow-lg">
             <Image
-              src={artistImg}
-              alt="Artist"
-              className="rounded-xl w-auto max-h-full absolute bottom-0"
-              width={400}
-              height={500}
+              src="/HeroImage.png"
+              alt="Podcast Host"
+              width={600}
+              height={350}
+              className="object-cover w-full h-auto"
             />
           </div>
         </div>
       </div>
-    </div>
-
+      {/* Background */}
+      <div className="absolute inset-0 bg-[url('/hero-bg.png')] bg-no-repeat bg-center bg-cover z-[-1]" />
+    </section>
   );
 }
 

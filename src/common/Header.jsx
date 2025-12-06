@@ -24,33 +24,30 @@ export default function Header() {
 
   const router = useRouter();
 
-  console.log(router);
+  // console.log(router);
 
   return (
-    <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out  ${Scrolled ? router.pathname === "/" ? "bg-[#fff] text-black py-1 lg:py-1 hover:text-gray-300" : "bg-[#000000] text-white py-1 lg:py-1 hover:text-gray-300" : "bg-transparent  py-3  text-white lg:py-6 hover:text-gray-300"}`}>
-      <div className="mx-auto container sm:container md:container lg:container  xl:max-w-[1440px]   px-4">
+     <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out bg-black text-white py-4`}>
+      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px] px-4">
         <div className="relative flex items-center justify-between">
-
           {/* Logo */}
-          <div className="flex items-center">
             <Link href="/">
               <Image
-                width={100}
-                height={100}
-                className="h-16 w-auto rounded-full"
-                src={Logo}
+                width={2110}
+                height={520}
+                className="h-12 md:h-16 w-auto object-cover"
+                src={"/logo.png"}
                 alt="Logo"
               />
             </Link>
-          </div>
 
           {/* Desktop Links */}
           <nav className="hidden lg:flex gap-x-10">
             <Link href="/" className="text-sm font-semibold ">Home</Link>
             <Link href="/episode" className="text-sm font-semibold ">Episode</Link>
-            <Link href="/e-guide" className="text-sm font-semibold ">E-Guide</Link>
+            {/* <Link href="/e-guide" className="text-sm font-semibold ">E-Guide</Link> */}
             <Link href="/about" className="text-sm font-semibold ">About</Link>
-            <Link href="/#contact" className="text-sm font-semibold ">Contact</Link>
+            <Link href="/contact" className="text-sm font-semibold ">Contact</Link>
           </nav>
           {/* Mobile Menu Open Button */}
 
@@ -92,16 +89,16 @@ export default function Header() {
 
                   </li>
 
-                  <li>
+                  {/* <li>
                     <Link href="/e-guide" className="text-sm font-semibold ">E-Guide</Link>
 
-                  </li>
+                  </li> */}
                   <li>
                     <Link href="/about" className="text-sm font-semibold ">About</Link>
 
                   </li>
                   <li>
-                    <Link href="/#contact" className="text-sm font-semibold ">Contact</Link>
+                    <Link href="/contact" className="text-sm font-semibold ">Contact</Link>
                   </li>
                 </ul>
               </div>

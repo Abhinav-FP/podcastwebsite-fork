@@ -19,13 +19,131 @@
   }
 }
 
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2e2e2e;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4e4e4e;
+}
+.hidescrolll::-webkit-scrollbar {
+  width: 0px;
+}
 body {
   background: black;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Audio Player CSS */
+.rhap_container {
+  background-color: #111827 !important;
+  color: #ffff !important;
+  /* border-radius: 10px !important; */
+  padding: 16px !important;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important; */
+}
 
+.rhap_progress-filled {
+  background-color: #cc2828 !important;
+}
+
+.rhap_progress-bar {
+  height: 6px !important;
+  background: #444 !important;
+  border-radius: 9999px !important;
+}
+
+.rhap_progress-indicator {
+  background: #cc2828 !important;
+  width: 14px !important;
+  height: 14px !important;
+  margin-top: -4px !important;
+  top: 0px !important;
+}
+
+.rhap_main-controls-button {
+  color: white !important;
+}
+
+.custom-skip-btn {
+  background: transparent !important;
+  color: white !important;
+  font-size: 20px !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 8px !important;
+}
+
+.rhap_time{
+  color: #ffffff !important;
+}
+
+@layer components {
+  .detail-content {
+    @apply text-gray-300 leading-relaxed break-words;
+  }
+
+  /* ===== Headings ===== */
+  .detail-content h1 { @apply text-4xl font-bold mt-8 mb-4 text-white; }
+  .detail-content h2 { @apply text-3xl font-bold mt-8 mb-4 text-white; }
+  .detail-content h3 { @apply text-2xl font-semibold mt-6 mb-3 text-white; }
+  .detail-content h4 { @apply text-xl font-semibold mt-5 mb-2 text-white; }
+  .detail-content h5 { @apply text-lg font-semibold mt-4 mb-2 text-white; }
+  .detail-content h6 { @apply text-base font-semibold mt-4 mb-2 text-white; }
+
+  /* ===== Paragraphs & Quotes ===== */
+  .detail-content p { @apply mb-4; }
+  .detail-content blockquote {
+    @apply border-l-4 border-gray-600 pl-4 italic mb-4 text-gray-200;
+  }
+
+  /* ===== Text Formatting ===== */
+  .detail-content strong { @apply font-semibold text-white; }
+  .detail-content em     { @apply italic; }
+  .detail-content u      { @apply underline; }
+  .detail-content s,
+  .detail-content del    { @apply line-through; }
+
+  /* ===== Lists ===== */
+  .detail-content ul { @apply list-disc pl-6 mb-4; }
+  .detail-content ol { @apply list-decimal pl-6 mb-4; }
+  .detail-content li { @apply mb-2; }
+
+  /* ===== Links ===== */
+  .detail-content a {
+    @apply text-blue-400 underline hover:text-blue-300 break-words;
+  }
+
+  /* ===== Images ===== */
+  .detail-content img {
+    @apply max-w-full h-auto rounded-md my-4;
+  }
+
+  /* ===== Tables (if ever enabled) ===== */
+  .detail-content table {
+    @apply w-full border-collapse border border-gray-700 my-4;
+  }
+  .detail-content th {
+    @apply border border-gray-700 px-3 py-2 text-left text-white;
+  }
+  .detail-content td {
+    @apply border border-gray-700 px-3 py-2;
+  }
+
+  /* ===== Horizontal Rule ===== */
+  .detail-content hr { @apply my-6 border-gray-700; }
+}

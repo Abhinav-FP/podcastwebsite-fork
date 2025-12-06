@@ -4,6 +4,7 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import { MdPaid, MdWallet } from "react-icons/md";
 import { MdRequestQuote } from "react-icons/md";
 import Listing from '../api/Listing';
+import Loader from '@/common/Loader';
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,7 @@ export default function Index() {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log("data", data);
+  // console.log("data", data);
 
   const stats = useMemo(
     () =>[
@@ -55,6 +56,7 @@ export default function Index() {
 
   return (
     <AuthLayout>
+      {loading ? <Loader/> : 
       <>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-4">
         {stats &&
@@ -77,8 +79,9 @@ export default function Index() {
             </div>
           ))}
       </div>
-        Index
+        {/* 0Index */}
       </>
+      }
     </AuthLayout>
   )
 }

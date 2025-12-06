@@ -1,64 +1,84 @@
-import React from 'react';
-import news from "../assets/episode.png"
-import Image from 'next/image';
+import React, { useState } from "react";
+import news from "../assets/episode.png";
+import Image from "next/image";
+import Listing from "@/pages/api/Listing";
+import toast from "react-hot-toast";
 
 const NewsletterBanner = () => {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    if (loading) return;
+    if (!email || !email.includes("@")) {
+      toast.error("Please enter a valid email.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.AddSubscriber({ email: email });
+      toast.success("Thank you for subscribing!");
+      setEmail(""); // clear field
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error?.response?.data?.errors);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <section className="text-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className='max-w-[1440px] mx-auto px-4 w-full'>
-        <div className='bg-[#141414] p-4   rounded-[30px]'>
-          <div className=" relative rounded-[30px] overflow-hidden shadow-2xl ">
-            {/* Blurred Background Image */}
-            <div className="absolute inset-0">
-              <Image
-                src={news}
-                alt="Blurred background of people discussing"
-                layout="fill"
-                objectFit="cover"
-                quality={75}
-                className="filter blur-md scale-105"
-                priority
-              />
-              <div className="absolute inset-0 bg-black opacity-60"></div>
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 p-3 sm:p-8 md:p-12 flex flex-col items-center text-center">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-inter leading-tight">
-                What more Exclusive content ?
-              </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 font-inter">
-                Get exclusive property tips, expert strategies, and bonus content delivered to your inbox: weekly.
-              </p>
-              {/* Email Input and Subscribe Button */}
-              <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md border-1  border-[#FFFFFF33] rounded-lg  p-2">
-                <input
-                  type="email"
-                  placeholder="Enter Your Email"
-                  className="flex-grow p-3 sm:p-4 rounded-md text-white placeholder-white 
-             border-none outline-none focus:outline-none focus:ring-0 focus:border-none 
-             hover:border-none bg-transparent"
-                />
-
-                <button
-                  className="
-    px-4 py-2 sm:px-6 sm:py-2 
-    rounded-lg bg-[#000000] text-white 
-    font-[400] text-[20px] sm:text-[15px] font-inter 
-    whitespace-nowrap cursor-pointer transition-colors duration-300
-
-    outline-none border-none 
-    focus:outline-none focus:ring-0 focus:border-none 
-    hover:outline-none hover:border-none
-    active:outline-none active:border-none
-  "
-                >
-
-                  Subscribe
-                </button>
-              </div>
-            </div>
+    <section className=" container xl:max-w-[1440px] mx-auto px-4 sm:mt-6 mb-6">
+      <div className="bg-[#2C2C2C] rounded-2xl border border-[rgba(255, 255, 255, 1)] overflow-hidden flex flex-col lg:flex-row items-center lg:items-stretch">
+        {/* Left Content */}
+        <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
+          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-6 sm:mb-10">
+            Get Property Insights In Your Inbox
+          </h2>
+          {/* Input Box */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center mb-4 bg-transparent border rounded-full overflow-hidden">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              required
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              className="flex-1 px-4 py-3 bg-transparent text-white placeholder-gray-400 outline-none"
+            />
+            <button
+              className={`hidden sm:block mt-2 sm:mt-0 sm:ml-2 px-6 py-3 bg-gray-600 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-white font-medium rounded-full ${loading ? "opacity-50 cursor-not-allowed" : " cursor-pointer"
+                }`}
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              {loading ? "Subscribing..." : "Subscribe"}
+            </button>
           </div>
+          <button
+            className={`block sm:hidden mt-2 sm:mt-0 mb-3 sm:ml-2 px-6 py-3 bg-gray-600 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-white font-medium rounded-full ${loading ? "opacity-50 cursor-not-allowed" : " cursor-pointer"
+              }`}
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {loading ? "Subscribing..." : "Subscribe"}
+          </button>
+          <p className="text-gray-400 text-base sm:text-lg">
+            Get exclusive tips, episode updates, and investment insights
+            straight to your inbox — every week.
+          </p>
+        </div>
+
+        {/* Right Image */}
+        <div className="hidden sm:block w-full lg:w-1/2 relative h-64 sm:h-96 lg:h-[450px]">
+          <Image
+            src="/subscribe.png"
+            alt="Subscribe"
+            fill
+            className="object-cover"
+          />
         </div>
       </div>
     </section>

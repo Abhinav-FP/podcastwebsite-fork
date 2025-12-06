@@ -1,93 +1,105 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/logo.avif"
 import Image from "next/image";
+import Listing from "@/pages/api/Listing";
+import toast from "react-hot-toast";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+    if (!email || !email.includes("@")) {
+      toast.error("Please enter a valid email.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const main = new Listing();
+      const response = await main.AddSubscriber({ email: email });
+      toast.success("Thank you for subscribing!");
+      setEmail(""); 
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error?.response?.data?.errors);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <section className=" py-12 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px]  ">
+    <footer className="bg-black text-white py-12">
+  <div className="mx-auto container xl:max-w-[1440px] px-4">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
-          {/* Logo and Description */}
-          <div>
-            <div className="flex justify-center md:justify-start">
-              <Image
-                width={100}
-                height={100}
-                className="h-16 w-auto rounded-full"
-                src={Logo}
-                alt="Logo"
-              />
-
-            </div>
-            <p className="text-[16px] sm:text-[18px] paragraph text-left mt-2">
-              Trusted in more than 100 countries & 5 million customers.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div className="text-center md:text-left">
-            <h4 className="text-lg font-semibold mb-4 text-white ">Quick Links</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
-                  Episode
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
-                  E-Guide
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Listen Links */}
-          <div className="text-center md:text-left">
-            <h4 className="text-lg font-semibold mb-4 text-white">Listen</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
-                  Spotify
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
-                  Apple Podcasts
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
-                  Google Podcasts
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-white transition">
-                  YouTube
-                </Link>
-              </li>
-            </ul>
-          </div>
+    {/* Grid Layout */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      
+      {/* Left - Logo & Tagline */}
+      <div>
+        <div className="flex items-center gap-3">
+          <Image src={"/logo.png"} alt="Podcast Logo" width={2110} height={520} className="h-16 w-auto object-cover"/>
         </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="mt-10 p-2 border-t border-gray-700 ">
-        <p className="text-[16px] sm:text-[18px] paragraph text-center">
-          © <Link href="https://pagedone.io" className="hover:underline">pagedone</Link> 2024, All rights reserved.
+        <p className="mt-4 text-gray-400 text-sm">
+          Invest with Confidence. Grow with Purpose.
         </p>
       </div>
-    </section>
+
+      {/* Company Links */}
+      <div>
+        <h3 className="font-semibold mb-4 text-sm">COMPANY</h3>
+        <ul className="space-y-4 text-gray-400 text-sm">
+          <li><Link href="#">About</Link></li>
+          <li><Link href="#">Episodes</Link></li>
+          <li><Link href="#">E-guides</Link></li>
+          <li><Link href="#">Contact</Link></li>
+        </ul>
+      </div>
+
+      {/* Help Links */}
+      <div>
+        <h3 className="font-semibold mb-4 text-sm">HELP</h3>
+        <ul className="space-y-4 text-gray-400 text-sm">
+          {/* <li><a href="#">Delivery Details</a></li> */}
+          <li><Link href="/contact">Customer Support</Link></li>
+          <li><Link href="/access">Terms Of Access</Link></li>
+          <li><Link href="/use">Terms Of Use</Link></li>
+          <li><Link href="/privacy">Privacy Policy</Link></li>
+        </ul>
+      </div>
+
+      {/* Newsletter */}
+      <div>
+        <h3 className="font-semibold mb-4 text-sm">NEWSLETTER</h3>
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            required
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            className="px-3 py-2 rounded-md bg-white text-black outline-none text-sm w-4/5"
+          />
+          <button
+            type="submit"
+            className="px-5 py-2 rounded-full bg-gray-700 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-sm font-semibold w-fit cursor-pointer"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    {/* Bottom Copyright */}
+    <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+      © Copyright 2025, All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
   );
 }

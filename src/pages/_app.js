@@ -1,12 +1,16 @@
 import "@/styles/globals.css";
+import "plyr/dist/plyr.css";
 import "./style.css";
 import { Toaster } from "react-hot-toast";
 import { RoleProvider } from "@/context/RoleContext";
 import NextNProgress from 'nextjs-progressbar';
+import { AudioPlayerProvider } from "@/context/AudioPlayerContext";
+import AudioPlyr from "@/components/AudioPlyrWrapper";
+// import AudioPlayerWrapper from "@/components/AudioPlayerWrapper";
 
 export default function App({ Component, pageProps }) {
   return <>
-   <NextNProgress color="#CC2828" />
+    <NextNProgress color="#CC2828" />
     <Toaster
       toastOptions={{
         position: "top-right",
@@ -17,7 +21,10 @@ export default function App({ Component, pageProps }) {
       }}
     />
     <RoleProvider>
-     <Component {...pageProps} />
+      <AudioPlayerProvider>
+        <Component {...pageProps} />
+        <AudioPlyr />
+      </AudioPlayerProvider>
     </RoleProvider>
   </>;
 }

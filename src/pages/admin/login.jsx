@@ -84,16 +84,16 @@ export default function Login() {
               <Link href="/">
                 <Image
                   src="/Logo.png"
-                  height={100}
-                  width={100}
+                  width={2110}
+                  height={520}
                   alt="logo"
-                  className="h-[100px] w-[117px]"
+                  className="w-[300px] h-auto "
                 />
               </Link>
             </div>
 
             {/* Headings */}
-            <h2 className="font-bold mb-1 text-[24px] mt-6 text-center lg:text-start text-white px-12 lg:px-0">
+            <h2 className="font-bold mb-1 text-[24px] mt-6 text-center lg:text-start text-white sm:px-12 lg:px-0">
               Welcome Back!
             </h2>
             <p className="text-gray-500 hidden lg:block lg:text-start mb-2">

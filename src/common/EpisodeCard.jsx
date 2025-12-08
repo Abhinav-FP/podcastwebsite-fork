@@ -60,8 +60,7 @@ export default function EpisodeCard({
   };
 
   return (
-    <div
-  className={`group relative flex flex-col md:flex-row items-center gap-4 sm:gap-6 bg-[#4B4B4B] rounded-2xl shadow-lg overflow-hidden p-4 sm:p-6 md:p-8
+    <div className={`group relative flex flex-col md:flex-row items-center gap-4 sm:gap-6 bg-[#4B4B4B] rounded-2xl shadow-lg overflow-hidden p-4 sm:p-6 md:p-8
     ${episode?.isDeleted ? "opacity-50" : ""} transition-colors duration-200 cursor-pointer`}
   onClick={() => {
     if(isAdmin){
@@ -128,14 +127,14 @@ export default function EpisodeCard({
     </p>
 
     {/* See more */}
-    <button className="flex items-center gap-1 text-sm sm:text-base text-white/70 mt-2 cursor-pointer"
+    {/* <button className="flex items-center gap-1 text-sm sm:text-base text-white/70 mt-2 cursor-pointer"
         onClick={(e) => {
         e.stopPropagation(); // prevent triggering playTrack
         setIsOpen(!isOpen);  // toggle description expand/collapse
       }}
     >
        {isOpen ? "See Less" : "See More"} <IoIosArrowDown />
-    </button>
+    </button> */}
 
     {/* Listen Button */}
     <button className="mt-4 sm:mt-6 flex items-center gap-2 bg-[#5B5B5B] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] cursor-pointer">

@@ -79,7 +79,7 @@ export default function GetInTouch() {
                 </div>
                 <div>
                   <h4 className="font-bold text-xl mb-2">Phone</h4>
-                  <p className="text-gray-300 text-base">6232 1151 2211</p>
+                  <p className="text-gray-300 text-base">1300-438-562</p>
                 </div>
               </div>
 
@@ -101,7 +101,7 @@ export default function GetInTouch() {
                 </div>
                 <div>
                   <h4 className="font-bold text-xl mb-2">Email</h4>
-                  <p className="text-gray-300 text-base">hello@property.com</p>
+                  <p className="text-gray-300 text-base">thepropertyportfoliopodcast@gmail.com</p>
                 </div>
               </div>
 

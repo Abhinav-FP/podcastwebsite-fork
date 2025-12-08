@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import Logo from "../assets/logo.avif"
+import Logo from "../assets/logo.avif";
 import Image from "next/image";
 import Listing from "@/pages/api/Listing";
 import toast from "react-hot-toast";
@@ -21,7 +21,7 @@ export default function Footer() {
       const main = new Listing();
       const response = await main.AddSubscriber({ email: email });
       toast.success("Thank you for subscribing!");
-      setEmail(""); 
+      setEmail("");
     } catch (error) {
       console.error("Error:", error);
       toast.error(error?.response?.data?.errors);
@@ -32,74 +32,89 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-white py-12">
-  <div className="mx-auto container xl:max-w-[1440px] px-4">
+      <div className="mx-auto container xl:max-w-[1440px] px-4">
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Left - Logo & Tagline */}
+          <div>
+            <div className="flex items-center gap-3">
+              <Image
+                src={"/logo.png"}
+                alt="Podcast Logo"
+                width={2110}
+                height={520}
+                className="h-16 w-auto object-cover"
+              />
+            </div>
+            <p className="mt-4 text-gray-400 text-sm">
+              Invest with Confidence. Grow with Purpose.
+            </p>
+          </div>
 
-    {/* Grid Layout */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      
-      {/* Left - Logo & Tagline */}
-      <div>
-        <div className="flex items-center gap-3">
-          <Image src={"/logo.png"} alt="Podcast Logo" width={2110} height={520} className="h-16 w-auto object-cover"/>
+          {/* Company Links */}
+          <div>
+            <h3 className="font-semibold mb-4 text-sm">COMPANY</h3>
+            <ul className="space-y-4 text-gray-400 text-sm">
+              <li>
+                <Link href="/abput">About</Link>
+              </li>
+              <li>
+                <Link href="/episode">Episodes</Link>
+              </li>
+              {/* <li><Link href="#">E-guides</Link></li> */}
+              <li>
+                <Link href="/contact">Contact</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Help Links */}
+          <div>
+            <h3 className="font-semibold mb-4 text-sm">HELP</h3>
+            <ul className="space-y-4 text-gray-400 text-sm">
+              {/* <li><a href="#">Delivery Details</a></li> */}
+              {/* <li><Link href="/contact">Customer Support</Link></li> */}
+              <li>
+                <Link href="/access">Terms Of Access</Link>
+              </li>
+              <li>
+                <Link href="/use">Terms Of Use</Link>
+              </li>
+              <li>
+                <Link href="/privacy">Privacy Policy</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="font-semibold mb-4 text-sm">NEWSLETTER</h3>
+            <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                required
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                className="px-3 py-2 rounded-md bg-white text-black outline-none text-sm w-4/5"
+              />
+              <button
+                type="submit"
+                className="px-5 py-2 rounded-full bg-gray-700 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-sm font-semibold w-fit cursor-pointer"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
-        <p className="mt-4 text-gray-400 text-sm">
-          Invest with Confidence. Grow with Purpose.
-        </p>
+
+        {/* Bottom Copyright */}
+        <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+          © Copyright {new Date()?.getFullYear() || "2025"}, All Rights
+          Reserved.
+        </div>
       </div>
-
-      {/* Company Links */}
-      <div>
-        <h3 className="font-semibold mb-4 text-sm">COMPANY</h3>
-        <ul className="space-y-4 text-gray-400 text-sm">
-          <li><Link href="#">About</Link></li>
-          <li><Link href="#">Episodes</Link></li>
-          <li><Link href="#">E-guides</Link></li>
-          <li><Link href="#">Contact</Link></li>
-        </ul>
-      </div>
-
-      {/* Help Links */}
-      <div>
-        <h3 className="font-semibold mb-4 text-sm">HELP</h3>
-        <ul className="space-y-4 text-gray-400 text-sm">
-          {/* <li><a href="#">Delivery Details</a></li> */}
-          <li><Link href="/contact">Customer Support</Link></li>
-          <li><Link href="/access">Terms Of Access</Link></li>
-          <li><Link href="/use">Terms Of Use</Link></li>
-          <li><Link href="/privacy">Privacy Policy</Link></li>
-        </ul>
-      </div>
-
-      {/* Newsletter */}
-      <div>
-        <h3 className="font-semibold mb-4 text-sm">NEWSLETTER</h3>
-        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            required
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            className="px-3 py-2 rounded-md bg-white text-black outline-none text-sm w-4/5"
-          />
-          <button
-            type="submit"
-            className="px-5 py-2 rounded-full bg-gray-700 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-sm font-semibold w-fit cursor-pointer"
-          >
-            Subscribe
-          </button>
-        </form>
-      </div>
-
-    </div>
-
-    {/* Bottom Copyright */}
-    <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
-      © Copyright 2025, All Rights Reserved.
-    </div>
-  </div>
-</footer>
-
+    </footer>
   );
 }

@@ -36,7 +36,7 @@ export default function Index() {
     }
   }, [slug]);
 
-  console.log("data", data);
+  // console.log("data", data);
   return (
     <Layout>
       <div className="bg-[#0a0a0a] pt-[118px] lg:pt-[128px]">
@@ -63,34 +63,15 @@ export default function Index() {
                 <span className="font-semibold">{data?.podcast?.author}</span> ·{" "}
                 {moment(data?.createdAt).format("MMMM Do YYYY")}
               </p>
-              {/* <div className="flex flex-wrap items-center gap-4">
-                <button className="text-orange-500 hover:scale-110 transition-transform cursor-pointer">
-                  <FaItunes size={34} />
-                </button>
-
-                <button className="text-green-600 hover:scale-110 transition-transform cursor-pointer">
-                  <PiSpotifyLogoFill size={34} />
-                </button>
-
-                <button
-                  onClick={() => playTrack(data)}
-                  className="flex items-center gap-3 bg-theme text-white px-6 sm:px-8 py-3 rounded-full hover:scale-105 transition-transform shadow-md cursor-pointer"
-                >
-                  <FaHeadphones className="text-xl" />
-                  <span className="font-medium">Listen Now</span>
-                </button>
-              </div> */}
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6 mt-4">
-            <h3 className="text-2xl font-semibold text-white">Available on:</h3>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-6 mt-4">
+            {/* <h3 className="text-2xl font-semibold text-white">Available on:</h3> */}
             <div className="flex flex-wrap items-center gap-4">
-              <button className="text-orange-500 hover:scale-110 transition-transform cursor-pointer">
+              {/* <button className="text-orange-500 hover:scale-110 transition-transform cursor-pointer">
                 <FaItunes size={34} />
               </button>
               <button className="text-green-600 hover:scale-110 transition-transform cursor-pointer">
                 <PiSpotifyLogoFill size={34} />
-              </button>
+              </button> */}
               <button
                 onClick={() => playTrack(data)}
                 className="flex items-center gap-3 bg-theme text-white px-6 sm:px-8 py-3 rounded-full hover:scale-105 transition-transform shadow-md cursor-pointer"
@@ -98,6 +79,8 @@ export default function Index() {
                 <FaHeadphones className="text-xl" />
                 <span className="font-medium">Listen Now</span>
               </button>
+            </div>
+          </div>
             </div>
           </div>
           <p className="mt-5 text-white text-base md:text-lg leading-relaxed">

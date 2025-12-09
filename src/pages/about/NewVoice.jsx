@@ -52,8 +52,8 @@ export default function NewVoice() {
             src="/investor.png"
             alt="Podcast Recording"
             width={700}
-            height={500}
-            className="rounded-xl object-cover w-full h-auto"
+            height={800}
+            className="rounded-xl object-cover w-full h-[450px] sm:h-[550px] lg:h-[650px]"
           />
         </div>
       </div>

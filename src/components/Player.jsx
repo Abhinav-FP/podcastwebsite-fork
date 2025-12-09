@@ -17,10 +17,12 @@ export default function Player() {
   const isVideoFile = isVideo(selectedEpisode.link);
 
   useEffect(() => {
-    if (isVideoFile) {
-      pauseTrack();
-    }
-  }, [isVideoFile]);
+  if (!selectedEpisode) return;
+
+  const isVideo = /\.(mp4|webm|ogg|mov)/.test(selectedEpisode.link);
+  if (isVideo) pauseTrack();
+}, [selectedEpisode]);
+
 
   if (isVideoFile) return <VideoPlayer />;
 

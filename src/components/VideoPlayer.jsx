@@ -66,7 +66,7 @@ export default function VideoPlayer() {
           controls
           autoPlay
           className={`w-full h-full rounded-lg ${
-            isFullscreen ? "" : "max-h-[100vh]"
+            isFullscreen ? "" : "max-h-[90vh]"
           }`}
         />
       </div>

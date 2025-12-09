@@ -16,25 +16,32 @@ export const AudioPlayerProvider = ({ children }) => {
    * ✅ CHANGE TRACK (NO PLAY LOGIC HERE)
    */
   const playTrack = (episode) => {
-    if (!episode) return;
+  if (!episode) return;
 
-    // stop existing audio immediately
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
+  const isVideo = /\.(mp4|webm|ogg|mov)/.test(episode.link);
 
-    setSelectedEpisode(episode);
+  setSelectedEpisode(episode);
+
+  if (!isVideo) {
     setCurrentTrack(episode.link);
-  };
+  } else {
+    setCurrentTrack(null);
+  }
+};
+
 
   /**
    * ✅ AUDIO PLAY/PAUSE HANDLERS
    */
   const pauseTrack = () => {
     if (!audioRef.current) return;
+
     audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    audioRef.current.src = "";
+
     setIsPlaying(false);
+    setCurrentTrack(null);
   };
 
   /**

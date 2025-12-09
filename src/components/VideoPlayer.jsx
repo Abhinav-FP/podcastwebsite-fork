@@ -59,6 +59,7 @@ export default function VideoPlayer() {
         </div>
 
         <video
+          poster={selectedEpisode?.thumbnail}
           ref={videoRef}
           src={selectedEpisode?.link}
           playsInline

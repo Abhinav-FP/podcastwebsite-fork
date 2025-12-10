@@ -7,6 +7,8 @@ import {
   FaInstagram,
   FaYoutube,
 } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+
 import { FaLocationDot, FaXTwitter } from "react-icons/fa6";
 import { SiSpotify } from "react-icons/si";
 import Listing from "../api/Listing";
@@ -111,31 +113,31 @@ export default function GetInTouch() {
                 <p className="text-gray-300 mb-3">Follow us on</p>
                 <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 sm:gap-4">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/the-property-portfolio-podcast/"
                     className="min-w-10 w-10 min-h-10 h-10 flex items-center justify-center rounded-full border border-white/40 hover:bg-white/10"
                   >
-                    <SiSpotify size={18} />
+                    <FaLinkedin size={18} />
                   </a>
-                  <a
+                  {/* <a
                     href="#"
                     className="min-w-10 w-10 min-h-10 h-10 flex items-center justify-center rounded-full border border-white/40 hover:bg-white/10"
                   >
                     <FaXTwitter size={18} />
-                  </a>
+                  </a> */}
                   <a
-                    href="#"
+                    href="https://www.facebook.com/thepropertyportfoliopodcas"
                     className="min-w-10 w-10 min-h-10 h-10 flex items-center justify-center rounded-full border border-white/40 hover:bg-white/10"
                   >
                     <FaFacebookF size={18} />
                   </a>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/propertyportfoliopodcast/"
                     className="min-w-10 w-10 min-h-10 h-10 flex items-center justify-center rounded-full border border-white/40 hover:bg-white/10"
                   >
                     <FaInstagram size={18} />
                   </a>
                   <a
-                    href="#"
+                    href="https://www.youtube.com/@ThePropertyPortfolioPodcast"
                     className="min-w-10 w-10 min-h-10 h-10 flex items-center justify-center rounded-full border border-white/40 hover:bg-white/10"
                   >
                     <FaYoutube size={18} />

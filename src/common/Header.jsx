@@ -27,15 +27,15 @@ export default function Header() {
   // console.log(router);
 
   return (
-     <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out bg-black text-white py-4`}>
-      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1440px] px-4">
+     <nav className={`fixed w-full top-0 z-50  transition-all duration-300 ease-in-out bg-black border-b-[1px] border-b-[#FFFFFF33] text-white py-4`}>
+      <div className="mx-auto container sm:container md:container lg:container xl:max-w-[1310px] px-4">
         <div className="relative flex items-center justify-between">
           {/* Logo */}
             <Link href="/">
               <Image
-                width={2110}
-                height={520}
-                className="h-12 md:h-16 w-auto object-cover"
+                width={211}
+                height={50}
+                className=" max-w-[211px] w-auto object-content"
                 src={"/logo.png"}
                 alt="Logo"
               />

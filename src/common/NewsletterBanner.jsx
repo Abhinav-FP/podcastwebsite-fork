@@ -31,14 +31,21 @@ const NewsletterBanner = () => {
 
   return (
     <section className=" container xl:max-w-[1440px] mx-auto px-4 sm:mt-6 mb-6">
-      <div className="bg-[#2C2C2C] rounded-2xl border border-[rgba(255, 255, 255, 1)] overflow-hidden flex flex-col lg:flex-row items-center lg:items-stretch">
+      <div className="relative subscribebanner rounded-2xl border border-[rgba(255, 255, 255, 1)] overflow-hidden flex flex-col lg:flex-row items-center lg:items-stretch">
         {/* Left Content */}
-        <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-6 sm:mb-10">
-            Get Property Insights In Your Inbox
+        <div className="absolute right-0 bottom-0 w-full h-full">
+           <Image
+                          src={"/subscribebanner.png"}
+                          layout="fill"
+                          objectFit="cover"
+                          className="object-cover w-full h-full" />
+        </div>
+        <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center z-1">
+          <h2 className="text-[25px]  md:text-[30px] xl:text-[40px] uppercase font-bold text-white mb-[55px]">
+            We help you grow with <span className="text-theme">latest updates.</span>
           </h2>
           {/* Input Box */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center mb-4 bg-transparent border rounded-full overflow-hidden">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center mb-[22px] bg-transparent border rounded-full overflow-hidden">
             <input
               type="email"
               placeholder="Email"
@@ -46,10 +53,10 @@ const NewsletterBanner = () => {
               required
               name="email"
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-4 py-3 bg-transparent text-white placeholder-gray-400 outline-none"
+              className="flex-1 px-4 py-3 ps-[25px] bg-transparent text-white placeholder-gray-400 outline-none"
             />
             <button
-              className={`hidden sm:block mt-2 sm:mt-0 sm:ml-2 px-6 py-3 bg-gray-600 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-white font-medium rounded-full ${loading ? "opacity-50 cursor-not-allowed" : " cursor-pointer"
+              className={`hidden sm:block mt-2 sm:mt-0 sm:ml-2 px-6 py-3 bg-white hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-[18px] text-black hover:text-white font-bold rounded-full ${loading ? "opacity-50 cursor-not-allowed" : " cursor-pointer"
                 }`}
               onClick={handleSubmit}
               disabled={loading}
@@ -58,14 +65,14 @@ const NewsletterBanner = () => {
             </button>
           </div>
           <button
-            className={`block sm:hidden mt-2 sm:mt-0 mb-3 sm:ml-2 px-6 py-3 bg-gray-600 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-white font-medium rounded-full ${loading ? "opacity-50 cursor-not-allowed" : " cursor-pointer"
+            className={`block sm:hidden mt-2 sm:mt-0 mb-3 sm:ml-2 px-6 py-3 bg-white hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-[18px] text-black hover:text-white font-bold rounded-full ${loading ? "opacity-50 cursor-not-allowed" : " cursor-pointer"
               }`}
             onClick={handleSubmit}
             disabled={loading}
           >
             {loading ? "Subscribing..." : "Subscribe"}
           </button>
-          <p className="text-gray-400 text-base sm:text-lg">
+          <p className="text-[#FFFFFF] text-base sm:text-lg">
             Get exclusive tips, episode updates, and investment insights
             straight to your inbox — every week.
           </p>
@@ -73,12 +80,7 @@ const NewsletterBanner = () => {
 
         {/* Right Image */}
         <div className="hidden sm:block w-full lg:w-1/2 relative h-64 sm:h-96 lg:h-[450px]">
-          <Image
-            src="/subscribe.png"
-            alt="Subscribe"
-            fill
-            className="object-cover"
-          />
+         
         </div>
       </div>
     </section>

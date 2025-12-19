@@ -19,6 +19,7 @@ export default function Edit() {
     thumbnail: null,
     video: null,
     details: null,
+    timestamps: null,
     mimefield: "",
     duration: 0,
     durationInSec: 0,
@@ -260,6 +261,7 @@ export default function Edit() {
       payload.append("description", formData.description);
       payload.append("podcastId", id);
       payload.append("detail", formData?.details);
+      payload.append("timestamps", formData.timestamps);
       if (formData.thumbnail instanceof File) { 
         payload.append("thumbnail", formData.thumbnail);
       }
@@ -307,6 +309,7 @@ export default function Edit() {
       thumbnail: response?.data?.data?.thumbnail || null,
       video: response?.data?.data?.link || null,
       details: response?.data?.data?.detail || null,
+      timestamps: response?.data?.data?.timestamps || null,
       mimefield: response?.data?.data?.mimefield || "",
       duration: response?.data?.data?.duration || 0,
       durationInSec: response?.data?.data?.durationInSec || 0,
@@ -330,7 +333,7 @@ export default function Edit() {
     }
   }, [id]);
 
-  console.log("data", data);
+  // console.log("data", data);
 
   return (
     <AuthLayout>
@@ -406,7 +409,7 @@ export default function Edit() {
             name="video"
              accept="video/*,audio/*"
             onChange={handleChange}
-            className="w-full text-sm text-gray-400 file:bg-white file:text-black file:rounded-lg file:px-4 file:py-2 border border-gray-700 bg-[#1c1c1c]"
+            className="w-full h-fit text-sm text-gray-400 file:bg-white file:text-black file:rounded-lg file:px-4 file:py-2 border border-gray-700 bg-[#1c1c1c]"
           />
           {uploadingVideo && (
             <div>
@@ -426,7 +429,7 @@ export default function Edit() {
           )}
         </div>
 
-        {/* Video */}
+        {/* Details */}
         <div className="space-y-1">
           <label className="block text-sm font-medium">
             Details
@@ -435,6 +438,17 @@ export default function Edit() {
             label="details"
             desc={formData?.details}
             handleBioChange={(val) => handleQuillChange('details', val)}
+          />
+        </div>
+
+        <div className="space-y-1 mt-[65px]">
+          <label className="block text-sm font-medium">
+            Timestamps
+          </label>
+          <ReactQuillEditor
+            label="timestamps"
+            desc={formData?.timestamps}
+            handleBioChange={(val) => handleQuillChange('timestamps', val)}
           />
         </div>
 

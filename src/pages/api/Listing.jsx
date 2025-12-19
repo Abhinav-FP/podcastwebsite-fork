@@ -18,8 +18,8 @@ class Listing extends Component {
     return Api.get("/podcast/get")
   }
 
-  async EpisodeGetAll(search="") {
-    return Api.get(`/file/getAll?search=${search}`)
+  async EpisodeGetAll(search = "", topic = "", page = 1, limit = 10) {
+    return Api.get(`/file/getAll?search=${search}&topic=${topic}&page=${page}&limit=${limit}`);
   }
 
   async HomeEpisode() {

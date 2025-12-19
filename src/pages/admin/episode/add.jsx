@@ -19,6 +19,7 @@ export default function Add() {
     thumbnail: null,
     video: null,
     details: null,
+    timestamps: null,
     mimefield: "",
     duration: 0,
     durationInSec: 0,
@@ -342,6 +343,7 @@ export default function Add() {
       payload.append("description", formData.description);
       payload.append("podcastId", id);
       payload.append("detail", formData.details);
+      payload.append("timestamps", formData.timestamps);
 
       // Video now handled via chunk upload
       if (!uploadedFileUrl) {
@@ -478,7 +480,7 @@ export default function Add() {
           )}
         </div>
 
-        {/* Video */}
+        {/* Details */}
         <div className="space-y-1">
           <label className="block text-sm font-medium">
             Details
@@ -487,6 +489,17 @@ export default function Add() {
             label="details"
             desc={formData?.details}
             handleBioChange={(val) => handleQuillChange('details', val)}
+          />
+        </div>
+
+        <div className="space-y-1 mt-[65px]">
+          <label className="block text-sm font-medium">
+            Timestamps
+          </label>
+          <ReactQuillEditor
+            label="timestamps"
+            desc={formData?.timestamps}
+            handleBioChange={(val) => handleQuillChange('timestamps', val)}
           />
         </div>
 

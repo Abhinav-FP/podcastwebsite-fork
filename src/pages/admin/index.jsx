@@ -84,13 +84,13 @@ export default function Index() {
                 </div>
               ))}
           </div>
-          <div className="mt-4 flex items-center justify-between tracking-tight border-b border-[#2a2a2a] w-full">
-            <h1 className="text-3xl lg:text-4xl font-bold text-white">
+          <div className="mt-12 flex items-center justify-between tracking-tight border-b border-[#2a2a2a] w-full">
+            <h1 className="mb-3 text-3xl lg:text-4xl font-bold text-white">
               Latest Episodes
             </h1>
           </div>
           {data?.latestEpisodes?.map((episode) => (
-            <div className="mt-6">
+            <div className="mt-3">
               <EpisodeCard
                 key={episode.uuid}
                 episode={episode}

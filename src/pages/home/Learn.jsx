@@ -42,7 +42,7 @@ const learnItems = [
 
 export default function Learn() {
   return (
-      <div className="mx-auto container xl:max-w-[1440px] px-4">
+      <div className="mx-auto container xl:max-w-[1310px] px-4">
         <section className="text-white py-8 pt-[30px]">
           {/* Heading */}
           <div className="text-center mb-12">

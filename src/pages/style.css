@@ -54,4 +54,11 @@ to{transform:translateY(-0.1em);}
 }
 .bg-gradient-custom{background:linear-gradient(180deg,rgba(90,63,205,0.3) 0%,rgba(226,32,210,0.3) 100%);}
 .blurcircle{filter:blur(110px);opacity:0.8;background:linear-gradient(115deg,#9747FF,#FC18D8)}
-.subscribebanner { }
+footer { background: url(/footerbg.jpg)0 0 repeat-x;    background-size: 100% 100%;}
+
+/* Responsive */
+
+
+@media(max-width:767px){
+footer { background-size: cover;}  
+}

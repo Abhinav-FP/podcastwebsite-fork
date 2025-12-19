@@ -31,8 +31,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#441051] via-[#441051]/90 to-[#000000]/80 text-white py-12 pt-[95px] mt-[100px]">
-      <div className="mx-auto container xl:max-w-[1440px] px-4">
+    <footer className="from-[#441051] via-[#441051]/90 to-[#000000]/80 text-white  pt-[50px] lg:pt-[80px] pb-[20px] lg:pb-[40px] ">
+      <div className="mx-auto container xl:max-w-[1310px] px-4">
         {/* Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Left - Logo & Tagline */}
@@ -51,7 +51,7 @@ export default function Footer() {
             </p>
 
             <div className=" mt-[40px]">
-              <h3 className="font-[800] mb-4 text-[16px] uppercase">Follow us On</h3>
+              <h3 className="font-[800] mb-4 text-white text-[16px] uppercase">Follow us On</h3>
                <ul className="flex items-center gap-[15px]">
                 <li>
                   <Link href="/">
@@ -80,9 +80,9 @@ export default function Footer() {
           </div>
 
           {/* Company Links */}
-          <div>
-            <h3 className="font-semibold mb-4 text-sm">COMPANY</h3>
-            <ul className="space-y-4 text-gray-400 text-sm">
+          <div className=" border-t  border-t-[#FFFFFF33] sm:border-t-[0] pt-[20px] sm:pt-[0px]">
+            <h3 className="font-semibold mb-4  font-[700] text-[16px] uppercase">COMPANY</h3>
+            <ul className="space-y-4 text-white text-[16px] font-[600]">
               <li>
                 <Link href="/about">About</Link>
               </li>
@@ -97,9 +97,9 @@ export default function Footer() {
           </div>
 
           {/* Help Links */}
-          <div>
-            <h3 className="font-semibold mb-4 text-sm">HELP</h3>
-            <ul className="space-y-4 text-gray-400 text-sm">
+          <div className=" border-t  border-t-[#FFFFFF33] md:border-t-[0] pt-[20px] md:pt-[0px]">
+            <h3 className="font-semibold mb-4 font-[700] text-[16px] uppercase">HELP</h3>
+            <ul className="space-y-4 text-white text-[16px] font-[600]">
               {/* <li><a href="#">Delivery Details</a></li> */}
               {/* <li><Link href="/contact">Customer Support</Link></li> */}
               <li>
@@ -115,8 +115,8 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div>
-            <h3 className="font-semibold mb-4 text-sm">NEWSLETTER</h3>
+          <div className=" border-t  border-t-[#FFFFFF33] md:border-t-[0] pt-[20px] md:pt-[0px]">
+            <h3 className="font-semibold mb-4 font-[700] text-[16px] uppercase">NEWSLETTER</h3>
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
               <input
                 type="email"
@@ -125,11 +125,11 @@ export default function Footer() {
                 required
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="px-3 py-2 rounded-md bg-white text-black outline-none text-sm w-4/5"
+                className="mb-[15px] px-[15px] py-[12px] rounded-[15px] bg-[#0F0F0F]  border-[1px] border-[#FFFFFF66] text-white outline-none text-[14px] font-[400] w-full"
               />
               <button
                 type="submit"
-                className="px-5 py-2 rounded-full bg-gray-700 hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-sm font-semibold w-fit cursor-pointer"
+                className="px-[35px] py-[10px] rounded-full bg-white hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition text-[18px] text-black hover:text-white font-semibold w-fit cursor-pointer"
               >
                 Subscribe
               </button>
@@ -138,7 +138,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+        <div className="border-t border-[#FFFFFF33] mt-5 md:mt-10 pt-[20px] lg:pt-[38px]  text-center text-white text-[14px]">
           © Copyright {new Date()?.getFullYear() || "2025"}, All Rights
           Reserved.
         </div>

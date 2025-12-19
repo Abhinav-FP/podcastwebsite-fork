@@ -37,11 +37,12 @@ export default function Main() {
                 objectFit="cover"
                 className="object-cover w-full" />
         </div>
+        
         <Podcast />
       </section>
 
       {/* <MeetYourHost /> */}
-      <section className="bg-[#000000] relative mb-12 overflow-hidden">
+      <section className="bg-[#000000] relative mb-[20px] md:mb-12 overflow-hidden">
         
         <Learn />
       </section>

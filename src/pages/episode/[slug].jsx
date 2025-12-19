@@ -40,7 +40,7 @@ export default function Index() {
   return (
     <Layout>
       <div className="bg-[#0a0a0a] pt-[118px] lg:pt-[128px] pb-[40px] md:pb-[60px] lg:pb-[80px] ">
-        <div className="absolute z-0 xl:max-w-[578px] w-full md:w-[578px] h-full md:h-[943px]  aspect-square left-[0] top-[-250px]  z-1">
+        <div className="absolute z-0 w-full md:w-[600px] h-full  left-[0] top-[-150px]  z-1">
           <Image
             src={"/lightpinkleft.png"}
             layout="fill"
@@ -49,7 +49,7 @@ export default function Index() {
           />
         </div>
 
-        <div className="absolute z-0 xl:max-w-[578px] w-full md:w-[578px] h-full md:h-[943px]  aspect-square right-[0] top-[0px]  z-1">
+        <div className="absolute z-0  w-[300px] md:w-[400px]  lg:w-[500px]  xl:w-[600px] h-full  right-[0] bottom-[-100px]  z-1">
           <Image
             src={"/lightpinkright.png"}
             layout="fill"
@@ -66,14 +66,14 @@ export default function Index() {
                 {/* Left: Podcast Cover */}
 
                 <div className="relative border border-[#FFFFFF66] rounded-[15px] ">
-                  <div class="absolute bottom-0 left-0 right-0 w-full h-[500px] z-1  inset-x-0 bottom-0  bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-b-[10px] lg:rounded-b-[15px]"></div>
+                  <div class="absolute bottom-0 left-0 right-0 w-full h-[300px] md:h-[400px] lg:h-[500px] z-1  inset-x-0 bottom-0  bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-b-[10px] lg:rounded-b-[15px]"></div>
 
                   <Image
                     src={data?.thumbnail}
                     height={500}
                     width={1280}
                     alt="Podcast Cover"
-                    className="w-full h-[500px]  object-cover object-center rounded-[10px] md:rounded-[15px] shadow-lg"
+                    className="w-full h-[300px] md:h-[400px] lg:h-[500px]  object-cover object-center rounded-[10px] md:rounded-[15px] shadow-lg"
                   />
                 </div>
                 <div className="flex w-full justify-between flex-wrap gap-[15px] absolute bottom-0 left-0 py-[15px] pb-[20px] px-[20px] lg:pb-[40px] lg:px-[50px] w-full z-2">
@@ -119,7 +119,7 @@ export default function Index() {
               />
               {data && data?.timestamps && (
                 <div
-                  className=" text-left text-[16px] md:text-[18px] lg:text-[20px] text-white font-[600] detail-content"
+                  className=" mt-[20px] md:mt-[40px] lg:mt-[70px] max-w-[680px] text-left text-[16px] md:text-[18px] lg:text-[20px] text-white font-[600] detail-content p-[15px] md:p-[30px] lg:p-[35px] bg-[#0F0F0F] border border-[#FFFFFF66] rounded-[10px] md:rounded-[15px]"
                   dangerouslySetInnerHTML={{ __html: data?.timestamps }}
                 />
               )}

@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function NewVoice() {
   return (
-    <section className="relative pt-[10px] md:pt-[30px] lg:pt-[50px]">
+    <section className="relative pt-[10px] md:pt-[20px] lg:pt-[50px]">
       <div className="mx-auto container xl:max-w-[1310px] px-4 flex flex-col lg:flex-row items-center justify-between gap-[10px] md:gap-[25px]">
         {/* Left Content */}
         <div className="text-white w-full max-w-[100%] lg:max-w-[50%] text-center lg:text-left relative z-[2]">
-          <h1 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-tight uppercase">
+          <h1 className="text-[25px] md:text-[35px] xl:text-[40px] leading-[27px] md:leading-[37px] xl:leading-[42px] font-work font-[800] leading-tight uppercase">
             Australia’s{" "}
             <span className="text-theme"> New Voice in Educating Smart </span>
             Property Investors.

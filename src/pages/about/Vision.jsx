@@ -3,7 +3,7 @@ import React from "react";
 export default function Vision() {
   return (
     <section className="">
-      <div className="bg-[#0F0F0F] min-h-[420px] border-1  border-[#FFFFFF66] rounded-[10px] p-[10px] md:p-[20px] relative z-[2]">
+      <div className="bg-[#0F0F0F] md:min-h-[480px] xl:min-h-[420px] border-1  border-[#FFFFFF66] rounded-[10px] p-[20px] md:p-[20px] relative z-[2]">
         <div className="text-center flex flex-col items-center relative z-[2]">
           <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-tight uppercase">
             <span className="text-white">Our</span>
@@ -12,7 +12,7 @@ export default function Vision() {
           <h3 className="text-white text-[16px] md:text-[18px] lg:text-[20px] font-[700] mb-4 uppercase">
             Helping Australians build lasting wealth through property.
           </h3>
-          <p className="text-white text-[16px] md:text-[18px] lg:text-[20px] font-[600]">
+          <p className="text-white text-[14px] md:text-[16px] lg:text-[20px] font-[600]">
             We see a future where background, postcode, or starting point no
             longer decides who can build a strong property portfolio. Our vision
             is for more Australians to feel informed, confident, and capable of

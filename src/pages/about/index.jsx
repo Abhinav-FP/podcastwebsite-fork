@@ -72,14 +72,28 @@ const Index = () => {
 
   return (
     <Layout>
-      <div className="text-white pt-[118px] lg:pt-[128px]">
-        <NewVoice />
+      <div className=" pt-[118px] lg:pt-[128px] pb-[40px] md:pb-[60px] lg:pb-[0px]">
+          <NewVoice />
           <MeetYourHost />
       </div>
-      <div className="relative overflow-hidden mt-10">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div className="relative overflow-hidden mt-10 ">
         <div className="absolute w-[20vw] max-w-[500px] aspect-square -left-[5%] top-1/10 blurcircle rounded-r-full" />
         <div className="absolute w-[20vw] max-w-[500px] aspect-square -right-[5%] bottom-1/10 blurcircle rounded-l-full" />
-        <div className="container xl:max-w-[1440px] mx-auto px-4 ">
+        <div className="px-4 max-w-[1310px] m-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <Vision />
             <Mission />

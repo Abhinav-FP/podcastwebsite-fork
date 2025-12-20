@@ -24,6 +24,10 @@ export default function Edit() {
     duration: 0,
     durationInSec: 0,
     size: 0,
+    isSpotify: false,
+    spotifyLink: "",
+    isApple: false,
+    appleLink: "",
   });
   const [thumbnailPreview, setThumbnailPreview] = useState(null); 
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -35,7 +39,17 @@ export default function Edit() {
   };
 
   const handleChange = async(e) => {
-    const { name, value, files } = e.target;
+    const { name, value, files, type, checked } = e.target;
+
+     if (type === "checkbox") {
+        setFormData((prev) => ({
+          ...prev,
+          [name]: checked,
+          ...(name === "isSpotify" && !checked ? { spotifyLink: "" } : {}),
+          ...(name === "isApple" && !checked ? { appleLink: "" } : {}),
+        }));
+        return;
+      }
 
     if (name === "thumbnail" && files?.[0]) {
       const file = files[0];
@@ -265,6 +279,14 @@ export default function Edit() {
       if (formData.thumbnail instanceof File) { 
         payload.append("thumbnail", formData.thumbnail);
       }
+      if (formData.isSpotify && formData.spotifyLink) {
+        payload.append("spotifyLink", formData.spotifyLink);
+      }
+
+      if (formData.isApple && formData.appleLink) {
+        payload.append("appleLink", formData.appleLink);
+      }
+
       // if (formData.video instanceof File) {
       //   payload.append("video", formData.video);
       // }
@@ -314,6 +336,10 @@ export default function Edit() {
       duration: response?.data?.data?.duration || 0,
       durationInSec: response?.data?.data?.durationInSec || 0,
       size: response?.data?.data?.size || 0,
+      isSpotify: !!response?.data?.data?.spotifyLink,
+      spotifyLink: response?.data?.data?.spotifyLink || "",
+      isApple: !!response?.data?.data?.appleLink,
+      appleLink: response?.data?.data?.appleLink || "",
     });
 
     if (response?.data?.data?.thumbnail) {
@@ -440,7 +466,8 @@ export default function Edit() {
             handleBioChange={(val) => handleQuillChange('details', val)}
           />
         </div>
-
+        
+        {/* Timestamps */}
         <div className="space-y-1 mt-[65px]">
           <label className="block text-sm font-medium">
             Timestamps
@@ -451,6 +478,60 @@ export default function Edit() {
             handleBioChange={(val) => handleQuillChange('timestamps', val)}
           />
         </div>
+
+        {/* Platform Availability */}
+        <div className="space-y-4 mt-[65px]">
+          <label className="block text-sm font-medium">
+            Available On
+          </label>
+
+          {/* Spotify */}
+          <div className="flex items-center gap-4">
+            <input
+              type="checkbox"
+              name="isSpotify"
+              checked={formData.isSpotify}
+              onChange={handleChange}
+              className="w-4 h-4"
+            />
+            <span>Available on Spotify</span>
+
+            {formData.isSpotify && (
+              <input
+                type="url"
+                name="spotifyLink"
+                placeholder="Enter Spotify link"
+                value={formData.spotifyLink}
+                onChange={handleChange}
+                className="flex-1 p-2 rounded-lg bg-[#1c1c1c] border border-gray-700 text-white"
+              />
+            )}
+          </div>
+
+          {/* Apple Music */}
+          <div className="flex items-center gap-4">
+            <input
+              type="checkbox"
+              name="isApple"
+              checked={formData.isApple}
+              onChange={handleChange}
+              className="w-4 h-4"
+            />
+            <span>Available on Apple Music</span>
+
+            {formData.isApple && (
+              <input
+                type="url"
+                name="appleLink"
+                placeholder="Enter Apple Music link"
+                value={formData.appleLink}
+                onChange={handleChange}
+                className="flex-1 p-2 rounded-lg bg-[#1c1c1c] border border-gray-700 text-white"
+              />
+            )}
+          </div>
+        </div>
+
 
         {/* Submit */}
         <div className="pt-2 mt-16">

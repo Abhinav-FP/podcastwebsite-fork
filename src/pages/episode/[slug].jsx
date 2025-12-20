@@ -9,6 +9,7 @@ import { useAudioPlayer } from "@/context/AudioPlayerContext";
 import moment from "moment";
 import Image from "next/image";
 import Loader from "@/common/Loader";
+import Link from "next/link";
 
 export default function Index() {
   const { playTrack } = useAudioPlayer();
@@ -36,7 +37,7 @@ export default function Index() {
     }
   }, [slug]);
 
-  // console.log("data", data);
+  console.log("data", data);
   return (
     <Layout>
       <div className="bg-[#0a0a0a] pt-[118px] lg:pt-[128px] pb-[40px] md:pb-[60px] lg:pb-[80px] ">
@@ -107,15 +108,19 @@ export default function Index() {
                         <span className="font-medium">Listen Now</span>
                       </button>
 
-                      <button className="cursor-pointer flex items-center justify-center border border-[#FFFFFF66] rounded-[40px] px-[15px] py-[8px] md:py-[8px] lg:py-[12px] min-w-[80px] sm:min-w-[100px] md:min-w-[100px] lg:min-w-[140px] xl:min-w-[150px] text-center">
+                      {data?.appleLink &&
+                      <a href={`${data?.appleLink}`} target="blank" className="cursor-pointer flex items-center justify-center border border-[#FFFFFF66] rounded-[40px] px-[15px] py-[8px] md:py-[8px] lg:py-[12px] min-w-[80px] sm:min-w-[100px] md:min-w-[100px] lg:min-w-[140px] xl:min-w-[150px] text-center">
                         <Image  src={'/musicbtn.png'}
                          height={120} width={80} />
-                      </button>
+                      </a>
+                      }
 
-                      <button className="cursor-pointer flex items-center justify-center border border-[#FFFFFF66] rounded-[40px] px-[15px] py-[8px] md:py-[8px] lg:py-[12px] min-w-[80px] sm:min-w-[100px] md:min-w-[100px] lg:min-w-[140px] xl:min-w-[150px] text-center">
+                      {data?.spotifyLink &&
+                      <a href={`${data?.spotifyLink}`} target="blank" className="cursor-pointer flex items-center justify-center border border-[#FFFFFF66] rounded-[40px] px-[15px] py-[8px] md:py-[8px] lg:py-[12px] min-w-[80px] sm:min-w-[100px] md:min-w-[100px] lg:min-w-[140px] xl:min-w-[150px] text-center">
                         <Image  src={'/spoticon.png'}
                          height={120} width={80} />
-                      </button>
+                      </a>
+                      }
                     </div>
                   </div>
                 </div>

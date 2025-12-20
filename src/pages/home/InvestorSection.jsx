@@ -9,7 +9,7 @@ export default function InvestorSection() {
         {/* Left Content */}
         <div className="text-white max-w-[100%] lg:max-w-[50%] text-center lg:text-left">
           <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-tight uppercase">
-            Conversation That <span className="text-theme">Shapes Your Next Move</span>
+           Level Up Your Portfolio With <span className="text-theme">Every Episode</span>
           </h2>
           <p className="mt-6 text-white text-base  font-outfit font-[600] text-[18px] md:text-[20px] ">
            Property isn’t just about bricks and numbers. It’s about the choices that shape how you live, grow, and plan for the future.
@@ -21,7 +21,7 @@ export default function InvestorSection() {
           <div className="mt-6 border-l-4 border-white pl-4 text-gray-200 flex items-start justify-center lg:justify-start gap-2 text-left">
             <MdOutlineHeadphones size={22} className="mt-1 flex-shrink-0" />
             <p className="font-semibold text-white   font-outfit font-[700] text-[18px] md:text-[20px] ">
-              We’re not just talking theory — we’re sharing what actually works in today’s market
+              We're not just talking theory — Because the right conversation in today’s shifting market is what makes your vision a reality tomorrow with a great property portfolio.
             </p>
           </div>
 

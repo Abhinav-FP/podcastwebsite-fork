@@ -14,8 +14,8 @@ export default function MeetYourHost() {
           <h2 className="mb-[15px] text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-tight uppercase">
             MEET YOUR <span className="text-theme">HOST</span>
           </h2>
-          <p className="text-white text-base  font-outfit font-[600] text-[16px] md:text-[18px] xl:text-[20px]">
-            Together, Parag, Mudit, and Julius represent the complete property
+          <p className="text-white text-base  font-outfit font-[600] text-[15px] md:text-[16px] xl:text-[18px]">
+            Together, Parag, Julius, Mudit, and Julius represent the complete property
             investment ecosystem of mortgage mastery, strategic financing, and
             acquisition expertise unified under one educational platform. Their
             combined decades of experience and proven track records create an
@@ -54,7 +54,7 @@ export default function MeetYourHost() {
                 <div className="flex justify-center w-full lg:w-1/2">
                   <div className="w-full max-w-[700px] aspect-[7/5] overflow-hidden rounded-lg">
                     <Image
-                      src={"/paragimg.jpg"}
+                      src={"/paragimg.jpg?dsf"}
                       alt="Podcast Host"
                       width={700}
                       height={500}
@@ -67,7 +67,7 @@ export default function MeetYourHost() {
                   <h2 className=" text-[22px] md:text-[25px] xl:text-[30px] md:leading-[24px] md:leading-[28px] xl:md:leading-[32px] font-[700] mb-[2px] lg:mb-[10px]">Parag Dixit - <span className="text-theme md:leading-[24px] md:leading-[28px] xl:md:leading-[32px]">Mortgage & Investment Strategy Expert</span>
                   </h2>
 
-                  <p className="text-[14px] md:text-[16px] xl:text-[20px] font-[600] mb-[15px]">
+                  <p className="text-[15px] md:text-[16px] xl:text-[18px] font-[600] mb-[15px]">
                   Parag brings a unique dual perspective as both a mortgage specialist and a successful property investor. With over 25 years in financial services, he's the founding director of Nfinity Financials and PropWealth and was recently recognised as one of Australia's Top 10 Elite Brokers of 2024. His personal property investment journey began in 2016, giving him firsthand experience in building wealth through strategic property decisions, using complex mix of individual, trust and company assets. This combination of Strategic mindset and expertise, deep financial understanding and real estate investment experience makes him uniquely positioned to guide clients through both financing and property investment strategies.
                   </p>
 
@@ -111,7 +111,7 @@ export default function MeetYourHost() {
                 <div className="flex justify-center  w-full lg:w-1/2">
                   <div className="w-full max-w-[700px] aspect-[7/5] overflow-hidden rounded-lg">
                     <Image
-                      src={"/juliusimg.jpg"}
+                      src={"/juliusimg.jpg?dfsff"}
                       alt="Podcast Host"
                       width={700}
                       height={550}
@@ -125,7 +125,7 @@ export default function MeetYourHost() {
                     Julius Dabre - <span className="text-theme md:leading-[24px] md:leading-[28px] xl:md:leading-[32px]">Your Property Acquisition Specialist</span>
                   </h2>
 
-                  <p className="text-[14px] md:text-[16px] xl:text-[20px] font-[600] mb-[15px]">
+                  <p className="text-[15px] md:text-[16px] xl:text-[18px] font-[600] mb-[15px]">
                    As Founder of PropWealth, Julius has orchestrated over $67 million in property transactions, establishing himself as a formidable force in Australia's property landscape. His specialty lies in identifying high-growth suburbs before they become mainstream, combining profound market trend analysis with practical, actionable advice. Julius's insights have empowered over 100,000 investors to make informed decisions, turning market knowledge into tangible portfolio growth.
                   </p>
 
@@ -169,7 +169,7 @@ export default function MeetYourHost() {
                 <div className="flex justify-center w-full lg:w-1/2">
                   <div className="w-full max-w-[700px] aspect-[7/5] overflow-hidden rounded-lg">
                     <Image
-                      src={"/muditimg.jpg"}
+                      src={"/muditimg.jpg?fsfsf"}
                       alt="Podcast Host"
                       width={700}
                       height={550}
@@ -183,8 +183,10 @@ export default function MeetYourHost() {
                     Mudit Khandelwal - <span className="text-theme md:leading-[24px] md:leading-[28px] xl:md:leading-[32px]">Your Strategic Finance Director</span>
                   </h2>
 
-                  <p className="text-[14px] md:text-[16px] xl:text-[20px] font-[600] mb-[15px]">
-                   An alumnus of IIT Kanpur and IIM Ahmedabad, Mudit brings academic excellence and real-world mastery to every client interaction. As Director at Nfinity Financials, this 5-star-rated mortgage broker has earned over 200 five-star reviews, reflecting his exceptional service standards. With over 20 years of entrepreneurial experience, Mudit is passionate about helping Australians achieve their homeownership dreams faster, easier, and at competitive rates. His strategic approach transforms complex financial scenarios into clear pathways to property wealth.
+                  <p className="text-[15px] md:text-[16px] xl:text-[18px] font-[600] mb-[15px]">
+                  An alumnus of IIT Kanpur and IIM Ahmedabad, Mudit brings academic excellence and real-world mastery to every client interaction. As Director at Nfinity Financials, this 5-star-rated mortgage broker has earned over 200 five-star reviews, reflecting his exceptional service standards with over 20 years of entrepreneurial experience. Mudit is motivated by a deep commitment to help Australians achieve their dreams of homeownership in a quicker, easier, and more cost-effective way. He achieves it by applying a strategic approach that transforms complex financial scenarios into clear pathways to property wealth.
+
+
                   </p>
 
                   {/* Bottom badges */}

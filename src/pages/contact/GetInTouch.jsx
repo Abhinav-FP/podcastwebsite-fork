@@ -66,13 +66,12 @@ export default function GetInTouch() {
             Get in <span className="text-theme">Touch</span>
           </h2>
           <p className="mt-[10px] md:mt-[15px] lg:mt-[15px] text-white font-outfit font-[600] text-[16px] md:text-[18px] lg:text-[20px]">
-            Have a question, guest suggestion, or just want to say hello? We'd
-            love to <br /> hear from you. We typically respond within 24 hours.
+           Share your questions, thoughts, or suggestions, <br /> and we’ll get back to you with the answers you are looking for.
           </p>
         </div>
-        <div className="w-full max-w-[100%] lg:max-w-[1000px] mx-auto flex flex-col lg:flex-row  justify-between gap-[25px] text-white mt-4 md:mt-8 lg:mt-12 px-0 md:px-3 lg:px-4">
+        <div className="w-full max-w-[100%] lg:max-w-[1100px] mx-auto flex flex-col lg:flex-row  justify-between gap-[25px] text-white mt-4 md:mt-8 lg:mt-12 px-0 md:px-3 lg:px-4">
           {/* Left Side */}
-          <div className="flex flex-col justify-center space-y-4 md:space-y-5 lg:space-y-8 max-w-[300px]">
+          <div className="flex flex-col justify-center space-y-4 md:space-y-5 lg:space-y-8 w-full md:w-[50%] xl-w-[45%]">
             <div className="space-y-[20px] md:space-y-[30px] lg:space-y-[40px] ">
               {/* Phone */}
               <div className="flex items-start gap-[15px] lg:gap-[25px]">
@@ -84,7 +83,7 @@ export default function GetInTouch() {
                     Phone
                   </h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0]">
-                   6232 1151 2211
+                   +61 0497 570 833
                   </p>
                 </div>
               </div>
@@ -97,6 +96,10 @@ export default function GetInTouch() {
                 <div>
                   <h4 className="text-white font-[700] text-[16px] md:text-[18px] lg:text-[20px] mb-[5px]">Our Location</h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0]">
+                   The Property Portfolio Podcast, <br/>
+                    215/33 Lexington Dr, <br/>
+                    Bella Vista <br/>
+                    NSW 2153, <br/>
                     Australia
                   </p>
                 </div>
@@ -110,7 +113,7 @@ export default function GetInTouch() {
                 <div>
                   <h4 className="text-white font-[700] text-[16px] md:text-[18px] lg:text-[20px] mb-[5px]">Email</h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0] break-words break-normal break-all">
-                    hello@property.com
+                    <a href="mailto:info@thepropertyportfolio.co.au">info@thepropertyportfolio.co.au</a>
                   </p>
                 </div>
               </div>
@@ -279,8 +282,8 @@ export default function GetInTouch() {
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className=" w-full lg:max-w-[560px] bg-[#00000099] rounded-[15px] px-[20px] py-[25px] md:px-[30px] md:py-[35px] lg:px-[40px] lg:py-[45px]">
-            <h3 className="text-[18px] md:text-[22px] text-white font-[700] mb-3 md:mb-6 lg:mb-8">Send Us a Message</h3>
+          <div className="  w-full md:w-[100%] lg:w-[50%] xl-w-[45%] lg:max-w-[560px] bg-[#00000099] rounded-[15px] px-[20px] py-[25px] md:px-[30px] md:py-[35px] lg:px-[40px] lg:py-[45px]">
+            <h3 className="text-[18px] md:text-[22px] text-white font-[700] mb-3 md:mb-6 lg:mb-8">We're always open to your ideas</h3>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>

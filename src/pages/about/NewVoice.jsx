@@ -8,20 +8,14 @@ export default function NewVoice() {
       <div className="mx-auto container xl:max-w-[1310px] px-4 flex flex-col lg:flex-row items-center justify-between gap-[10px] md:gap-[25px]">
         {/* Left Content */}
         <div className="text-white w-full max-w-[100%] lg:max-w-[50%] text-center lg:text-left relative z-[2]">
-          <h1 className="text-[25px] md:text-[35px] xl:text-[40px] leading-[27px] md:leading-[37px] xl:leading-[42px] font-work font-[800] leading-tight uppercase">
-            Australia’s{" "}
-            <span className="text-theme"> New Voice in Educating Smart </span>
-            Property Investors.
+          <h1 className="text-[25px] md:text-[30px] xl:text-[36px] leading-[27px] md:leading-[37px] xl:leading-[38px] font-work font-[800] leading-tight uppercase">
+           Build Your <span className="text-theme"> Financial  Freedom </span> Alongside Australia’s Leading Voices.
+              
+            
           </h1>
-          <p className="mt-6 text-white text-base  font-outfit font-[600] text-[16px] md:text-[18px] xl:text-[20px]">
-            We're dedicated to transforming complex property investment concepts
-            into strategic frameworks that help intelligent investors to build
-            enduring wealth through property. Born from the strategic
-            collaboration between PropWealth and Nfinity Financials, two
-            industry-leading firms, we curate decades of combined expertise in
-            smart investment strategies, mortgage solutions, and robust
-            portfolio building to deliver refined, actionable insights that
-            empower astute investors.
+          <p className="mt-6 text-white text-base  font-outfit font-[600] text-[15px] md:text-[16px] xl:text-[18px]">
+          We engage with investors who have experienced the pitfalls, rejoiced in the successes, and discovered what truly succeeds in Australian property. We engage in real conversations about firsthand deals, real numbers, and meaningful decisions. We analyse the strategies that distinguish portfolio builders from those who merely dream of property ownership. Built for investors who value practical insights over noise, we translate complex investment thinking into real frameworks that smart investors like you can actually use.
+
           </p>
           <div className="flex items-center justify-center flex-wrap md:flex-nowrap lg:justify-start gap-[10px] mt-[25px] mb-[25px] md:mb-[0]">
             <div className="relative w-[135px] sm:w-[150px] h-[115px] edubg ">
@@ -34,21 +28,21 @@ export default function NewVoice() {
              <div className="relative  w-[135px] sm:w-[150px] h-[115px] edubg ">
               <div className=" absolute top-0 bottom-0 left-0 right-0 w-[98%] h-[98%] m-auto bg-[#0F0F0F] rounded-[10px]"></div>
               <div className="relative w-full h-full text-[14px] font-[600] text-center z-1 flex items-center justify-center ">
-                Strategic Portfolio <br /> Building Focus
+                Every Real Estate Basics Explained
               </div>
             </div>
 
              <div className="relative  w-[135px] sm:w-[150px] h-[115px] edubg ">
               <div className=" absolute top-0 bottom-0 left-0 right-0 w-[98%] h-[98%] m-auto bg-[#0F0F0F] rounded-[10px]"></div>
               <div className="relative w-full h-full text-[14px] font-[600] text-center z-1 flex items-center justify-center ">
-                Data-Driven <br /> Investment Insights
+               Real-Time Market Intelligence for Smart Decisions
               </div>
             </div>
 
              <div className="relative  w-[135px] sm:w-[150px] h-[115px] edubg ">
               <div className=" absolute top-0 bottom-0 left-0 right-0 w-[98%] h-[98%] m-auto bg-[#0F0F0F] rounded-[10px]"></div>
               <div className="relative w-full h-full text-[14px] font-[600] text-center z-1 flex items-center justify-center ">
-                Commitment to <br /> Your Success
+               Sharing Unfiltered Conversations of Industry Leaders
               </div>
             </div>
           </div>

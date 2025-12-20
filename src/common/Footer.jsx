@@ -31,26 +31,21 @@ export default function Footer() {
   };
 
   return (
-    <footer className="from-[#441051] via-[#441051]/90 to-[#000000]/80 text-white  pt-[50px] lg:pt-[80px] pb-[20px] lg:pb-[40px] ">
+    <footer className="from-[#441051] via-[#441051]/90 to-[#000000]/80 text-white  pt-[30px] md:pt-[50px] lg:pt-[80px] pb-[20px] lg:pb-[40px] ">
       <div className="mx-auto container xl:max-w-[1310px] px-4">
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
           {/* Left - Logo & Tagline */}
           <div>
             <div className="flex items-center gap-3">
-              <Image
-                src={"/logo.png"}
-                alt="Podcast Logo"
-                width={170}
-                height={50}
-                className="w-auto max-w-[180px] object-content"
-              />
+              <Image src={"/logo.png"} alt="Podcast Logo" width={170} height={50}
+                className="w-auto max-w-[180px] object-content" />
             </div>
             <p className="mt-4 text-white text-[16px] font-[600] ">
-              Invest with Confidence. Grow with Purpose.
+              Episodes That Build Stronger Portfolio
             </p>
 
-            <div className=" mt-[40px]">
+            <div className=" mt-[20px] md:mt-[40px]">
               <h3 className="font-[800] mb-4 text-white text-[16px] uppercase">Follow us On</h3>
                <ul className="flex items-center gap-[15px]">
                 <li>
@@ -97,7 +92,7 @@ export default function Footer() {
           </div>
 
           {/* Help Links */}
-          <div className=" border-t  border-t-[#FFFFFF33] md:border-t-[0] pt-[20px] md:pt-[0px]">
+          <div className=" border-t  border-t-[#FFFFFF33] lg:border-t-[0] pt-[20px] lg:pt-[0px]">
             <h3 className="font-semibold mb-4 font-[700] text-[16px] uppercase">HELP</h3>
             <ul className="space-y-4 text-white text-[16px] font-[600]">
               {/* <li><a href="#">Delivery Details</a></li> */}
@@ -115,7 +110,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className=" border-t  border-t-[#FFFFFF33] md:border-t-[0] pt-[20px] md:pt-[0px]">
+          <div className=" border-t  border-t-[#FFFFFF33] lg:border-t-[0] pt-[20px] lg:pt-[0px]">
             <h3 className="font-semibold mb-4 font-[700] text-[16px] uppercase">NEWSLETTER</h3>
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
               <input

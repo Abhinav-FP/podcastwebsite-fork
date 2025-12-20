@@ -24,58 +24,59 @@ export default function Approach() {
             different and comes with a varied risk <br /> tolerance, financial status,
             and life stage. So, we focus on:
           </p>
-           <div className="flex items-center justify-center flex-wrap md:flex-nowrap lg:justify-start gap-[10px] md:gap-[20px] mt-[25px] mb-[25px] md:mb-[0]">
+           <div className="flex items-center justify-center flex-wrap lg:flex-nowrap lg:justify-start gap-[10px] md:gap-[20px] mt-[25px] mb-[25px] md:mb-[0]">
             <div className="relative w-[135px] sm:w-[210px] h-[150px] edubg ">
               <div className=" absolute top-0 bottom-0 left-0 right-0 w-[98%] h-[98%] m-auto bg-[#0F0F0F] rounded-[10px]"></div>
               <div className="flex flex-col relative w-full h-full text-[14px] font-[600] text-center z-1 flex items-center justify-center ">
                 
-                 <Image src="/approachicon01.png"
+                 <Image src="/approachicon01.png?FSDFSF"
                             alt="Podcast Recording"
                             width={40}
                             height={40}
                             className="rounded-xl object-cover w-[40px] h-auto mb-[10px]"
-                          />
-
-               23+ Years Combined <br /> Experience
+                          />Strategies we've personally stress-tested
               </div>
             </div>
 
              <div className="relative  w-[135px] sm:w-[210px] h-[150px] edubg ">
               <div className=" absolute top-0 bottom-0 left-0 right-0 w-[98%] h-[98%] m-auto bg-[#0F0F0F] rounded-[10px]"></div>
               <div className="flex flex-col relative w-full h-full text-[14px] font-[600] text-center z-1 flex items-center justify-center ">
-                 <Image src="/approachicon01.png"
+                 <Image src="/approachicon02.png?FSDFS"
                             alt="Podcast Recording"
                             width={40}
                             height={40}
                             className="rounded-xl object-cover  w-[40px] h-auto mb-[10px]"
                           />
-                          Strategic Portfolio Building <br />  Focus
+                         Real Case Studies backed by real data insights
+
               </div>
             </div>
 
              <div className="relative  w-[135px] sm:w-[210px] h-[150px] edubg ">
               <div className=" absolute top-0 bottom-0 left-0 right-0 w-[98%] h-[98%] m-auto bg-[#0F0F0F] rounded-[10px]"></div>
               <div className="flex flex-col relative w-full h-full text-[14px] font-[600] text-center z-1 flex items-center justify-center ">
-                 <Image src="/approachicon01.png"
+                 <Image src="/approachicon03.png?fsdfsf"
                             alt="Podcast Recording"
                             width={40}
                             height={40}
                             className="rounded-xl object-cover  w-[40px] h-auto mb-[10px]"
                           />
-                Data-Driven Investment <br /> Insights
+                Strategies Tested Through Market Cycles
+
               </div>
             </div>
 
              <div className="relative  w-[135px] sm:w-[210px] h-[150px] edubg ">
               <div className=" absolute top-0 bottom-0 left-0 right-0 w-[98%] h-[98%] m-auto bg-[#0F0F0F] rounded-[10px]"></div>
               <div className="flex flex-col relative w-full h-full text-[14px] font-[600] text-center z-1 flex items-center justify-center ">
-                 <Image src="/approachicon01.png"
+                 <Image src="/approachicon04.png?fsdfsfdsf"
                             alt="Podcast Recording"
                             width={40}
                             height={40}
-                            className="rounded-xl object-cover  w-[40px] h-auto mb-[10px]"
+                            className="rounded-xl object-cover  w-[40px] h-[40px] mb-[10px]"
                           />
-                Commitment to Your <br /> Success
+               Different Strategies for Each Investor Stage
+
               </div>
             </div>
           </div>

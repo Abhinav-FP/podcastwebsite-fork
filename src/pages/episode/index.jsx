@@ -81,7 +81,7 @@ export default function Index() {
   return (
     <Layout>
       <div className="bg-black pt-[120px] lg:pt-[160px] ">
-        <div className="relative overflow-hidden">
+        <div className="relative ">
           {/* Background color divs */}
 
           <div className="absolute z-0 xl:max-w-[578px] w-full md:w-[578px] h-full md:h-[943px]  aspect-square left-[0] bottom-[-250px]  rounded-r-full z-1">
@@ -93,7 +93,7 @@ export default function Index() {
             />
           </div>
 
-          <div className="absolute z-0 xl:max-w-[578px] w-full md:w-[578px] h-full md:h-[943px]  aspect-square right-[0] top-[-150px]  rounded-r-full z-1">
+          <div className="absolute z-0 xl:max-w-[578px] w-full md:w-[500px] h-full md:h-[700px]  aspect-square right-[0] top-[-250px]  rounded-r-full z-1">
             <Image
               src={"/lightpinkright.png"}
               layout="fill"
@@ -102,14 +102,14 @@ export default function Index() {
             />
           </div>
 
-          <div className="max-w-[1440px] mx-auto px-4 pb-[20px] lg:pb-[50px] w-full mb-4 lg:mb-10 relative z-[2]">
+          <div className="max-w-[1310px] mx-auto px-4 pb-[20px] lg:pb-[50px] w-full mb-4 lg:mb-10 relative z-[2]">
             {/* Heading Section */}
             <Heading
               className={"text-center max-w-3xl mx-auto"}
               subtitle={"All Episodes"}
               title={"Browse"}
               content={
-                "Browse our full archive of episodes covering market shifts, portfolio growth, and future outlooks."
+                "Browse our complete library, where each episode holds the conversation, adding value to your portfolio every time you listen."
               }
             />
             {/* Search + Filter */}
@@ -129,8 +129,8 @@ export default function Index() {
               </div>
 
               {/* Dropdown */}
-              <div className="relative flex items-center gap-[8px] w-full max-w-[210px] rounded-[40px] px-[20px] border border-[#FFFFFF] border-[1px]">
-                <div className="absolute left-[20px]">
+              <div className="relative flex items-center gap-[8px] w-full max-w-[210px] rounded-[40px] ps-[40px] pe-[15px]  border border-[#FFFFFF] border-[1px]">
+                <div className="absolute left-[10px]">
                   <svg
                     width="24"
                     height="24"
@@ -151,7 +151,7 @@ export default function Index() {
                   aria-label="Filter by topic"
                   value={selectedTopic}
                   onChange={(e) => setSelectedTopic(e.target.value)}
-                  className=" w-full max-w-[194px] rounded-[40px] bg-none text-white  pt-[16px] pb-[16px] px-[25px] ps-[40px] border-none focus:outline-none "
+                  className="block w-full max-w-[194px] rounded-[40px] bg-none text-white  pt-[16px] pb-[16px] px-[5px]  border-none focus:outline-none "
                 >
                   <option 
                   className="bg-white text-black" value="">All Topics</option>

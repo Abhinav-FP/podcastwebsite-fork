@@ -72,7 +72,7 @@ export default function EpisodeCard({
     }}
 >
   {/* Image */}
-  <div className="relative overflow-hidden w-full md:w-[300px] h-[300px] aspect-video rounded-2xl flex-shrink-0">
+  <div className="relative overflow-hidden w-[270px] min-w-[270px] md:w-[300px] h-[300px] aspect-video rounded-2xl flex-shrink-0">
     <Image
       src={episode?.thumbnail || ""}
       alt={episode?.title}
@@ -80,7 +80,7 @@ export default function EpisodeCard({
       // height={300}
       // width={300}
       objectFit="content"
-      className="object-content rounded-[10px] transition-transform duration-300 group-hover:scale-105"
+      className=" object-content rounded-[10px] transition-transform duration-300 group-hover:scale-105"
     />
     {/* Hover Play Icon */}
     <div className="absolute  top-0 bottom-0 left-0 right-0 w-full h-full inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -90,14 +90,14 @@ export default function EpisodeCard({
     </div>
   </div>
 
-  {/* Content */}
-  <div className="flex-1 font-outfit text-white flex flex-col items-start w-full">
-    <h3 className="font-[700] text-lg sm:text-[18px] md:text-[20px] xl:text-[30px] mb-2 tracking-wide capitalize text-white">
+{/* Content */}
+  <div className="flex-1 font-outfit text-white flex flex-col items-center md:items-start w-full">
+    <h3 className="text-center md:text-start  font-[700] text-lg sm:text-[18px] md:text-[20px] xl:text-[30px] mb-2 tracking-wide capitalize text-white">
       {episode?.title}
     </h3>
 
     {/* Meta Info */}
-    <div className="flex flex-wrap items-center text-[12px] text-[14px] lg:text-[16px] text-white gap-2 sm:gap-4 mb-3">
+    <div className="w-full flex flex-wrap justify-center md:justify-start items-center text-[12px] text-[14px] lg:text-[16px] text-white gap-2 sm:gap-4 mb-3">
       {/* <span className="">Episode: {episode?.episode?._count?.episodes || 11}</span> | */}
       <span className="flex items-center gap-1">
          <svg
@@ -125,7 +125,7 @@ export default function EpisodeCard({
 
     {/* Description */}
     <p
-      className={`font-[600] text-[13px] text-[15px] lg:text-[20px] text-white transition-all duration-300 ${isOpen ? "" : "line-clamp-2"}`}>
+      className={`text-center md:text-start  font-[600] text-[13px] text-[15px] lg:text-[20px] text-white transition-all duration-300 ${isOpen ? "" : "line-clamp-2"}`}>
       {episode?.description}
     </p>
 

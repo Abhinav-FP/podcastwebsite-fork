@@ -5,7 +5,7 @@ export default function TermsOfAccess() {
   return (
     <Layout>
     <div className="mt-16 bg-gray-950 text-gray-300">
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-[1310px] mx-auto px-6 py-12">
         {/* Header */}
         <h1 className="text-3xl font-semibold text-white mb-6">
           Terms of Access
@@ -111,9 +111,7 @@ export default function TermsOfAccess() {
           </p>
         </Section>
 
-        <footer className="mt-16 border-t border-gray-800 pt-6 text-sm text-gray-500">
-          © {new Date().getFullYear()} The Property Portfolio Podcast. All rights reserved.
-        </footer>
+       
       </div>
     </div>
     </Layout>

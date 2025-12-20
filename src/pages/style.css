@@ -56,7 +56,11 @@ to{transform:translateY(-0.1em);}
 .blurcircle{filter:blur(110px);opacity:0.8;background:linear-gradient(115deg,#9747FF,#FC18D8)}
 .edubg {background: linear-gradient(270deg, #9747FF 0%, #FC18D8 97.09%); border-radius: 10px; padding: 10px; box-sizing: border-box;}
 footer { background: url(/footerbg.jpg)0 0 repeat-x;    background-size: 100% 100%;}
-
+.text-overlay {display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;}
 /* Responsive */
 
 

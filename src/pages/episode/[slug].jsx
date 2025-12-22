@@ -37,7 +37,7 @@ export default function Index() {
     }
   }, [slug]);
 
-  console.log("data", data);
+  // console.log("data", data);
   return (
     <Layout>
       <div className="bg-[#0a0a0a] pt-[118px] lg:pt-[128px] pb-[40px] md:pb-[60px] lg:pb-[80px] ">

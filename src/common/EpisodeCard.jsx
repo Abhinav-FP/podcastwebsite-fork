@@ -21,6 +21,7 @@ export default function EpisodeCard({
   fetchDetails,
   isAdmin = false,
   slug,
+  data,
 }) {
   const router = useRouter();
   const { playTrack } = useAudioPlayer();
@@ -116,7 +117,7 @@ export default function EpisodeCard({
             stroke-width="0.5"
          />
         </svg>
-        <span>{episode?.podcast?.author || "N/A"}</span>
+        <span>{episode?.podcast?.author || data?.author || "N/A"}</span>
       </span> |
       <span className="flex items-center gap-1">
         <IoMdTime size={14} /> {episode?.duration} mins

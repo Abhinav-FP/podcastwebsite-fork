@@ -13,6 +13,7 @@ import { FaLocationDot, FaXTwitter } from "react-icons/fa6";
 import { SiSpotify } from "react-icons/si";
 import Listing from "../api/Listing";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 export default function GetInTouch() {
   const [loading, setLoading] = useState(false);
@@ -123,7 +124,7 @@ export default function GetInTouch() {
                 <h4 className="text-white text-[18px] md:text-[20px] font-[600] text-white uppercase mb-[10px] md:mb-[15px]">
                   Follow us on
                 </h4>
-                <div className="flex items-center justify-center gap-[15px] border border-[#A7A7A7] p-[15px] rounded-[15px] max-w-[200px]">
+                <div className="flex items-center justify-center gap-[5px] md:gap-[15px] border border-[#A7A7A7] p-[10px] md:p-[15px] rounded-[15px] max-w-[280px]">
                   <a
                     href="https://www.facebook.com/thepropertyportfoliopodcast"
                     className=""
@@ -275,6 +276,12 @@ export default function GetInTouch() {
                         </clipPath>
                       </defs>
                     </svg>
+                  </a>
+                  <a href="https://www.youtube.com/@ThePropertyPortfolioPodcast" target="blank">
+                    <img   width="26" height="26" src="/musicicon.svg" alt="" />
+                  </a>
+                  <a href="https://open.spotify.com/show/7BWrKVuUSeX1Qat3VEjUaU" target="blank">
+                    <img width="26" height="26"  src="/spotify.svg" alt="" />
                   </a>
                 </div>
               </div>

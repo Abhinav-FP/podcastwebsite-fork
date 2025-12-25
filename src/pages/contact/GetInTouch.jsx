@@ -125,7 +125,7 @@ export default function GetInTouch() {
                 </h4>
                 <div className="flex items-center justify-center gap-[15px] border border-[#A7A7A7] p-[15px] rounded-[15px] max-w-[200px]">
                   <a
-                    href="https://www.linkedin.com/company/the-property-portfolio-podcast/"
+                    href="https://www.facebook.com/thepropertyportfoliopodcast"
                     className=""
                   >
                     <svg
@@ -159,7 +159,7 @@ export default function GetInTouch() {
                     <FaXTwitter size={18} />
                   </a> */}
                   <a
-                    href="https://www.facebook.com/thepropertyportfoliopodcas"
+                    href="https://www.instagram.com/propertyportfoliopodcast/"
                     className=""
                   >
                     <svg
@@ -221,7 +221,7 @@ export default function GetInTouch() {
                   </a>
 
                   <a
-                    href="https://www.instagram.com/propertyportfoliopodcast/"
+                    href="https://www.linkedin.com/company/the-property-portfolio-podcast/"
                     className=""
                   >
                     <svg

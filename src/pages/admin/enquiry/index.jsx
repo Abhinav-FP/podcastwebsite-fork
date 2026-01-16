@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ViewMessage from "@/common/ViewMessage";
 import Listing from "@/pages/api/Listing";
 import NoData from "@/common/NoDataFound";
-import  { TableLoader } from "@/common/LoadingSpinner";
+import { TableLoader } from "@/common/LoadingSpinner";
 import AuthLayout from "@/layout/AuthLayout";
 import Loader from "@/common/Loader";
 
@@ -10,7 +10,7 @@ export default function index() {
   const [listing, setLisitng] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(15);
+  const [limit, setLimit] = useState(5);
   const [hasMore, setHasMore] = useState(true);
   const [loadingButton, setLoadingButton] = useState(false);
 
@@ -20,23 +20,26 @@ export default function index() {
         setLoading(true);
       }
       setLoadingButton(true);
+
       const main = new Listing();
-      const response = await main.enquiryGet(page, limit, { signal });
-      // console.log("response", response)
-      if (response?.data?.data) {
+      const response = await main.enquiryGet(pg, limit, { signal });
+
+      const records = response?.data?.data?.records;
+      const pagination = response?.data?.data?.pagination;
+
+      if (records) {
         setLisitng((prevData) => {
-          if (page === 1) {
-            return response.data.data;
+          if (pg === 1) {
+            return records;
           } else {
-            return [...prevData, ...response.data.data];
+            return [...prevData, ...records];
           }
         });
-        setHasMore(response.data.data.nextPage !== null);
-        setLoading(false);
-        setLoadingButton(false);
+
+        setHasMore(pagination?.nextPage !== null);
       }
     } catch (error) {
-      console.log("Error fetching package data:", error);
+      console.log("Error fetching enquiry data:", error);
     } finally {
       setLoading(false);
       setLoadingButton(false);
@@ -64,10 +67,11 @@ export default function index() {
       <div className="overflow-auto">
         {loading ? (
           <TableLoader length={4} />
-          // <Loader/>
-        ) : listing?.length === 0 ? (
+        ) : // <Loader/>
+        listing?.length === 0 ? (
           <NoData />
         ) : (
+          <>
           <table className="w-full table-auto whitespace-nowrap">
             <thead>
               <tr className="bg-theme">
@@ -79,6 +83,9 @@ export default function index() {
                 </th>
                 <th className="border-b border-[#ffffff]  text-[14px] text-[#ffffff] uppercase text-left   p-[10px]">
                   Email
+                </th>
+                <th className="border-b border-[#ffffff]  text-[14px] text-[#ffffff] uppercase text-left   p-[10px]">
+                  Subject
                 </th>
                 <th className="border-b border-[#ffffff]  text-[14px] text-[#ffffff] uppercase text-left   p-[10px]">
                   Message
@@ -98,11 +105,26 @@ export default function index() {
                     {item?.email}
                   </td>
                   <td className=" font-[600] text-white text-[16px] text-left px-[10px] py-[16px]  border-b border-[#ffffff1a] text-left   ">
+                    {item?.subject}
+                  </td>
+                  <td className=" font-[600] text-white text-[16px] text-left px-[10px] py-[16px]  border-b border-[#ffffff1a] text-left   ">
                     <ViewMessage text={item.message} />
                   </td>
                 </tr>
               ))}
           </table>
+          {hasMore && !loading && (
+        <div className="flex justify-center mt-6">
+          <button
+            onClick={loadMore}
+            disabled={loadingButton}
+            className="px-6 py-2 bg-theme text-white rounded-lg disabled:opacity-50 cursor-pointer"
+          >
+            {loadingButton ? "Loading..." : "Load More"}
+          </button>
+        </div>
+      )}
+      </>
         )}
       </div>
     </AuthLayout>

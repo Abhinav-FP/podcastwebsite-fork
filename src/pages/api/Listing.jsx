@@ -87,13 +87,13 @@ class Listing extends Component {
   }
 
   async AddSubscriber(data){
-    return Api.post("/subscriber/add" , data)
+    return Api.post("/subscriber/add" , data);
   }
-async enquiryGet() {
-    return Api.get("/contact/get")
+async enquiryGet(page, limit) {
+    return Api.get(`contact/get?page=${page}&limit=${limit}`);
   }
    async GetSubscriber(){
-    return Api.get("/subscriber/get" , )
+    return Api.get("/subscriber/get" , );
   }
   async AddContact(data){
     return  Api.post("/contact/add" ,data)

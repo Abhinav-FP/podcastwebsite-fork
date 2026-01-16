@@ -313,7 +313,7 @@ export default function GetInTouch() {
                   placeholder="Your full name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 ps-[40px] rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#FFFFFF33] placeholder-gray-400 focus:outline-none"
+                  className="w-full px-4 py-3 ps-[40px] rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#fff] placeholder-gray-400 focus:outline-none"
                   required
                 />
                 </div>
@@ -340,7 +340,7 @@ export default function GetInTouch() {
                   placeholder="yourwinzy@gmail.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 ps-[40px] rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#FFFFFF33] placeholder-gray-400 focus:outline-none"
+                  className="w-full px-4 py-3 ps-[40px] rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#fff] placeholder-gray-400 focus:outline-none"
                   required
                 />
                 </div>
@@ -357,7 +357,7 @@ export default function GetInTouch() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#FFFFFF33] focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#fff] focus:outline-none"
                   required
                 >
                   <option value="" disabled>
@@ -392,14 +392,14 @@ export default function GetInTouch() {
                   }
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#FFFFFF33] placeholder-gray-400 focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#fff] placeholder-gray-400 focus:outline-none"
                   required
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#FFFFFF33] text-[#FFFFFF] hover:bg-gradient-to-r hover:from-[#9747FF] hover:to-[#FC18D8] transition-all text-white py-3 rounded-full font-semibold cursor-pointer"
+                className="w-full bg-[#FFFFFF33] text-[#FFFFFF] bg-gradient-to-r from-[#9747FF] to-[#FC18D8] transition-all text-white py-3 rounded-full font-semibold cursor-pointer"
               >
                 {loading ? "Sending..." : "Send Message"}
               </button>

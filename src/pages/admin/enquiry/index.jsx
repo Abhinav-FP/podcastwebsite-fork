@@ -10,7 +10,7 @@ export default function index() {
   const [listing, setLisitng] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(10);
   const [hasMore, setHasMore] = useState(true);
   const [loadingButton, setLoadingButton] = useState(false);
 

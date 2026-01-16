@@ -72,7 +72,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.youtube.com/@ThePropertyPortfolioPodcast" target="blank">
+                  <a href="https://podcasts.apple.com/us/search?term=The%20Property%20Portfolio%20Podcast" target="blank">
                     <img width="28" height="22" className="min-w-[28px]" src="/musicicon.svg" alt="" />
                   </a>
                 </li>

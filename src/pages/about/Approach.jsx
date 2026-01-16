@@ -34,7 +34,7 @@ export default function Approach() {
                             width={40}
                             height={40}
                             className="rounded-xl object-cover w-[40px] h-auto mb-[10px]"
-                          />Strategies we've personally stress-tested
+                          />Personally Stress-Tested Frameworks
               </div>
             </div>
 
@@ -47,7 +47,7 @@ export default function Approach() {
                             height={40}
                             className="rounded-xl object-cover  w-[40px] h-auto mb-[10px]"
                           />
-                         Real Case Studies backed by real data insights
+                         Data-Driven <br/> Case Studies
 
               </div>
             </div>
@@ -61,7 +61,8 @@ export default function Approach() {
                             height={40}
                             className="rounded-xl object-cover  w-[40px] h-auto mb-[10px]"
                           />
-                Strategies Tested Through Market Cycles
+               Strategies Tested Through Market Cycles
+
 
               </div>
             </div>
@@ -75,7 +76,7 @@ export default function Approach() {
                             height={40}
                             className="rounded-xl object-cover  w-[40px] h-[40px] mb-[10px]"
                           />
-               Different Strategies for Each Investor Stage
+              Each Investor <br /> Stage-Specific Pathway
 
               </div>
             </div>

@@ -46,19 +46,17 @@ export default function Learn() {
         <section className="text-white py-8 pt-[30px]">
           {/* Heading */}
           <div className="text-center mb-12">
-            <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-[700] font-work uppercase">
-             What You’ll <span className="text-theme">Learn</span>
-            </h2>
+            <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-[1.15] uppercase">What You'll <span className="text-theme">Learn</span></h2>
             <p className="mt-4 text-white text-[18px] md:text-[20px] max-w-3xl mx-auto">
              Every episode is packed with actionable insights to help you build wealth through smart property investment decisions
             </p>
           </div>
           {/* Cards Grid */}
-          <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 z-3">
+          <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 z-3 ">
             {learnItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group bg-[#0F0F0F] h-auto md:h-[260px] xl:h-[250px] rounded-2xl p-6 shadow-lg hover:shadow-xl transition justify-items-center sm:justify-items-start text-center sm:text-left border-1 border-[#FFFFFF66] hover:border-[#9747FF] relative">
+                className="group bg-[#0F0F0F] border-[2px] border-[#fff] h-auto md:h-[260px] xl:h-[250px] rounded-2xl p-6 shadow-lg hover:shadow-xl transition justify-items-center sm:justify-items-start text-center sm:text-left border-1 border-[#FFFFFF66] hover:border-[#9747FF] relative">
                 {/* Icon inside a circle */}
                 <div className="bg-[#FFFFFF1A] w-14 h-14 flex items-center justify-center rounded-full mb-4 text-gray-300 group-hover:text-white transition group-hover:bg-gradient-to-r from-[#9747FF] to-[#FC18D8] transition-transform duration-800 group-hover:scale-125">
                   {item.icon}

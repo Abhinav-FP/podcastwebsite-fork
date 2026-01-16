@@ -18,7 +18,7 @@ function HeroSection() {
             <span className="text-theme inline"> Portfolios</span>
           </h1>
 
-          <p className="mt-4 text-[18px] md:text-[20px] font-outfit text-white">
+          <p className="mt-4 text-[18px] md:text-[20px] font-outfit text-white text-justify">
             Step behind the scenes with the sharpest minds of the Australian property market revealing proven strategies, timing secrets, and calculated risks that turn good portfolios into great ones.
           </p>
            <Link

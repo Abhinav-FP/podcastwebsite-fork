@@ -37,7 +37,7 @@ const NewsletterBanner = () => {
         <div className="absolute right-0 bottom-0 w-full h-full">
            <Image src={"/subscribebanner.png"} layout="fill" objectFit="cover" className="object-cover w-full h-full" /></div>
         <div className="w-full lg:w-[54%] p-4 md:p-6 lg:p-8 xl:p-12 flex flex-col justify-center z-1">
-          <h2 className="text-[20px] md:text-[25px] lg:text-[30px] xl:text-[36px] md:leading-[30px] xl:leading-[45px] uppercase font-bold text-white mb-[20px] md:mb-[25px] lg:mb-[45px] xl:mb-[50px]">
+          <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-[1.15] uppercase text-white mb-[20px] md:mb-[25px] lg:mb-[45px] xl:mb-[50px]">
             Subscribe to our newsletter for the <span className="text-theme">latest updates</span>
           </h2>
           {/* Input Box */}

@@ -8,12 +8,12 @@ export default function NewVoice() {
       <div className="mx-auto container xl:max-w-[1310px] px-4 flex flex-col lg:flex-row items-center justify-between gap-[10px] md:gap-[25px]">
         {/* Left Content */}
         <div className="text-white w-full max-w-[100%] lg:max-w-[50%] text-center lg:text-left relative z-[2]">
-          <h1 className="text-[25px] md:text-[30px] xl:text-[36px] leading-[27px] md:leading-[37px] xl:leading-[38px] font-work font-[800] leading-tight uppercase">
+          <h1 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-[1.15] uppercase">
            Build Your <span className="text-theme"> Financial  Freedom </span> Alongside Australia’s Leading Voices.
               
             
           </h1>
-          <p className="mt-6 text-white text-base  font-outfit font-[600] text-[15px] md:text-[16px] xl:text-[18px]">
+          <p className="mt-6 text-white text-base  font-outfit text-justify font-[600] text-[15px] md:text-[16px] xl:text-[18px] text-justify">
           We engage with investors who have experienced the pitfalls, rejoiced in the successes, and discovered what truly succeeds in Australian property. We engage in real conversations about firsthand deals, real numbers, and meaningful decisions. We analyse the strategies that distinguish portfolio builders from those who merely dream of property ownership. Built for investors who value practical insights over noise, we translate complex investment thinking into real frameworks that smart investors like you can actually use.
 
           </p>

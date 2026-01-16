@@ -63,11 +63,11 @@ export default function GetInTouch() {
     <section className="relative mt-24 px-[20px] py-[25px] md:px-[40px] md:py-[45px] lg:px-[50px] lg:py-[65px] ">
       <div className="relative z-[1]">
         <div className="text-center">
-          <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-tight uppercase">
-            Get in <span className="text-theme">Touch</span>
+          <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-[1.15] uppercase">
+            Get in <span className="text-theme">Touch </span> With Us
           </h2>
           <p className="mt-[10px] md:mt-[15px] lg:mt-[15px] text-white font-outfit font-[600] text-[16px] md:text-[18px] lg:text-[20px]">
-           Share your questions, thoughts, or suggestions, <br /> and we’ll get back to you with the answers you are looking for.
+          Tell us what you want to hear next or give us your honest take on the podcast. <br/> We're open to all your questions, ideas, and feedback.
           </p>
         </div>
         <div className="w-full max-w-[100%] lg:max-w-[1100px] mx-auto flex flex-col lg:flex-row  justify-between gap-[25px] text-white mt-4 md:mt-8 lg:mt-12 px-0 md:px-3 lg:px-4">
@@ -84,7 +84,7 @@ export default function GetInTouch() {
                     Phone
                   </h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0]">
-                   +61 0497 570 833
+                   0497 570 833
                   </p>
                 </div>
               </div>
@@ -97,11 +97,11 @@ export default function GetInTouch() {
                 <div>
                   <h4 className="text-white font-[700] text-[16px] md:text-[18px] lg:text-[20px] mb-[5px]">Our Location</h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0]">
-                   The Property Portfolio Podcast, <br/>
-                    215/33 Lexington Dr, <br/>
-                    Bella Vista <br/>
-                    NSW 2153, <br/>
-                    Australia
+                   The Property Portfolio Podcast, <br />
+                    215/33 Lexington Dr, <br />
+                    Bella Vista <br />
+                    NSW 2153
+
                   </p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function GetInTouch() {
                 <div>
                   <h4 className="text-white font-[700] text-[16px] md:text-[18px] lg:text-[20px] mb-[5px]">Email</h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0] break-words break-normal break-all">
-                    <a href="mailto:info@thepropertyportfolio.co.au">info@thepropertyportfolio.co.au</a>
+                    <a href="mailto:info@thepropertyportfolio.com.au">info@thepropertyportfolio.com.au</a>
                   </p>
                 </div>
               </div>

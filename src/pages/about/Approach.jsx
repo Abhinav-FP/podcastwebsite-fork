@@ -14,7 +14,7 @@ export default function Approach() {
                          className="object-cover w-full" />
                  </div>
         <div className="text-center flex flex-col items-center relative z-[2]">
-          <h2 className="mb-[20px] text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-tight uppercase">
+          <h2 className="mb-[20px] text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-[1.15] uppercase">
             <span className="text-white">Our</span>
             <span className="text-theme"> Approach</span>
           </h2>

@@ -39,7 +39,7 @@ export default function FAQSection() {
 
   return (
     <div className="mt-[30px] mb-[30px] md:mt-[50px] lg:mb-[40px] lg:mt-[60px] lg:mb-[50px]">
-      <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-tight uppercase text-center mb-[25px]">
+      <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-[1.15] uppercase text-center mb-[25px]">
         <span className="text-theme">Frequently </span> Asked Questions
       </h2>
       <div className=" p-[15px] md:p-[30px] lg:p-[40px] bg-[#0F0F0F] border border-[#FFFFFF66] rounded-[10px] md:rounded-[15px]">

@@ -41,8 +41,9 @@ export default function Footer() {
               <Image src={"/logo.png"} alt="Podcast Logo" width={170} height={50}
                 className="w-auto max-w-[180px] object-content" />
             </div>
-            <p className="mt-4 text-white text-[16px] font-[600] ">
+            <p className="mt-[4px] ms-[10px] max-w-[169px] pt-[2px] pb-[2px] text-white text-[9.1px] font-[600] border-t-[1px] border-t-[#fff] border-b-[1px] border-b-[#fff] ">
               Episodes That Build Stronger Portfolio
+              
             </p>
 
             <div className=" mt-[20px] md:mt-[40px]">
@@ -121,7 +122,7 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className=" border-t  border-t-[#FFFFFF33] lg:border-t-[0] pt-[20px] lg:pt-[0px]">
-            <h3 className="font-semibold mb-4 font-[700] text-[16px] uppercase">NEWSLETTER</h3>
+            <h3 className="font-semibold mb-4 font-[700] text-[16px] uppercase ps-[1px]">NEWSLETTER</h3>
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
               <input
                 type="email"
@@ -130,7 +131,7 @@ export default function Footer() {
                 required
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="mb-[15px] px-[15px] py-[12px] rounded-[15px] bg-[#0F0F0F]  border-[1px] border-[#FFFFFF66] text-white outline-none text-[14px] font-[400] w-full"
+                className="mb-[15px] px-[15px] py-[12px] rounded-[80px] bg-[#0F0F0F]  border-[1px] border-[#FFFFFF66] text-white outline-none text-[14px] font-[400] w-full"
               />
               <button
                 type="submit"

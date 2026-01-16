@@ -25,9 +25,9 @@ export default function Mission() {
   ];
   return (
     <section className="">
-      <div className="bg-[#0F0F0F] md:min-h-[380px] xl:min-h-[400px] border-1  border-[#FFFFFF66] rounded-[10px] p-[20px] md:p-[20px] relative z-[2]">
+      <div className="bg-[#0F0F0F] md:min-h-[380px] xl:min-h-[400px] border-2  border-[#fff] rounded-[10px] p-[20px] md:p-[20px] relative z-[2]">
         <div className="text-center flex flex-col items-center relative z-[2]">
-          <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-tight uppercase">
+          <h2 className="text-[25px] md:text-[35px] xl:text-[40px] font-work font-[800] leading-[1.15] uppercase mb-[4px]">
             <span className="text-white">Our</span>
             <span className="text-theme"> Mission</span>
           </h2>

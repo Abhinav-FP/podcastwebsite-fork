@@ -348,36 +348,53 @@ export default function GetInTouch() {
 
               <div>
                 <label className="block text-[16px] md:text-[18px] font-[700] mb-2">
-                  Subject
+                  I’d like to
                 </label>
 
                 <div className="relative">
                 
-                <input
-                  type="text"
+                <select
                   name="subject"
-                  placeholder="Your subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#FFFFFF33] placeholder-gray-400 focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#FFFFFF33] focus:outline-none"
                   required
-                />
+                >
+                  <option value="" disabled>
+                    Select a subject
+                  </option>
+                  <option value="Suggest a Topic">Suggest a Topic</option>
+                  <option value="Ask a Question">Ask a Question</option>
+                  <option value="Give Feedback">Give Feedback</option>
+                </select>
               </div>
               </div>
 
               <div>
                 <label className="block text-[16px] md:text-[18px] font-[700] mb-2">
-                  Message
+                  {formData.subject === "Suggest a Topic" && "What topic should we cover?"}
+                  {formData.subject === "Ask a Question" && "Your Question"}
+                  {formData.subject === "Give Feedback" && "Your Thoughts/Feedback"}
+                  {!formData.subject && "Message"}
                 </label>
-                <textarea
+
+                <input
+                  type="text"
                   name="message"
-                  placeholder="Your message"
-                  rows={4}
+                  placeholder={
+                    formData.subject === "Suggest a Topic"
+                      ? "What topic should we cover?"
+                      : formData.subject === "Ask a Question"
+                      ? "Your Question"
+                      : formData.subject === "Give Feedback"
+                      ? "Your Thoughts/Feedback"
+                      : "Your message"
+                  }
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-[#0F0F0F] text-white text-[16px] border border-[#FFFFFF33] placeholder-gray-400 focus:outline-none"
                   required
-                ></textarea>
+                />
               </div>
 
               <button

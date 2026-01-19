@@ -277,7 +277,7 @@ export default function GetInTouch() {
                       </defs>
                     </svg>
                   </a>
-                  <a href="https://podcasts.apple.com/us/search?term=The%20Property%20Portfolio%20Podcast" target="blank">
+                  <a href="https://podcasts.apple.com/us/podcast/the-property-portfolio-podcast/id1863885688" target="blank">
                     <img   width="26" height="26" src="/musicicon.svg" alt="" />
                   </a>
                   <a href="https://open.spotify.com/show/7BWrKVuUSeX1Qat3VEjUaU" target="blank">

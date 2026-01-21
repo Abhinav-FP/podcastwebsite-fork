@@ -15,7 +15,7 @@ export default function MeetYourHost() {
             MEET YOUR <span className="text-theme">HOST</span>
           </h2>
           <p className="text-white text-base  font-outfit font-[600] text-[15px] md:text-[16px] xl:text-[18px]">
-            Together, Parag, Julius, Mudit represent the complete property
+            Together, Parag, Julius & Mudit represent the complete property
             investment ecosystem of mortgage mastery, strategic financing, and
             acquisition expertise unified under one educational platform. Their
             combined decades of experience and proven track records create an

@@ -17,19 +17,25 @@ export default function Index() {
   const { slug } = router.query;
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   const fetchDetails = async (slug) => {
     try {
       setLoading(true);
       const main = new Listing();
       const response = await main.EpisodeByID(slug);
-      setData(response?.data?.data || []);
+      setData(response?.data?.data || null);
     } catch (error) {
       console.log("error", error);
-      setData({});
-    }
+      if (error?.response?.status === 404 || error?.message === "NOT_FOUND") {
+        setError("NOT_FOUND");
+      } else {
+        setError("GENERIC");
+      }
+      setData(null);
+    }finally {
     setLoading(false);
-  };
+  }};
 
   useEffect(() => {
     if (slug) {
@@ -40,6 +46,68 @@ export default function Index() {
   // console.log("data", data);
   return (
     <Layout>
+      {loading && (
+        <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+          <div className="relative w-[70px] h-[70px] mb-6">
+            <div className="absolute inset-0 rounded-full border-4 border-white/20"></div>
+            <div className="absolute inset-0 rounded-full border-4 border-theme border-t-transparent animate-spin"></div>
+          </div>
+          <h2 className="text-white text-[18px] md:text-[22px] font-semibold mb-2">
+            Loading episode…
+          </h2>
+          <p className="text-white/60 text-sm md:text-base max-w-[320px]">
+            Fetching the latest details for you. Please wait.
+          </p>
+        </div>
+      )}
+      {!loading && error === "NOT_FOUND" && (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-[80px] md:text-[120px] font-extrabold text-white/20">
+            404
+          </h1>
+
+          <h2 className="text-white text-[20px] md:text-[26px] font-bold mb-[10px]">
+            Episode Not Found
+          </h2>
+
+          <p className="text-white/70 max-w-[480px] mb-[25px]">
+            The episode you’re looking for doesn’t exist or may have been removed.
+          </p>
+
+          <div className="flex gap-4">
+            <button
+              onClick={() => fetchDetails(slug)}
+              className="bg-theme px-[20px] py-[10px] rounded-full text-white font-semibold hover:scale-105 transition"
+            >
+              Retry
+            </button>
+
+            <Link
+              href="/"
+              className="border border-white/40 px-[20px] py-[10px] rounded-full text-white hover:bg-white/10 transition"
+            >
+              Go Home
+            </Link>
+          </div>
+        </div>
+      )}
+      {!loading && error === "GENERIC" && (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
+          <h2 className="text-red-400 text-[22px] font-bold mb-3">
+            Something went wrong
+          </h2>
+          <p className="text-white/70 mb-5">
+            Please try again later.
+          </p>
+          <button
+            onClick={() => fetchDetails(slug)}
+            className="bg-red-500 px-[20px] py-[10px] rounded-full text-white"
+          >
+            Retry
+          </button>
+        </div>
+      )}
+      {!loading && !error && data && (
       <div className="bg-[#0a0a0a] pt-[118px] lg:pt-[128px] pb-[40px] md:pb-[60px] lg:pb-[80px] ">
         <div className="absolute z-0 w-full  w-[300px] md:w-[400px]  h-full  left-[0] top-[-150px]  z-1">
           <Image
@@ -141,7 +209,7 @@ export default function Index() {
             </>
           )}
         </section>
-      </div>
+      </div>)}
     </Layout>
   );
 }

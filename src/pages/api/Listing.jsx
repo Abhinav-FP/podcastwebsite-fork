@@ -92,11 +92,11 @@ class Listing extends Component {
 async enquiryGet(page, limit) {
     return Api.get(`contact/get?page=${page}&limit=${limit}`);
   }
-   async GetSubscriber(){
-    return Api.get("/subscriber/get" , );
+   async GetSubscriber(page, limit){
+    return Api.get(`/subscriber/get?page=${page}&limit=${limit}`);
   }
   async AddContact(data){
-    return  Api.post("/contact/add" ,data)
+    return  Api.post("/contact/add",data)
   }
   render() {
     return (

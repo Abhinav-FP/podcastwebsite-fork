@@ -90,7 +90,7 @@ export default function Detail() {
           </h3>
 
           {/* Video RSS */}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <p className="text-sm text-gray-400 mb-1">
               Video RSS Link
             </p>
@@ -108,7 +108,7 @@ export default function Detail() {
                 Copy
               </button>
             </div>
-          </div>
+          </div> */}
 
           {/* Audio RSS */}
           <div className="mb-3">

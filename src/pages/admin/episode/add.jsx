@@ -120,7 +120,7 @@ export default function Add() {
       setUploadingVideo(true);
       toast.loading("Uploading file...");
       try {
-        const url = await uploadLargeFile(file);
+        const url = await uploadLargeFile(file, "video");
         setUploadedFileUrl(url);
 
         setFormData((prev) => ({
@@ -159,7 +159,7 @@ export default function Add() {
         toast.loading("Uploading audio...");
 
         try {
-          const url = await uploadLargeFile(file);
+          const url = await uploadLargeFile(file, "audio");
           setUploadedAudioUrl(url);
 
           setFormData((prev) => ({
@@ -324,7 +324,7 @@ export default function Add() {
       }
   };
 
-  const uploadLargeFile = async (file) => {
+  const uploadLargeFile = async (file, type="video") => {
       const fileSize = file.size;
       const MIN_CHUNK_SIZE = 10 * 1024 * 1024;
       const MAX_CHUNKS = 100;
@@ -341,8 +341,13 @@ export default function Add() {
       const totalFileBytes = file.size;
       // --- END NEW ---
 
-      setUploadingVideo(true);
-      setUploadProgress(0);
+      if(type === "audio"){
+        setUploadingAudio(true);
+        setAudioUploadProgress(0);
+      }else{
+        setUploadingVideo(true);
+        setUploadProgress(0);
+      }
 
       try {
           const initRes = await Api.post(`/upload/init`, { fileName: file.name, mimeType: file.type });
@@ -369,7 +374,11 @@ export default function Add() {
 
                   // Calculate the single, overall percentage
                   const percent = Math.round((totalBytesTransferred / totalFileBytes) * 100);
-                  setUploadProgress(percent);
+                  if(type === "audio"){
+                    setAudioUploadProgress(percent);
+                  }else{
+                    setUploadProgress(percent);
+                  }
               };
 
               chunkTasks.push(
@@ -403,17 +412,29 @@ export default function Add() {
           const completeRes = await Api.post(`/upload/complete`, { uploadId, key, parts: allUploadedParts });
 
           // ... success handling remains the same ...
-          setUploadProgress(100);
+          if(type === "audio"){
+            setAudioUploadProgress(100);
+          }else{
+            setUploadProgress(100);
+          }
           toast.success("Upload completed!");
           return completeRes.data.fileUrl;
 
       } catch (error) {
           // ... failure handling remains the same ...
           toast.error(error.message.includes("chunk") ? error.message : "Upload failed, please try again.");
-          setUploadProgress(0);
+          if(type === "audio"){
+            setAudioUploadProgress(0);
+          }else{
+            setUploadProgress(0);
+          }
           return null;
       } finally {
+        if(type === "audio"){
+          setUploadingAudio(false);
+        }else{
           setUploadingVideo(false);
+        }
       }
   };
 

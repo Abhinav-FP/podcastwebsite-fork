@@ -32,7 +32,7 @@ export default function InvestorSection() {
         {/* Right Image */}
         <div className="flex-shrink-0 w-full max-w-sm sm:max-w-md lg:max-w-[50%]">
           <Image
-            src="/conversation.png"
+            src="/PodcastCover.jpg"
             alt="Podcast Recording"
             width={573}
             height={500}

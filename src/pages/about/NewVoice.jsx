@@ -65,7 +65,7 @@ export default function NewVoice() {
         {/* Right Image */}
         <div className=" w-full max-w-[100%] lg:max-w-[50%]  relative z-[2]">
           <Image
-            src="/aboutimg.jpg"
+            src="/PodcastCover.jpg"
             alt="Podcast Recording"
             width={700}
             height={800}

@@ -14,7 +14,7 @@ export default function Use() {
         {/* Content */}
         <div className="space-y-8 text-sm leading-relaxed">
           <p>
-            The Property Portfolio Podcast ACN 687 075 565 owns and operates this website.
+            The Dummy podcast owns and operates this website.
             Access to and use of this Website is and the products and services available
             through this Website (collectively, Services) is subject to the following
             terms, conditions and notices (Terms of Use). By using the Services, you are

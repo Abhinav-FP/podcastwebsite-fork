@@ -31,7 +31,7 @@ function HeroSection() {
         <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[40%]">
           <div className="relative overflow-hidden rounded-xl shadow-lg">
             <Image
-              src="/heroimg01.jpg"
+              src="/PodcastCover.jpg"
               alt="Podcast Host"
               width={600}
               height={350}

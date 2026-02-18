@@ -84,7 +84,7 @@ export default function GetInTouch() {
                     Phone
                   </h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0]">
-                   0497 570 833
+                   0000 000 000
                   </p>
                 </div>
               </div>
@@ -97,10 +97,9 @@ export default function GetInTouch() {
                 <div>
                   <h4 className="text-white font-[700] text-[16px] md:text-[18px] lg:text-[20px] mb-[5px]">Our Location</h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0]">
-                   The Property Portfolio Podcast, <br />
-                    215/33 Lexington Dr, <br />
-                    Bella Vista <br />
-                    NSW 2153
+                   The Dummy Podcast, <br />
+                    Jaipur <br />
+                    Rajasthan <br />
 
                   </p>
                 </div>
@@ -114,7 +113,7 @@ export default function GetInTouch() {
                 <div>
                   <h4 className="text-white font-[700] text-[16px] md:text-[18px] lg:text-[20px] mb-[5px]">Email</h4>
                   <p className="text-white font-[600] text-[16px] md:text-[18px] lg:text-[20px] mb-[0] break-words break-normal break-all">
-                    <a href="mailto:info@thepropertyportfolio.com.au">info@thepropertyportfolio.com.au</a>
+                    <a href="mailto:info@thedummy.com.au">info@thedummy.com</a>
                   </p>
                 </div>
               </div>
@@ -126,7 +125,7 @@ export default function GetInTouch() {
                 </h4>
                 <div className="flex items-center justify-center gap-[5px] md:gap-[15px] border border-[#A7A7A7] p-[10px] md:p-[15px] rounded-[15px] max-w-[280px]">
                   <a
-                    href="https://www.facebook.com/thepropertyportfoliopodcast"
+                    href="#"
                     className=""
                   >
                     <svg
@@ -160,7 +159,7 @@ export default function GetInTouch() {
                     <FaXTwitter size={18} />
                   </a> */}
                   <a
-                    href="https://www.instagram.com/propertyportfoliopodcast/"
+                    href="#"
                     className=""
                   >
                     <svg
@@ -222,7 +221,7 @@ export default function GetInTouch() {
                   </a>
 
                   <a
-                    href="https://www.linkedin.com/company/the-property-portfolio-podcast/"
+                    href="#"
                     className=""
                   >
                     <svg
@@ -250,7 +249,7 @@ export default function GetInTouch() {
                     </svg>
                   </a>
                   <a
-                    href="https://www.youtube.com/@ThePropertyPortfolioPodcast"
+                    href="#"
                     className=""
                   >
                     <svg
@@ -277,10 +276,10 @@ export default function GetInTouch() {
                       </defs>
                     </svg>
                   </a>
-                  <a href="https://podcasts.apple.com/us/podcast/the-property-portfolio-podcast/id1863885688" target="blank">
+                  <a href="#" target="blank">
                     <img   width="26" height="26" src="/musicicon.svg" alt="" />
                   </a>
-                  <a href="https://open.spotify.com/show/7BWrKVuUSeX1Qat3VEjUaU" target="blank">
+                  <a href="#" target="blank">
                     <img width="26" height="26"  src="/spotify.svg" alt="" />
                   </a>
                 </div>

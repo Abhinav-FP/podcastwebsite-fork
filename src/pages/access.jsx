@@ -14,7 +14,7 @@ export default function TermsOfAccess() {
         <p className="text-sm text-gray-400 mb-10">
           This website is owned and operated by{" "}
           <span className="text-gray-200 font-medium">
-            The Property Portfolio Podcast ACN 687 075 565
+            The Dummy website
           </span>
           . By accessing or using this Website, you agree to the following Terms of Access.
         </p>
